@@ -7,7 +7,7 @@ set nocompatible
 
 " WHO ARE YOU ?
 let g:AuthorName="Ike Devolder"
-let g:AuthorEmail="ike DOT devolder AT gmail DOT com"
+let g:AuthorEmail="i-devolder@jm-bruneau.be"
 
 syntax on
 
@@ -95,7 +95,8 @@ let php_folding=1
 let javascript_fold=1
 
 " AutoClose settings
-let g:AutoCloseOn=0
+let g:AutoCloseOn=1
+let g:AutoClosePairs= {'(': ')', '[': ']', '"': '"', "'": "'", '<': '>'}
 
 " custom functionkey mapping
 if has("gui_running")
