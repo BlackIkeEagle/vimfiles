@@ -7,7 +7,7 @@ set nocompatible
 
 " WHO ARE YOU ?
 let g:AuthorName="Ike Devolder"
-let g:AuthorEmail="i-devolder@jm-bruneau.be"
+let g:AuthorEmail="ike DOT devolder AT gmail DOT com"
 
 syntax on
 
