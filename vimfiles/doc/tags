@@ -195,7 +195,7 @@ supertab-defaultcompletion	supertab.txt	/*supertab-defaultcompletion*
 supertab-duration	supertab.txt	/*supertab-duration*
 supertab-forwardbackward	supertab.txt	/*supertab-forwardbackward*
 supertab-intro	supertab.txt	/*supertab-intro*
-supertab-longestenchanced	supertab.txt	/*supertab-longestenchanced*
+supertab-longestenhanced	supertab.txt	/*supertab-longestenhanced*
 supertab-longesthighlight	supertab.txt	/*supertab-longesthighlight*
 supertab-mappingtabliteral	supertab.txt	/*supertab-mappingtabliteral*
 supertab-midword	supertab.txt	/*supertab-midword*
