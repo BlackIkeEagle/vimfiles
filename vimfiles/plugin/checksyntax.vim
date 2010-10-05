@@ -2,17 +2,18 @@
 " @Author:      Tom Link (micathom AT gmail com)
 " @License:     GPL (see http://www.gnu.org/licenses/gpl.txt)
 " @Created:     04-Mai-2005.
-" @Last Change: 2010-04-23.
-" @Revision:    380
+" @Last Change: 2010-09-12.
+" @Revision:    390
 
-if exists('g:checksyntax')
+if exists('g:loaded_checksyntax')
     finish
 endif
-let g:checksyntax = 6
+let g:loaded_checksyntax = 100
 
 
 " @TPluginInclude
 if !exists('g:checksyntax_auto')
+    " If non-null, enable automatic syntax checks after saving a file.
     let g:checksyntax_auto = 1
 endif
 
@@ -26,6 +27,12 @@ augroup CheckSyntax
 augroup END
 
 
+" :display: CheckSyntax[!] [NAME]
+" Check the current buffer's syntax (type defaults to &filetype).
+" Or use NAME instead of &filetype.
+"
+" With the bang !, use the alternative syntax checker (see 
+" |g:checksyntax|).
 command! -bang -nargs=? CheckSyntax call checksyntax#Check(1, "<bang>", <f-args>)
 
 
@@ -59,4 +66,10 @@ restored in the wrong window
 0.6
 - checksyntax_compiler_{&ft} & checksyntax_cmd_{&ft} variables can be 
 buffer local
+
+1.0
+- The info maintained as g:checksyntax_* variables is now kept in a 
+dictionary named g:checksyntax
+- Support for gjslint
+- Some bug fixes (e.g. tidy)
 
