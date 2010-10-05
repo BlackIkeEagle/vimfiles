@@ -78,13 +78,6 @@ set noexpandtab
 "let g:SuperTabDefaultCompletionType = "<c-x><c-o>"
 "let g:SuperTabContextDefaultCompletionType = "<c-x><c-o>"
 
-" CheckSyntax Settings
-let g:checksyntax_auto_php = 1
-let g:checksyntax_auto_javascript = 1
-let g:checksyntax_auto_xml = 1
-let g:checksyntax_auto_html = 1
-let g:checksyntax_auto_xhtml = 1
-
 " php settings
 let php_sql_query=0
 let php_htmlInStrings=0
