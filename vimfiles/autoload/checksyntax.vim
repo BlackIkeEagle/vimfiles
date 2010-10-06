@@ -68,7 +68,7 @@ if !exists('g:checksyntax.javascript')
         let g:checksyntax['javascript'] = {
 					\ 'auto': 1,
                     \ 'cmd': 'gjslint',
-                    \ 'ignore_nr': [1, 110],
+                    \ 'ignore_nr': [1, 5, 110],
                     \ 'efm': '%P%*[^F]FILE%*[^:]: %f %*[-],Line %l%\, %t:%n: %m,%Q',
                     \ }
     elseif executable('jsl')
