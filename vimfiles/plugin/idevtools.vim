@@ -1,7 +1,7 @@
 command! -n=? -complete=dir -bar RemoveEolWhitespaces :call RemoveEolWhitespaces()
 command! -n=? -complete=dir -bar RemoveDosEol :call RemoveDosEol()
 command! -n=? -complete=dir -bar CSVtoSQL :call CSVtoSQL()
-command! -n=? -complete=dir -bar PhpTidy :call PhpTidy()
+command! -n=? -complete=dir -bar CodeTidy :call CodeTidy()
 
 function! RemoveEolWhitespaces()
 	%s/\s\+$//ge
@@ -30,19 +30,22 @@ function CSVtoSQL()
 	endif
 endfunction
 
-function PhpTidy()
-	" dont run on other filetypes than php
-	if &filetype != 'php'
-		echom "PhpTidy cannot be run on other than php files"
-		return
-	endif
+function CodeTidy()
 	" dont run tidy on changed files
 	if &modified
-		echom "Buffer was modified, please save before calling :PhpTidy"
+		echom "Buffer was modified, please save before calling :CodeTidy"
 		return
 	endif
-	" do phptidy on current buffer
-	silent exec '!phptidy replace %'
+	if &filetype == 'php'
+		" do phptidy on current buffer
+		silent exec '!phptidy replace %'
+	elseif &filetype == 'javascript'
+		" do fixjsstyle on current buffer
+		silent exec '!fixjsstyle %'
+	else
+		echom "CodeTidy cant be run on this file"
+		return
+	endif
 	" reload file
 	edit
 endfunction
