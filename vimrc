@@ -23,13 +23,8 @@ if has("gui_running")
 	if has("gui_w32")
 		set guifont=courier_new:h12:w5
 	endif
-	" colorsheme gui
-	"colorscheme CodeFactory
 	" vim size stuff
 	set lines=60 columns=100
-else
-	" colorscheme terminal
-	"colorscheme default
 endif
 
 " colorsheme
