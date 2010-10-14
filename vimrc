@@ -90,7 +90,7 @@ let g:AutoClosePairs= {'(': ')', '[': ']', '"': '"', "'": "'", '<': '>'}
 if has("gui_running")
 	map <silent> <F2> :silent exec '!gvim'<CR>
 endif
-map <silent> <F3> :PhpTidy<CR>
+map <silent> <F3> :CodeTidy<CR>
 map <silent> <F4> :PhpDoc<CR>
 map <silent> <F5> :NERDTreeToggle<CR>
 map <silent> <F7> :BufExplorer<CR>
