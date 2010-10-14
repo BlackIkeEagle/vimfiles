@@ -64,18 +64,18 @@ autocmd CheckSyntax BufReadPost *.php if exists(':EclimValidate') && !empty(ecli
 
 """ JavaScript
 if !exists('g:checksyntax.javascript')
-    if executable('gjslint')
+    if executable('jsl')
+        let g:checksyntax['javascript'] = {
+					\ 'auto': 1,
+                    \ 'cmd': 'jsl -nofilelisting -nocontext -nosummary -nologo -process',
+                    \ 'okrx': '0 error(s), 0 warning(s)',
+                    \ }
+	elseif executable('gjslint')
         let g:checksyntax['javascript'] = {
 					\ 'auto': 1,
                     \ 'cmd': 'gjslint',
                     \ 'ignore_nr': [1, 5, 110],
                     \ 'efm': '%P%*[^F]FILE%*[^:]: %f %*[-],Line %l%\, %t:%n: %m,%Q',
-                    \ }
-    elseif executable('jsl')
-        let g:checksyntax['javascript'] = {
-					\ 'auto': 1,
-                    \ 'cmd': 'jsl -nofilelisting -nocontext -nosummary -nologo -process',
-                    \ 'okrx': '0 error(s), 0 warning(s)',
                     \ }
     endif
 endif
