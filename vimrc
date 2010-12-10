@@ -28,7 +28,7 @@ if has("gui_running")
 endif
 
 " colorsheme
-colorscheme CodeFactory
+colorscheme newdev
 
 " backup rules
 set backup
@@ -83,7 +83,7 @@ let php_folding=1
 let javascript_fold=1
 
 " AutoClose settings
-let g:AutoCloseOn=1
+let g:AutoCloseOn=0
 let g:AutoClosePairs= {'(': ')', '[': ']', '"': '"', "'": "'", '<': '>'}
 
 " custom functionkey mapping
@@ -95,6 +95,7 @@ map <silent> <F4> :PhpDoc<CR>
 map <silent> <F5> :NERDTreeToggle<CR>
 map <silent> <F7> :BufExplorer<CR>
 map <silent> <F8> :CheckSyntax<CR>
+map <silent> <F12> :set list!<CR>
 
 " nfo shit
 au BufReadPre *.nfo set fileencodings=cp437
