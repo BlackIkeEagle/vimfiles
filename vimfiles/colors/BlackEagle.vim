@@ -53,11 +53,11 @@ hi keyword		guifg=#BF0303
 "--------------------------------------------------------------------- 
 " Preprocessor group
 "--------------------------------------------------------------------- 
-hi PreProc		guifg=#B08000
-hi Include		guifg=#B08000
-hi Define		guifg=#B08000
-hi Macro		guifg=#B08000
-hi PreCondit	guifg=#B08000
+hi PreProc		guifg=#B08000		gui=bold,italic
+hi Include		guifg=#B08000		gui=bold,italic
+hi Define		guifg=#B08000		gui=bold,italic
+hi Macro		guifg=#B08000		gui=bold,italic
+hi PreCondit	guifg=#B08000		gui=bold,italic
 
 "--------------------------------------------------------------------- 
 " Type Group
