@@ -11,6 +11,8 @@ let g:AuthorEmail="ike DOT devolder AT gmail DOT com"
 
 syntax on
 
+colorscheme peaksea
+
 " hide all the unneeded stuff from the gui
 if has("gui_running")
 	set guioptions=aiA "dont show toolbar
@@ -23,17 +25,22 @@ if has("gui_running")
 	if has("gui_w32")
 		set guifont=courier_new:h12:w5
 	endif
+
 	" vim size stuff
 	set lines=60 columns=100
-endif
 
-" colorsheme
-colorscheme newdev
+	" colorsheme
+	colorscheme BlackEagle
+endif
 
 " backup rules
 set backup
-set backupdir=~/tmp
-set directory=~/tmp
+silent execute '!mkdir -p $HOME/.vim/tmp/backup'
+set backupdir=$HOME/.vim/tmp/backup
+silent execute '!mkdir -p $HOME/.vim/tmp/swap'
+set directory=$HOME/.vim/tmp/swap
+silent execute '!mkdir -p $HOME/.vim/tmp/views'
+set viewdir=$HOME/.vim/tmp/views
 
 " commandline history
 set history=1000
@@ -44,6 +51,7 @@ set nocursorline
 
 " some interface options
 set ruler			" show cursorposition
+set cursorline      " highlight current line
 set showcmd			" display incomplete commands
 set incsearch		" incremental searching
 set hlsearch		" highlight searchresult
