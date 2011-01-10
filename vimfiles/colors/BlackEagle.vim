@@ -1,7 +1,7 @@
 " Vim color file
 " Maintainer: BlackEagle < ike DOT devolder AT gmail DOT com >
-" Last Modified: Wed 15 Dec, 2010
-" Version: 0.1
+" Last Modified: Wed 05 Dec, 2011
+" Version: 0.2
 "
 " GUI colors
 "
@@ -16,22 +16,22 @@ let colors_name="BlackEagle"
 "--------------------------------------------------------------------- 
 " Base Color
 "--------------------------------------------------------------------- 
-hi Normal          guifg=#111111    guibg=#eaeaea
+hi Normal          guifg=#111111    guibg=#bfbebe
 
 "--------------------------------------------------------------------- 
 " Comment Group
 "--------------------------------------------------------------------- 
-hi Comment         guifg=#888786    gui=italic
+hi Comment         guifg=#777675    gui=italic
 
 "--------------------------------------------------------------------- 
 " Constant Group
 "--------------------------------------------------------------------- 
-hi Constant        guifg=#452886
-hi String          guifg=#452886
-hi Character       guifg=#452886
-hi Number          guifg=#452886
-hi Boolean         guifg=#452886
-hi Float           guifg=#452886
+hi Constant        guifg=#d12e00    gui=bold
+hi String          guifg=#9c3600
+hi Character       guifg=#9c3600
+hi Boolean         guifg=#dc6c00    gui=bold
+hi Number          guifg=#dc6c00    gui=bold
+hi Float           guifg=#dc6c00    gui=bold
 
 "--------------------------------------------------------------------- 
 " Identifier Group
@@ -47,17 +47,17 @@ hi Conditional     guifg=#BF0303
 hi Exception       guifg=#BF0303
 hi Repeat          guifg=#BF0303
 hi Label           guifg=#BF0303
-hi Operator        guifg=#BF0303
+hi Operator        guifg=#0057AE    gui=bold
 hi keyword         guifg=#BF0303
 
 "--------------------------------------------------------------------- 
 " Preprocessor group
 "--------------------------------------------------------------------- 
-hi PreProc         guifg=#B08000    gui=bold,italic
-hi Include         guifg=#B08000    gui=bold,italic
-hi Define          guifg=#B08000    gui=bold,italic
-hi Macro           guifg=#B08000    gui=bold,italic
-hi PreCondit       guifg=#B08000    gui=bold,italic
+hi PreProc         guifg=#452886    gui=bold,italic
+hi Include         guifg=#452886    gui=bold,italic
+hi Define          guifg=#452886    gui=bold,italic
+hi Macro           guifg=#452886    gui=bold,italic
+hi PreCondit       guifg=#452886    gui=bold,italic
 
 "--------------------------------------------------------------------- 
 " Type Group
@@ -93,8 +93,8 @@ hi Title           guifg=#006e28
 "--------------------------------------------------------------------- 
 hi Cursor          guifg=#eaeaea    guibg=#111111
 hi CursorIM        guifg=#eaeaea    guibg=#111111
-hi CursorColumn    guifg=NONE       guibg=#fdfdfd
-hi CursorLine      guifg=NONE       guibg=#fdfdfd
+hi CursorColumn    guifg=NONE       guibg=#cfcece
+hi CursorLine      guifg=NONE       guibg=#cfcece
 hi Visual          guibg=#9f9e9e
 hi VisualNOS       guibg=#9f9e9e
 hi IncSearch       guibg=#9f9e9e
@@ -133,10 +133,10 @@ hi VertSplit       guifg=#9f9e9e    guibg=#eaeaea
 hi Folded          guifg=#eaeaea    guibg=#9f9e9e
 hi FoldedColumn    guifg=#eaeaea    guibg=#9f9e9e
 
-hi Directory       guifg=#2870bd
+hi Directory       guifg=#1d528a
 hi SignColumn      guibg=#eaeaea
 hi ColorColumn     guibg=#eaeaea
-hi LineNr          guifg=#bfbebe    guibg=#eaeaea
+hi LineNr          guifg=#eaeaea    guibg=#bfbebe
 hi WildMenu        guifg=#111111    guibg=#afaeae
 
 " vim:set ts=2 sw=2 et:
