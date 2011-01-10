@@ -17,7 +17,7 @@ colorscheme peaksea
 if has("gui_running")
 	set guioptions=aiA "dont show toolbar
 	if has("gui_gtk2")
-		set guifont=DejaVu\ Sans\ Mono\ 9
+		set guifont=DejaVu\ Sans\ Mono\ 10
 	endif
 	if has("gui_x11")
 		set guifont=-adobe-courier-medium-r-*-*-12-*-*-*-*-*-*-*
@@ -101,8 +101,9 @@ endif
 map <silent> <F3> :CodeTidy<CR>
 map <silent> <F4> :PhpDoc<CR>
 map <silent> <F5> :NERDTreeToggle<CR>
-map <silent> <F7> :BufExplorer<CR>
-map <silent> <F8> :CheckSyntax<CR>
+map <silent> <F6> :BufExplorer<CR>
+map <silent> <F7> :CheckSyntax<CR>
+map <silent> <F8> :noh<CR>
 map <silent> <F12> :set list!<CR>
 
 " nfo shit
