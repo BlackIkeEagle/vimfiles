@@ -7,6 +7,14 @@
 "
 " TODO:
 "  - Add the HTML syntax inside the JSDoc
+"
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"
+" Modified Javascript Syntax file
+" By: Jose Elera Campana
+" Last Change: 29/01/11 01:14:12
+" Changes: 
+" - Added support for Browser, DOM and Ajax Objects, Ajax methods and properties, 
 
 if !exists("main_syntax")
   if version < 600
@@ -15,6 +23,12 @@ if !exists("main_syntax")
     finish
   endif
   let main_syntax = 'javascript'
+endif
+
+"" Drop fold if it set but VIM doesn't support it.
+let b:javascript_fold='true'
+if version < 600    " Don't support the old version
+  unlet! b:javascript_fold
 endif
 
 "" dollar sigh is permittd anywhere in an identifier
@@ -60,6 +74,32 @@ syntax match   javaScriptLabel          /\(?\s*\)\@<!\<\w\+\(\s*:\)\@=/
 "" JavaScript Prototype
 syntax keyword javaScriptPrototype      prototype
 
+""""""""""""""""""""""""
+"  JavaScript Support  "
+""""""""""""""""""""""""
+" (** Modified by Jose Elera)
+"
+syntax keyword javaScriptBrowserObjects      window navigator screen history location
+
+syntax keyword javaScriptDOMObjects      document event HTMLElement Anchor Area Base Body Button Form Frame Frameset Image Link Meta Option Select Style Table TableCell TableRow Textarea
+syntax keyword javaScriptDOMMethods   insertBefore replaceChild removeChild appendChild  hasChildNodes  cloneNode  normalize  isSupported  hasAttributes  getAttribute  setAttribute  removeAttribute  getAttributeNode  setAttributeNode  removeAttributeNode  getElementsByTagName  hasAttribute  getElementById
+syntax keyword javaScriptDOMProperties nodeName  nodeValue  nodeType  parentNode  childNodes  firstChild  lastChild  previousSibling  nextSibling  attributes  ownerDocument  namespaceURI  prefix  localName  tagName
+
+syntax keyword javaScriptAjaxObjects     XMLHttpRequest
+syntax keyword javaScriptAjaxProperties readyState responseText responseXML status statusText
+syntax keyword javaScriptAjaxMethods onreadystatechange abort getAllResponseHeaders getResponseHeader open send setRequestHeader
+
+syntax keyword javaScriptPropietaryObjects    ActiveXObject
+syntax keyword javaScriptPropietaryMethods    attachEvent
+
+syntax keyword javaScriptHtmlElemProperties className  clientHeight  clientLeft  clientTop  clientWidth  dir  href  id  innerHTML  lang  length  offsetHeight  offsetLeft  offsetParent  offsetTop  offsetWidth  scrollHeight  scrollLeft  scrollTop  scrollWidth  style  tabIndex  target  title 
+
+syntax keyword javaScriptEventListenerKeywords   blur  click  focus  scrollIntoView  addEventListener  dispatchEvent  removeEventListener  mouseover mouseout load item
+
+""""""""""""""""""
+"  end modified  "
+""""""""""""""""""
+
 "" Programm Keywords
 syntax keyword javaScriptSource         import export
 syntax keyword javaScriptType           const this undefined var void yield 
@@ -91,7 +131,7 @@ syntax keyword javaScriptFutureKeys     abstract enum int short boolean export i
 
   " HTML events and internal variables
   syntax case ignore
-  syntax keyword javaScriptHtmlEvents     onblur onclick oncontextmenu ondblclick onfocus onkeydown onkeypress onkeyup onmousedown onmousemove onmouseout onmouseover onmouseup onresize
+  syntax keyword javaScriptHtmlEvents     onblur onclick oncontextmenu ondblclick onfocus onkeydown onkeypress onkeyup onmousedown onmousemove onmouseout onmouseover onmouseup onresize onload onsubmit
   syntax case match
 
 " Follow stuff should be highligh within a special context
@@ -129,7 +169,7 @@ endif "DOM/HTML/CSS
 
 
 "" Code blocks
-syntax cluster javaScriptAll       contains=javaScriptComment,javaScriptLineComment,javaScriptDocComment,javaScriptStringD,javaScriptStringS,javaScriptRegexpString,javaScriptNumber,javaScriptFloat,javaScriptLabel,javaScriptSource,javaScriptType,javaScriptOperator,javaScriptBoolean,javaScriptNull,javaScriptFunction,javaScriptConditional,javaScriptRepeat,javaScriptBranch,javaScriptStatement,javaScriptGlobalObjects,javaScriptExceptions,javaScriptFutureKeys,javaScriptDomErrNo,javaScriptDomNodeConsts,javaScriptHtmlEvents,javaScriptDotNotation
+syntax cluster javaScriptAll       contains=javaScriptComment,javaScriptLineComment,javaScriptDocComment,javaScriptStringD,javaScriptStringS,javaScriptRegexpString,javaScriptNumber,javaScriptFloat,javaScriptLabel,javaScriptSource,javaScriptType,javaScriptOperator,javaScriptBoolean,javaScriptNull,javaScriptFunction,javaScriptConditional,javaScriptRepeat,javaScriptBranch,javaScriptStatement,javaScriptGlobalObjects,javaScriptExceptions,javaScriptFutureKeys,javaScriptDomErrNo,javaScriptDomNodeConsts,javaScriptHtmlEvents,javaScriptDotNotation,javaScriptBrowserObjects,javaScriptDOMObjects,javaScriptAjaxObjects,javaScriptPropietaryObjects,javaScriptDOMMethods,javaScriptHtmlElemProperties,javaScriptDOMProperties,javaScriptEventListenerKeywords,javaScriptAjaxProperties,javaScriptAjaxMethods
 syntax region  javaScriptBracket   matchgroup=javaScriptBracket transparent start="\[" end="\]" contains=@javaScriptAll,javaScriptParensErrB,javaScriptParensErrC,javaScriptBracket,javaScriptParen,javaScriptBlock,@htmlPreproc
 syntax region  javaScriptParen     matchgroup=javaScriptParen   transparent start="("  end=")"  contains=@javaScriptAll,javaScriptParensErrA,javaScriptParensErrC,javaScriptParen,javaScriptBracket,javaScriptBlock,@htmlPreproc
 syntax region  javaScriptBlock     matchgroup=javaScriptBlock   transparent start="{"  end="}"  contains=@javaScriptAll,javaScriptParensErrA,javaScriptParensErrB,javaScriptParen,javaScriptBracket,javaScriptBlock,@htmlPreproc 
@@ -144,6 +184,27 @@ if main_syntax == "javascript"
   syntax sync clear
   syntax sync ccomment javaScriptComment minlines=200
   syntax sync match javaScriptHighlight grouphere javaScriptBlock /{/
+endif
+
+"" Fold control
+if exists("b:javascript_fold")
+    syntax match   javaScriptFunction       /\<function\>/ nextgroup=javaScriptFuncName skipwhite
+    syntax match   javaScriptOpAssign       /=\@<!=/ nextgroup=javaScriptFuncBlock skipwhite skipempty
+    syntax region  javaScriptFuncName       contained matchgroup=javaScriptFuncName start=/\%(\$\|\w\)*\s*(/ end=/)/ contains=javaScriptLineComment,javaScriptComment nextgroup=javaScriptFuncBlock skipwhite skipempty
+    syntax region  javaScriptFuncBlock      contained matchgroup=javaScriptFuncBlock start="{" end="}" contains=@javaScriptAll,javaScriptParensErrA,javaScriptParensErrB,javaScriptParen,javaScriptBracket,javaScriptBlock fold
+
+    if &l:filetype=='javascript' && !&diff
+      " Fold setting
+      " Redefine the foldtext (to show a JS function outline) and foldlevel
+      " only if the entire buffer is JavaScript, but not if JavaScript syntax
+      " is embedded in another syntax (e.g. HTML).
+      setlocal foldmethod=syntax
+      setlocal foldlevel=4
+    endif
+else
+    syntax keyword javaScriptFunction       function
+    setlocal foldmethod<
+    setlocal foldlevel<
 endif
 
 " Define the default highlighting.

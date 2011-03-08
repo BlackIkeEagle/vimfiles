@@ -18,12 +18,10 @@ if has("gui_running")
 	set guioptions=aiA "dont show toolbar
 	if has("gui_gtk2")
 		set guifont=DejaVu\ Sans\ Mono\ 10
-	endif
-	if has("gui_x11")
-		set guifont=-adobe-courier-medium-r-*-*-12-*-*-*-*-*-*-*
-	endif
-	if has("gui_w32")
+	elseif has("gui_w32")
 		set guifont=courier_new:h12:w5
+	elseif has("gui")
+		 set guifont=-monotype-*-medium-r-*-*-*-*-*-*-*-*-*-*
 	endif
 
 	" vim size stuff

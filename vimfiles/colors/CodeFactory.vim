@@ -67,7 +67,8 @@ hi Todo             gui=NONE              guifg=#505050         guibg=#93BF3D
 """"""
 " INTERFACE
 """"""""""""""""""""""""
-hi Cursor           gui=bold              guifg=#000000         guibg=#FFFFFF
+hi Cursor           gui=bold              guifg=#000000         guibg=#8A8989
+hi CursorLine       gui=NONE              guifg=NONE            guibg=#2F2E2E
 hi Directory        gui=NONE              guifg=#93BF3D         guibg=NONE
 hi ErrorMsg         gui=bold              guifg=#FFFFFF         guibg=#BF3131
 hi LineNr           gui=NONE              guifg=#979797			guibg=#282727

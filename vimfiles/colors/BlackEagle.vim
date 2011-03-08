@@ -16,7 +16,7 @@ let colors_name="BlackEagle"
 "--------------------------------------------------------------------- 
 " Base Color
 "--------------------------------------------------------------------- 
-hi Normal          guifg=#111111    guibg=#bfbebe
+hi Normal          guifg=#111111    guibg=#cfcece
 
 "--------------------------------------------------------------------- 
 " Comment Group
@@ -93,8 +93,8 @@ hi Title           guifg=#006e28
 "--------------------------------------------------------------------- 
 hi Cursor          guifg=#eaeaea    guibg=#111111
 hi CursorIM        guifg=#eaeaea    guibg=#111111
-hi CursorColumn    guifg=NONE       guibg=#cfcece
-hi CursorLine      guifg=NONE       guibg=#cfcece
+hi CursorColumn    guifg=NONE       guibg=#dfdede
+hi CursorLine      guifg=NONE       guibg=#dfdede
 hi Visual          guibg=#9f9e9e
 hi VisualNOS       guibg=#9f9e9e
 hi IncSearch       guibg=#9f9e9e
@@ -136,7 +136,7 @@ hi FoldedColumn    guifg=#eaeaea    guibg=#9f9e9e
 hi Directory       guifg=#1d528a
 hi SignColumn      guibg=#eaeaea
 hi ColorColumn     guibg=#eaeaea
-hi LineNr          guifg=#eaeaea    guibg=#bfbebe
+hi LineNr          guifg=#eaeaea    guibg=#cfcece
 hi WildMenu        guifg=#111111    guibg=#afaeae
 
 " vim:set ts=2 sw=2 et:
