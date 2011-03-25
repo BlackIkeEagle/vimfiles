@@ -28,7 +28,8 @@ if has("gui_running")
 	set lines=60 columns=100
 
 	" colorsheme
-	colorscheme BlackEagle
+	set background=light
+	colorscheme solarized
 endif
 
 " backup rules
@@ -90,7 +91,7 @@ let javascript_fold=1
 
 " AutoClose settings
 let g:AutoCloseOn=0
-let g:AutoClosePairs= {'(': ')', '[': ']', '"': '"', "'": "'", '<': '>'}
+"let g:AutoClosePairs= {'(': ')', '[': ']', '"': '"', "'": "'", '<': '>'}
 
 " custom functionkey mapping
 if has("gui_running")
