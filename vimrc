@@ -28,8 +28,7 @@ if has("gui_running")
 	set lines=60 columns=100
 
 	" colorsheme
-	set background=light
-	colorscheme solarized
+	colorscheme gravity
 endif
 
 " backup rules
