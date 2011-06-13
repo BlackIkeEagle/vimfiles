@@ -16,10 +16,11 @@ colorscheme peaksea
 " hide all the unneeded stuff from the gui
 if has("gui_running")
 	set guioptions=aiA "dont show toolbar
+	set background=light
 	if has("gui_gtk2")
 		set guifont=DejaVu\ Sans\ Mono\ 10
-	elseif has("gui_w32")
-		set guifont=courier_new:h12:w5
+	elseif has("gui_win32")
+		set guifont=Lucida_Console:h10:cANSI
 	elseif has("gui")
 		 set guifont=-monotype-*-medium-r-*-*-*-*-*-*-*-*-*-*
 	endif
@@ -27,8 +28,8 @@ if has("gui_running")
 	" vim size stuff
 	set lines=60 columns=100
 
-	" colorsheme
-	colorscheme gravity
+else
+	set background=dark
 endif
 
 " backup rules
@@ -43,6 +44,9 @@ set viewdir=$HOME/.vim/tmp/views
 " commandline history
 set history=1000
 
+" backspace stuff
+set backspace=indent,eol,start
+
 " some weird stuff to make it faster
 set nocursorcolumn
 set nocursorline
@@ -54,7 +58,7 @@ set showcmd			" display incomplete commands
 set incsearch		" incremental searching
 set hlsearch		" highlight searchresult
 set number			" show linennumbers
-set linespace=0
+set linespace=0		" stick together (usefull for nfo files)
 set hidden          " hide buffer even when changed
 
 " fileformat stuff
