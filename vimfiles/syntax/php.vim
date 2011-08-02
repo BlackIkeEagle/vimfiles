@@ -499,12 +499,9 @@ if version >= 600
   syn match phpComment  "//.\{-}\(?>\|$\)\@=" contained contains=phpTodo
   syntax region phpDocComment   start="/\*\*" end="\*/" keepend contains=phpCommentTitle,phpDocTags,phpTodo
   syntax region phpCommentTitle contained matchgroup=phpDocComment start="/\*\*" matchgroup=phpCommmentTitle keepend end="\.$" end="\.[ \t\r<&]"me=e-1 end="[^{]@"me=s-2,he=s-1 end="\*/"me=s-1,he=s-1 contains=phpCommentStar,phpTodo,phpDocTags containedin=phpComment
-
   syntax region phpDocTags  start="{@\(example\|id\|internal\|inheritdoc\|link\|source\|toc\|tutorial\)" end="}" containedin=phpComment
-  syntax match  phpDocTags  "@\(abstract\|access\|author\|category\|copyright\|deprecated\|example\|final\|global\|ignore\|internal\|license\|link\|method\|name\|package\|param\|property\|return\|see\|since\|static\|staticvar\|subpackage\|todo\|tutorial\|uses\|var\|version\|contributor\|modified\|filename\)\s\+\S\+" contains=phpDocParam containedin=phpComment
-  syntax match  phpDocParam contained "\s\S\+.*$"
-  syntax match  phpDocTags  "@description" containedin=phpComment
-  syntax match  phpDocTags  "@filesource" containedin=phpComment
+  syntax match  phpDocTags  "@\(abstract\|access\|author\|category\|copyright\|deprecated\|example\|final\|global\|ignore\|internal\|license\|link\|method\|name\|package\|param\|property\|return\|see\|since\|static\|staticvar\|subpackage\|todo\|tutorial\|uses\|var\|version\|contributor\|modified\|filename\|description\|filesource\)\(\s\+\)\?" contains=phpDocParam containedin=phpComment
+  syntax match  phpDocParam contained "\s\S\+.*"
 else
   syn match phpComment  "#.\{-}$" contained contains=phpTodo
   syn match phpComment  "#.\{-}?>"me=e-2  contained contains=phpTodo
@@ -581,7 +578,7 @@ if !exists("did_php_syn_inits")
   hi def link phpComment          Comment
   hi def link phpDocComment       Comment
   hi def link phpDocTags          PreProc
-  hi def link phpDocParam         SpecialComment
+  "hi def link phpDocParam         SpecialComment
   hi def link phpCommentStar      Comment
   hi def link phpStringSingle     String
   hi def link phpStringDouble     String
