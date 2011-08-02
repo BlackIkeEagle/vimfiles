@@ -11,13 +11,14 @@ let g:AuthorEmail="ike DOT devolder AT gmail DOT com"
 
 syntax on
 
-colorscheme peaksea
-
 " hide all the unneeded stuff from the gui
 if has("gui_running")
 	set guioptions=aiA "dont show toolbar
-	set background=light
-	if has("gui_gtk2")
+
+	set background=dark
+	colorscheme solarized
+
+	if has("gui_gtk2") || has("gui_qt")
 		set guifont=DejaVu\ Sans\ Mono\ 10
 	elseif has("gui_win32")
 		set guifont=Lucida_Console:h10:cANSI
@@ -30,6 +31,7 @@ if has("gui_running")
 
 else
 	set background=dark
+	colorscheme peaksea
 endif
 
 " backup rules
