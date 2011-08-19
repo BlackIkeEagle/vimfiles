@@ -81,6 +81,9 @@ set softtabstop=4
 set shiftwidth=4
 set noexpandtab
 
+" diff settings
+set diffopt=filler,iwhite
+
 " SuperTab settings
 "let g:SuperTabDefaultCompletionType = "<c-x><c-o>"
 "let g:SuperTabContextDefaultCompletionType = "<c-x><c-o>"
