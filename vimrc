@@ -82,7 +82,7 @@ set shiftwidth=4
 set noexpandtab
 
 " diff settings
-set diffopt=filler,iwhite
+set diffopt=filler,iwhite,vertical
 
 " SuperTab settings
 "let g:SuperTabDefaultCompletionType = "<c-x><c-o>"
