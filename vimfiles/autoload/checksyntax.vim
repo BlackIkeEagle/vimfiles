@@ -3,8 +3,8 @@
 " @Website:     http://www.vim.org/account/profile.php?user_id=4037
 " @License:     GPL (see http://www.gnu.org/licenses/gpl.txt)
 " @Created:     2010-01-03.
-" @Last Change: 2010-09-12.
-" @Revision:    211
+" @Last Change: 2011-05-02.
+" @Revision:    278
 
 
 if !exists('g:checksyntax#failrx')
@@ -42,13 +42,14 @@ endif
 """ Php
 if !exists('g:checksyntax.php')
     let g:checksyntax['php'] = {
-                \ 'auto': 1,
+                \ 'auto': executable('php') == 1,
                 \ 'cmd': 'php -l',
                 \ 'efm': '%*[^:]: %m in %f on line %l',
                 \ 'okrx': 'No syntax errors detected in ',
                 \ 'alt': 'phpp'
                 \ }
 endif
+
 
 """""" Parse php
 if !exists('g:checksyntax.phpp')
@@ -59,25 +60,38 @@ if !exists('g:checksyntax.phpp')
                 \ }
 endif
 
-autocmd CheckSyntax BufReadPost *.php if exists(':EclimValidate') && !empty(eclim#project#util#GetCurrentProjectName()) | let b:checksyntax.php.auto = 0 | endif
+autocmd CheckSyntax BufReadPost *.php if exists(':EclimValidate') && !empty(eclim#project#util#GetCurrentProjectName()) | let g:checksyntax.php.auto = 0 | endif
 
 
 """ JavaScript
 if !exists('g:checksyntax.javascript')
-    if executable('jsl')
+    if exists('g:checksyntax_javascript') ? (g:checksyntax_javascript == 'gjslint') : executable('gjslint')
         let g:checksyntax['javascript'] = {
-					\ 'auto': 1,
+                    \ 'cmd': 'gjslint',
+                    \ 'ignore_nr': [1, 110],
+                    \ 'efm': '%P%*[^F]FILE%*[^:]: %f %*[-],Line %l%\, %t:%n: %m,%Q',
+                    \ }
+    elseif exists('g:checksyntax_javascript') ? (g:checksyntax_javascript == 'jsl') : executable('jsl')
+        let g:checksyntax['javascript'] = {
                     \ 'cmd': 'jsl -nofilelisting -nocontext -nosummary -nologo -process',
                     \ 'okrx': '0 error(s), 0 warning(s)',
                     \ }
-	elseif executable('gjslint')
-        let g:checksyntax['javascript'] = {
-					\ 'auto': 1,
-                    \ 'cmd': 'gjslint',
-                    \ 'ignore_nr': [1, 5, 110],
-                    \ 'efm': '%P%*[^F]FILE%*[^:]: %f %*[-],Line %l%\, %t:%n: %m,%Q',
-                    \ }
     endif
+endif
+
+
+""" Python
+if !exists('g:checksyntax.python')
+    let g:checksyntax['python'] = {
+                \ 'cmd': 'pyflakes',
+                \ 'alt': 'pylint'
+                \ }
+endif
+
+if !exists('g:checksyntax.pylint')
+    let g:checksyntax['pylint'] = {
+                \ 'compiler': 'pylint'
+                \ }
 endif
 
 
@@ -155,7 +169,7 @@ endif
 if !exists('g:checksyntax.lua')
     " efm: File:Line:Column:Warning number:Warning message
     let g:checksyntax['lua'] = {
-                \ 'auto': 1,
+                \ 'auto': executable('luac') == 1,
                 \ 'cmd': 'luac -p',
                 \ 'efm': 'luac\:\ %f:%l:\ %m'
                 \ }
@@ -165,7 +179,6 @@ endif
 """ tidy (HTML)
 if !exists('g:checksyntax.html')
     let g:checksyntax['html'] = {
-                \ 'auto': 1,
                 \ 'cmd': 'tidy -eq',
                 \ 'efm': 'line %l column %c - %m'
                 \ }
@@ -178,7 +191,6 @@ endif
 """ XML
 if !exists('g:checksyntax.xml')
     let g:checksyntax['xml'] = {
-                \ 'auto': 1,
                 \ 'compiler': 'xmllint'
                 \ }
 endif
@@ -189,8 +201,8 @@ endif
 
 if !exists('*CheckSyntaxSucceed')
     " :nodoc:
-    function! CheckSyntaxSucceed(manually)
-        cclose
+    function! CheckSyntaxSucceed(type, manually)
+        call s:prototypes[a:type].Close()
         if a:manually
             echo
             echo 'Syntax ok.'
@@ -201,15 +213,60 @@ endif
 
 if !exists('*CheckSyntaxFail')
     " :nodoc:
-    function! CheckSyntaxFail(manually)
-        copen
+    function! CheckSyntaxFail(type, manually)
+        call s:prototypes[a:type].Open()
     endf
 endif
+
+
+let s:prototypes = {'loc': {}, 'qfl': {}}
+
+function! s:prototypes.loc.Close() dict "{{{3
+    lclose
+endf
+
+function! s:prototypes.loc.Open() dict "{{{3
+    lopen
+endf
+
+function! s:prototypes.loc.Make(args) dict "{{{3
+    exec 'silent lmake' a:args
+endf
+
+function! s:prototypes.loc.Get() dict "{{{3
+    return getloclist(0)
+endf
+
+function! s:prototypes.loc.Set(list) dict "{{{3
+    call setloclist(0, a:list)
+endf
+
+
+function! s:prototypes.qfl.Close() dict "{{{3
+    cclose
+endf
+
+function! s:prototypes.qfl.Open() dict "{{{3
+    copen
+endf
+
+function! s:prototypes.qfl.Make(args) dict "{{{3
+    exec 'silent make' a:args
+endf
+
+function! s:prototypes.qfl.Get() dict "{{{3
+    return getqflist()
+endf
+
+function! s:prototypes.qfl.Set(list) dict "{{{3
+    call setqflist(a:list)
+endf
 
 
 function! s:Make(def)
     let bufnr = bufnr('%')
     let pos = getpos('.')
+    let type = get(a:def, 'listtype', 'loc')
     try
         if has_key(a:def, 'compiler')
 
@@ -220,7 +277,7 @@ function! s:Make(def)
             endif
             try
                 exec 'compiler '. a:def.compiler
-                silent make
+                call s:prototypes[type].Make('')
                 return 1
             finally
                 if cc != ''
@@ -244,7 +301,7 @@ function! s:Make(def)
                 if has_key(a:def, 'cmd')
                     let &l:makeprg = a:def.cmd
                     " TLogVAR &l:makeprg, &l:errorformat
-                    silent make %
+                    call s:prototypes[type].Make('%')
                     return 1
                 elseif has_key(a:def, 'exec')
                     exec a:def.exec
@@ -268,9 +325,11 @@ function! s:Make(def)
         echom v:errmsg
         echohl NONE
     finally
-        if bufnr == bufnr('%')
-            call setpos('.', pos)
+        " TLogVAR pos, bufnr
+        if bufnr != bufnr('%')
+            exec bufnr 'buffer'
         endif
+        call setpos('.', pos)
     endtry
     return 0
 endf
@@ -295,6 +354,16 @@ function! checksyntax#Check(manually, ...)
     if empty(def)
         let def  = s:GetDef(ft)
     endif
+    if &modified
+        if has_key(def, 'modified')
+            let def = s:GetDef(def.modified)
+        else
+            echohl WarningMsg
+            echom "Buffer was modified. Please save it before calling :CheckSyntax."
+            echohl NONE
+            return
+        endif
+    endif
     if bang && has_key(def, 'alt')
         let def = s:GetDef(def.alt)
     endif
@@ -307,27 +376,24 @@ function! checksyntax#Check(manually, ...)
     if !(a:manually || auto)
         return
     endif
-    if &modified
-        echom "Buffer was modified. Please save it before calling :CheckSyntax."
-        return
-    end
     " TLogVAR &makeprg, &l:makeprg, &g:makeprg, &errorformat
     exec get(def, 'prepare', '')
     if s:Make(def)
         let failrx = get(def, 'failrx', g:checksyntax#failrx)
         let okrx   = get(def, 'okrx', g:checksyntax#okrx)
-        let qfl = getqflist()
+        let type = get(def, 'listtype', 'loc')
+        let list = s:prototypes[type].Get()
         let bnr = bufnr('%')
-        call filter(qfl, 's:FilterItem(def, v:val)')
-        call map(qfl, 's:CompleteItem(def, v:val)')
-        call setqflist(qfl)
-        " echom "DBG 1" string(qfl)
-        if len(qfl) == 0
-            call CheckSyntaxSucceed(a:manually)
-        else
-            call CheckSyntaxFail(a:manually)
-        endif
+        call filter(list, 's:FilterItem(def, v:val)')
+        call map(list, 's:CompleteItem(def, v:val)')
+        call s:prototypes[type].Set(list)
+        " echom "DBG 1" string(list)
         redraw!
+        if len(list) == 0
+            call CheckSyntaxSucceed(type, a:manually)
+        else
+            call CheckSyntaxFail(type, a:manually)
+        endif
     endif
 endf
 
