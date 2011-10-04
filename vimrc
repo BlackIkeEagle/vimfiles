@@ -15,8 +15,9 @@ syntax on
 if has("gui_running")
 	set guioptions=aiA "dont show toolbar
 
-	set background=dark
+	" set the colorsheme
 	colorscheme solarized
+	set background=dark
 
 	if has("gui_gtk2") || has("gui_qt")
 		set guifont=DejaVu\ Sans\ Mono\ 10
@@ -28,10 +29,10 @@ if has("gui_running")
 
 	" vim size stuff
 	set lines=60 columns=100
-
 else
-	set background=dark
+	" set the colorsheme
 	colorscheme peaksea
+	set background=dark
 endif
 
 " backup rules
