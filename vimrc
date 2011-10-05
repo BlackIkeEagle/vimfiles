@@ -104,15 +104,16 @@ let g:AutoCloseOn=0
 
 " custom functionkey mapping
 if has("gui_running")
-	map <silent> <F2> :silent exec '!gvim'<CR>
+	map <silent> <F12> :silent exec '!gvim'<CR>
 endif
+map <silent> <F2> :CheckSyntax<CR>
 map <silent> <F3> :CodeTidy<CR>
 map <silent> <F4> :PhpDoc<CR>
 map <silent> <F5> :NERDTreeToggle<CR>
-map <silent> <F6> :BufExplorer<CR>
-map <silent> <F7> :CheckSyntax<CR>
-map <silent> <F8> :noh<CR>
-map <silent> <F12> :set list!<CR>
+map <silent> <F6> :TagbarToggle<CR>
+map <silent> <F8> :BufExplorer<CR>
+map <silent> <F9> :noh<CR>
+map <silent> <F11> :set list!<CR>
 
 " nfo shit
 au BufReadPre *.nfo set fileencodings=cp437
