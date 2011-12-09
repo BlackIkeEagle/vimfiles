@@ -82,6 +82,10 @@ set softtabstop=4
 set shiftwidth=4
 set noexpandtab
 
+" statusline stuff
+set laststatus=2
+set statusline=%<%F%h%m%r\ %(%y\ %)[%{&ff}]\ %([%R%M]\ %)%=#%n\ %l/%L,%c%V\ %P
+
 " diff settings
 set diffopt=filler,iwhite,vertical
 
