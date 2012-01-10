@@ -4,12 +4,16 @@ command! -n=? -complete=dir -bar CSVtoSQL :call CSVtoSQL()
 command! -n=? -complete=dir -bar CodeTidy :call CodeTidy()
 
 function! RemoveEolWhitespaces()
+	let l:save_position = getpos(".")
 	%s/\s\+$//ge
+	call setpos('.', l:save_position)
 	echohl WarningMsg | echo "Removed eol Whitespaces" | echohl None
 endfunction
 
 function! RemoveDosEol()
+	let l:save_position = getpos(".")
 	%s/$//ge
+	call setpos('.', l:save_position)
 	echohl WarningMsg | echo "Removed DOS eol's" | echohl None
 endfunction
 
@@ -49,3 +53,11 @@ function CodeTidy()
 	" reload file
 	edit
 endfunction
+
+" Highlight EOL whitespace, http://vim.wikia.com/wiki/Highlight_unwanted_spaces
+highlight ExtraWhitespace ctermbg=DarkRed guibg=#982220
+autocmd ColorScheme * highlight ExtraWhitespace ctermbg=DarkRed guibg=#982220
+autocmd BufWinEnter * match ExtraWhitespace /\s\+$/
+" the above flashes annoyingly while typing, be calmer in insert mode
+autocmd InsertLeave * match ExtraWhitespace /\s\+$/
+autocmd InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
