@@ -1,7 +1,8 @@
-command! -n=? -complete=dir -bar RemoveEolWhitespaces :call RemoveEolWhitespaces()
-command! -n=? -complete=dir -bar RemoveDosEol :call RemoveDosEol()
-command! -n=? -complete=dir -bar CSVtoSQL :call CSVtoSQL()
-command! -n=? -complete=dir -bar CodeTidy :call CodeTidy()
+command! -n=0 -bar RemoveEolWhitespaces :call RemoveEolWhitespaces()
+command! -n=0 -bar RemoveDosEol :call RemoveDosEol()
+command! -n=0 -bar CSVtoSQL :call CSVtoSQL()
+command! -n=0 -bar CodeTidy :call CodeTidy()
+command! -n=? -bar Workspace :call Workspace('<args>')
 
 function! RemoveEolWhitespaces()
 	let l:save_position = getpos(".")
@@ -52,6 +53,11 @@ function CodeTidy()
 	endif
 	" reload file
 	edit
+endfunction
+
+function! Workspace(project)
+	exe 'cd ' . g:Workspace . a:project
+	NERDTree
 endfunction
 
 " Highlight EOL whitespace, http://vim.wikia.com/wiki/Highlight_unwanted_spaces

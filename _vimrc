@@ -9,6 +9,9 @@ set nocompatible
 let g:AuthorName="Ike Devolder"
 let g:AuthorEmail="ike DOT devolder AT gmail DOT com"
 
+" DEFAULT WORKSPACE AREA
+let g:Workspace="~/devel/"
+
 syntax on
 
 " hide all the unneeded stuff from the gui
