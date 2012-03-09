@@ -1,0 +1,4 @@
+#!/bin/bash
+cp -a ./_vimrc ~/.vimrc
+[ ! -d ~/.vim ] && mkdir ~/.vim
+cp -a ./vimfiles/* ~/.vim/
