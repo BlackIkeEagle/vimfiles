@@ -10,6 +10,6 @@ function DiffWithSaved()
 endfunction
 
 function DiffOff()
-	diffoff
 	q
+	diffoff
 endfunction
