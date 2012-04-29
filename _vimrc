@@ -57,6 +57,10 @@ set backspace=indent,eol,start
 set nocursorcolumn
 set nocursorline
 
+" allow project specific settings
+set exrc
+set secure
+
 " some interface options
 set ruler			" show cursorposition
 set cursorline      " highlight current line
