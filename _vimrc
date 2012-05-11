@@ -5,6 +5,9 @@
 " nocompatible has to be the first of all ( use the real vimpower )
 set nocompatible
 
+" set leader key
+let mapleader = ','
+
 " WHO ARE YOU ?
 let g:AuthorName="Ike Devolder"
 let g:AuthorEmail="ike DOT devolder AT gmail DOT com"
