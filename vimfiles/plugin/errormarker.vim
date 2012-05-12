@@ -41,7 +41,7 @@ set cpo&vim
 command ErrorAtCursor call ShowErrorAtCursor()
 if !hasmapto(":ErrorAtCursor<cr>", "n") &&
             \ (!exists('g:errormarker_disablemappings') || !g:errormarker_disablemappings)
-    nmap <silent> <unique> <Leader>cc :ErrorAtCursor<CR>
+    nmap <silent> <unique> <Leader>ee :ErrorAtCursor<CR>
 endif
 
 function! s:DefineVariable(name, default)
