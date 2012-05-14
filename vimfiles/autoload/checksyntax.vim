@@ -274,7 +274,7 @@ endf
 function! s:Make(def)
     let bufnr = bufnr('%')
     let pos = getpos('.')
-    let type = get(a:def, 'listtype', 'loc')
+    let type = get(a:def, 'listtype', 'qfl')
     try
         if has_key(a:def, 'compiler')
 
@@ -396,7 +396,7 @@ function! checksyntax#Check(manually, ...)
     if s:Make(def)
         let failrx = get(def, 'failrx', g:checksyntax#failrx)
         let okrx   = get(def, 'okrx', g:checksyntax#okrx)
-        let type = get(def, 'listtype', 'loc')
+        let type = get(def, 'listtype', 'qfl')
         let list = g:checksyntax#prototypes[type].Get()
         let list = filter(list, 's:FilterItem(def, v:val)')
         let list = map(list, 's:CompleteItem(def, v:val)')
