@@ -1,4 +1,8 @@
 #!/bin/bash
+if [ "$1" == "clean" ]; then
+	rm -f ~/.vimrc
+	rm -rf ~/.vim
+fi
 cp -a ./vimrc ~/.vimrc
 [ ! -d ~/.vim ] && mkdir ~/.vim
 cp -a ./vimfiles/* ~/.vim/
