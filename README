@@ -9,8 +9,9 @@ plugins:
 - checksyntax
 	http://www.vim.org/scripts/script.php?script_id=1431
 	https://github.com/tomtom/checksyntax_vim
-- errormarker
-	http://www.vim.org/scripts/script.php?script_id=1861
+- cuteErrorMarker
+	http://www.vim.org/scripts/script.php?script_id=2653
+	https://github.com/Twinside/vim-cuteErrorMarker
 - idevdiff (simple diff buffer stuff)
 - idevtools (some handy functions)
 - jsfolding (derived from phpfolding)
@@ -25,6 +26,7 @@ plugins:
 	http://www.vim.org/scripts/script.php?script_id=3357
 - php-doc
 	http://www.vim.org/scripts/script.php?script_id=1355
+	http://www.vim.org/scripts/script.php?script_id=2587
 - phpfolding
 	http://www.vim.org/scripts/script.php?script_id=1623
 - supertab
