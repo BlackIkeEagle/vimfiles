@@ -43,12 +43,18 @@ endif
 
 " backup rules
 set backup
-silent execute '!mkdir -p $HOME/.vim/tmp/backup'
-set backupdir=$HOME/.vim/tmp/backup
-silent execute '!mkdir -p $HOME/.vim/tmp/swap'
-set directory=$HOME/.vim/tmp/swap
-silent execute '!mkdir -p $HOME/.vim/tmp/views'
-set viewdir=$HOME/.vim/tmp/views
+if has("win32")
+	set backupdir=$TEMP
+	set directory=$TEMP
+	set viewdir=$TEMP
+else
+	silent execute '!mkdir -p $HOME/.vim/tmp/backup'
+	set backupdir=$HOME/.vim/tmp/backup
+	silent execute '!mkdir -p $HOME/.vim/tmp/swap'
+	set directory=$HOME/.vim/tmp/swap
+	silent execute '!mkdir -p $HOME/.vim/tmp/views'
+	set viewdir=$HOME/.vim/tmp/views
+endif
 
 " commandline history
 set history=1000
