@@ -1,5 +1,6 @@
 command! -n=0 -bar RemoveEolWhitespaces :call RemoveEolWhitespaces()
-command! -n=0 -bar RemoveDosEol :call RemoveDosEol()
+command! -n=0 -bar ReplaceDosEol :call ReplaceDosEol()
+command! -n=0 -bar ReplaceMacEol :call ReplaceMacEol()
 command! -n=0 -bar CSVtoSQL :call CSVtoSQL()
 command! -n=0 -bar CodeTidy :call CodeTidy()
 command! -n=? -bar Workspace :call Workspace('<args>')
@@ -11,11 +12,18 @@ function! RemoveEolWhitespaces()
 	echohl WarningMsg | echo "Removed eol Whitespaces" | echohl None
 endfunction
 
-function! RemoveDosEol()
+function! ReplaceDosEol()
 	let l:save_position = getpos(".")
-	%s/$//ge
+	%s/\r\n/\r/ge " note \r on the right side results in \n :p
 	call setpos('.', l:save_position)
-	echohl WarningMsg | echo "Removed DOS eol's" | echohl None
+	echohl WarningMsg | echo "Replaced DOS eol's" | echohl None
+endfunction
+
+function! ReplaceMacEol()
+	let l:save_position = getpos(".")
+	%s/\r/\r/ge " note \r on the right side results in \n :p
+	call setpos('.', l:save_position)
+	echohl WarningMsg | echo "Replaced MAC eol's" | echohl None
 endfunction
 
 function CSVtoSQL()
