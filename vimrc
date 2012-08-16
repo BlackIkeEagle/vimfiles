@@ -82,11 +82,11 @@ set hidden          " hide buffer even when changed
 set scrolloff=4     " keep at least 4 lines above or below the cursor
 
 " fileformat stuff
-set fileformat=unix
-set fileformats=unix
-set encoding=utf-8
-set fileencoding=utf-8
-set fileencodings=utf-8,ucs-bom,cp1250
+"set fileformat=unix
+set fileformats=unix,dos
+"set encoding=utf-8
+"set fileencoding=utf-8
+set fileencodings=utf-8,ucs-bom,cp1250,iso-8859-1
 
 " filetype
 filetype on
@@ -101,7 +101,7 @@ set noexpandtab
 
 " statusline stuff
 set laststatus=2
-set statusline=%<%F%h\ %(%y\ %)[%{&ff}]\ %([%R%M]\ %)%=#%n\ %l/%L,%c%V\ %P
+set statusline=%<%F%h\ %(%y\ %)[%{&ff}]\ %([%R%M]\ %)%{\"[\".(&fenc==\"\"?&enc:&fenc).\"]\"}\ %=#%n\ %l/%L,%c%V\ %P
 
 " diff settings
 set diffopt=filler,iwhite,vertical
