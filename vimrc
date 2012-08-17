@@ -101,7 +101,7 @@ set noexpandtab
 
 " statusline stuff
 set laststatus=2
-set statusline=%<%F%h\ %(%y\ %)[%{&ff}]\ %([%R%M]\ %)%{\"[\".(&fenc==\"\"?&enc:&fenc).\"]\"}\ %=#%n\ %l/%L,%c%V\ %P
+set statusline=%<%F%h\ %(%y\ %)[%{&ff}]\ %{\"[\".(&fenc==\"\"?&enc:&fenc).\"]\"}\ %([%R%M]\ %)%=#%n\ %l/%L,%c%V\ %P
 
 " diff settings
 set diffopt=filler,iwhite,vertical
