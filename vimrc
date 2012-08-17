@@ -17,29 +17,9 @@ let g:Workspace="~/devel/"
 
 syntax on
 
-" hide all the unneeded stuff from the gui
-if has("gui_running")
-	set guioptions=aiA "dont show toolbar
-
-	" set the colorsheme
-	colorscheme solarized
-	set background=dark
-
-	if has("gui_gtk2") || has("gui_qt")
-		set guifont=DejaVu\ Sans\ Mono\ 10
-	elseif has("gui_win32")
-		set guifont=Lucida_Console:h10:cANSI
-	elseif has("gui")
-		 set guifont=-monotype-*-medium-r-*-*-*-*-*-*-*-*-*-*
-	endif
-
-	" vim size stuff
-	set lines=60 columns=100
-else
-	" set the colorsheme
-	colorscheme peaksea
-	set background=dark
-endif
+" set the colorsheme
+colorscheme peaksea
+set background=dark
 
 " backup rules
 set backup
@@ -124,9 +104,6 @@ let g:AutoCloseOn=0
 "let g:AutoClosePairs= {'(': ')', '[': ']', '"': '"', "'": "'", '<': '>'}
 
 " custom functionkey mapping
-if has("gui_running")
-	map <silent> <F12> :silent exec '!gvim'<CR>
-endif
 map <silent> <F2> :CheckSyntax<CR>
 map <silent> <F3> :CodeTidy<CR>
 map <silent> <F4> :PhpDoc<CR>

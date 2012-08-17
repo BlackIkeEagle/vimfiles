@@ -4,5 +4,6 @@ if [ "$1" == "clean" ]; then
 	rm -rf ~/.vim
 fi
 cp -a ./vimrc ~/.vimrc
+cp -a ./gvimrc ~/.gvimrc
 [ ! -d ~/.vim ] && mkdir ~/.vim
 cp -a ./vimfiles/* ~/.vim/
