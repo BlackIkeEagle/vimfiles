@@ -68,10 +68,3 @@ function! Workspace(project)
 	NERDTree
 endfunction
 
-" Highlight EOL whitespace, http://vim.wikia.com/wiki/Highlight_unwanted_spaces
-highlight ExtraWhitespace ctermbg=DarkRed guibg=#982220
-autocmd ColorScheme * highlight ExtraWhitespace ctermbg=DarkRed guibg=#982220
-autocmd BufWinEnter * match ExtraWhitespace /\s\+$/
-" the above flashes annoyingly while typing, be calmer in insert mode
-autocmd InsertLeave * match ExtraWhitespace /\s\+$/
-autocmd InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/

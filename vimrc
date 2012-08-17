@@ -118,3 +118,13 @@ au BufReadPre *.nfo set fileencodings=cp437
 au BufReadPost *.nfo set fileencodings=utf-8,ucs-bom,cp1250
 au BufReadPre *.diz set fileencodings=cp437
 au BufReadPost *.diz set fileencodings=utf-8,ucs-bom,cp1250
+
+" Highlight EOL whitespace, http://vim.wikia.com/wiki/Highlight_unwanted_spaces
+highlight ExtraWhitespace ctermbg=DarkRed
+autocmd BufWinEnter * match ExtraWhitespace /\s\+$/
+" the above flashes annoyingly while typing, be calmer in insert mode
+autocmd InsertLeave * match ExtraWhitespace /\s\+$/
+autocmd InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
+if version >= 702
+	autocmd BufWinLeave * call clearmatches()
+endif
