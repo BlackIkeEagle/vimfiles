@@ -1,9 +1,33 @@
 #!/bin/bash
-if [ "$1" == "clean" ]; then
+
+# defaults
+gvimrc=0
+clean=0
+
+# usage
+function usage() {
+	echo "use: $0 [options]"
+	echo "  -g  also install gvimrc"
+	echo "  -c  do clean installation"
+	echo "  -h  show this usage"
+	exit 0
+}
+
+# process options
+while getopts ":gch" arg; do
+	case "$arg" in
+		g) gvimrc=1 ;;
+		c) clean=1 ;;
+		h) usage ;;
+	esac
+done
+
+if [ $clean -ne 0 ]; then
+	rm -f ~/.gvimrc
 	rm -f ~/.vimrc
 	rm -rf ~/.vim
 fi
 cp -a ./vimrc ~/.vimrc
-cp -a ./gvimrc ~/.gvimrc
+[ $gvimrc -eq 1 ] && cp -a ./gvimrc ~/.gvimrc
 [ ! -d ~/.vim ] && mkdir ~/.vim
 cp -a ./vimfiles/* ~/.vim/
