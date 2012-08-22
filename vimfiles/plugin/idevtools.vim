@@ -65,6 +65,10 @@ endfunction
 
 function! Workspace(project)
 	exe 'cd ' . g:Workspace . a:project
+	let tagfile = expand("$HOME/.vim/tags/" . a:project)
+	if filereadable(tagfile)
+		exe 'set tags+=' . tagfile
+	endif
 	NERDTree
 endfunction
 
