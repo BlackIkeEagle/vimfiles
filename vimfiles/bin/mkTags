@@ -1,7 +1,7 @@
 #!/bin/sh
 # Create tags for a PHP library.
 # Can be called as follows:
-# 
+#
 # - mkTags
 #   Will then prompt for a directory and the "alias" (i.e., tag file name) you
 #   wish to scan.
@@ -9,7 +9,7 @@
 #   Will scan the directory chosen, using its basename as the alias (i.e., tag
 #   file name).
 # - mkTags [dir] [alias]
-# 
+#
 # Tags are created in $HOME/.vim/tags/
 
 tagsfolder="$HOME/.vim/tags"
@@ -47,5 +47,5 @@ exec ctags -f "$tagsfolder/$name" \
 --totals=yes \
 --tag-relative=yes \
 --fields=+afkst \
---PHP-kinds=+cf 
+--PHP-kinds=+cf
 echo "[DONE]"
