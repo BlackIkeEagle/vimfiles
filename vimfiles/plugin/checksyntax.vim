@@ -2,21 +2,53 @@
 " @Author:      Tom Link (micathom AT gmail com)
 " @License:     GPL (see http://www.gnu.org/licenses/gpl.txt)
 " @Created:     04-Mai-2005.
-" @Last Change: 2012-02-10.
+" @Last Change: 2012-08-28.
 " GetLatestVimScripts: 1431 0 :AutoInstall: checksyntax.vim
-" @Revision:    407
+" @Revision:    421
 
 if exists('g:loaded_checksyntax')
     finish
 endif
-let g:loaded_checksyntax = 103
+let g:loaded_checksyntax = 201
+
+
+if !exists('g:checksyntax')
+    let g:checksyntax = {}
+endif
+
+
+" :display: CheckSyntax[!] [NAME]
+" Check the current buffer's syntax (type defaults to &filetype).
+" Or use NAME instead of &filetype.
+"
+" With the bang !, run all alternatives (see 
+" |g:checksyntax#run_alternatives|).
+command! -bang -nargs=? CheckSyntax call checksyntax#Check(1, "<bang>", <f-args>)
+
+
+" @TPluginInclude
+if !exists('g:checksyntax_key_single')
+    " Map for running the preferred syntax checkers on the current 
+    " buffer.
+    let g:checksyntax_key_single = '<F5>'   "{{{2
+endif
+
+
+" @TPluginInclude
+if !exists('g:checksyntax_key_all')
+    " Map for running all suitable syntax checkers on the current 
+    " buffer.
+    let g:checksyntax_key_all = '<C-F5>'   "{{{2
+endif
 
 
 if !exists('g:checksyntax_auto')
     " If 1, enable automatic syntax checks after saving a file.
-    " If 2, enable automatic syntax checks when saving and loading a
+    " If 2, enable automatic syntax checks when saving and loading a 
     " file.
-    let g:checksyntax_auto = 1
+    " NOTE: This variable must be customized in vimrc before loading 
+    " this plugin.
+    let g:checksyntax_auto = 1   "{{{2
 endif
 
 
@@ -33,18 +65,19 @@ augroup CheckSyntax
 augroup END
 
 
-" :display: CheckSyntax[!] [NAME]
-" Check the current buffer's syntax (type defaults to &filetype).
-" Or use NAME instead of &filetype.
-"
-" With the bang !, use the alternative syntax checker (see
-" |g:checksyntax|).
-command! -bang -nargs=? CheckSyntax call checksyntax#Check(1, "<bang>", <f-args>)
-
-
 " @TPluginInclude
-if !hasmapto(':CheckSyntax') && empty(maparg('<F5>', 'n'))
-    noremap <F5> :CheckSyntax<cr>
-    inoremap <F5> <c-o>:CheckSyntax<cr>
+if !hasmapto(':CheckSyntax')
+    if empty(maparg(g:checksyntax_key_single, 'n'))
+        exec 'noremap' g:checksyntax_key_single ':CheckSyntax<cr>'
+    endif
+    if empty(maparg(g:checksyntax_key_single, 'i'))
+        exec 'inoremap' g:checksyntax_key_single '<c-o>:CheckSyntax<cr>'
+    endif
+    if empty(maparg(g:checksyntax_key_all, 'n'))
+        exec 'noremap' g:checksyntax_key_all ':CheckSyntax!<cr>'
+    endif
+    if empty(maparg(g:checksyntax_key_all, 'i'))
+        exec 'inoremap' g:checksyntax_key_all '<c-o>:CheckSyntax!<cr>'
+    endif
 endif
 

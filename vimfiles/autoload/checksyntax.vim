@@ -3,16 +3,21 @@
 " @Website:     http://www.vim.org/account/profile.php?user_id=4037
 " @License:     GPL (see http://www.gnu.org/licenses/gpl.txt)
 " @Created:     2010-01-03.
-" @Last Change: 2012-02-10.
-" @Revision:    340
+" @Last Change: 2012-08-28.
+" @Revision:    659
 
 
-if !exists('g:checksyntax#failrx')
-    let g:checksyntax#failrx = '\ *\(\d \f\{-}:\)\?\d\{-}:'
+if !exists('g:checksyntax#auto_mode')
+    " If 1, enable automatically running syntax checkers when saving a 
+    " file if the syntax checker definitions has 'auto' == 1 (see 
+    " |g:checksyntax|).
+    " If 2, enforces automatic syntax checks for all known filetypes.
+    " If 0, disable automatic syntax checks.
+    let g:checksyntax#auto_mode = 1   "{{{2
 endif
 
-if !exists('g:checksyntax#okrx')
-    let g:checksyntax#okrx = ''
+if !exists('g:checksyntax#debug')
+    let g:checksyntax#debug = 0
 endif
 
 if !exists('g:checksyntax')
@@ -20,182 +25,90 @@ if !exists('g:checksyntax')
     " definition is a dictionary with the following fields:
     " 
     " Mandatory (either one of the following):
-    "   cmd  ... A shell command used as 'makeprg' to check the file.
+    "   cmd ... A shell command used as 'makeprg' to check the file.
     "   exec ... A vim command used to check the file.
     "   compiler ... A vim compiler that is used to check the file.
     " 
     " Optional:
-    "   auto ... Run automatically when saving a file.
+    "   auto* ... Run automatically when saving a file.
     "   efm  ... An 'errorformat' string.
-    "   okrx ... A |regexp| matching the command output if no error were 
-    "            found.
-    "   failrx ... A |regexp| matching the command output if an error 
-    "            was found.
-    "   alt  ... The name of an alternative syntax checker (see 
-    "            |:CheckSyntax|).
     "   prepare ... An ex command that is run before doing anything.
     "   ignore_nr ... A list of error numbers that should be ignored.
     "   listtype ... Either loc (default) or qfl
+    "   include ... Include another definition
+    "   process_list ... Process a list of issues
+    "   if ... An expression to test *once* whether a syntax checker 
+    "            should be used.
+    "   if_executable ... Test whether an application is executable.
+    "   alternatives* ... A list of syntax checker definitions (the first 
+    "            one with a valid executable is used. If used, no other 
+    "            elements are allowed. This list is checked only once.
+    "   run_alternatives* ... A string that defines how to run 
+    "            alternatives (overrides |g:checksyntax#run_alternatives|).
+    "
+    " The keys marked with "*" can be used only on the top level of a 
+    " syntax checker definition.
     "
     " Pre-defined syntax checkers (the respective syntax checker has to 
     " be installed):
-    "   php                           ... Syntax check; requires php
-    "   phpp (php alternative)        ... Parse php; requires php
-    "   javascript                    ... Syntax check; requires either gjslint or jsl
-    "   python                        ... Requires pyflakes
-    "   pylint (python alternative)   ... Requires pylint
-    "   ruby                          ... Requires ruby
-    "   viki                          ... Requires deplate
-    "   chktex (tex, latex)           ... Requires chktex
-    "   c, cpp                        ... Requires splint
-    "   java                          ... Requires jlint
-    "   checkstyle (java alternative) ... Requires checkstyle
-    "   lua                           ... Requires luac
-    "   html                          ... Requires tidy
-    "   xhtml                         ... Requires tidy
-    "   xml                           ... Requires xmllint
-    "   docbk                         ... Requires xmllint
     "
+    "   c, cpp       ... Requires splint
+    "   html         ... Requires tidy
+    "   java         ... Requires jlint or checkstyle
+    "   javascript   ... Syntax check; requires jslint, jshint, gjslint, or jsl
+    "   lua          ... Requires luac
+    "   php          ... Syntax check; requires php
+    "   python       ... Requires pyflakes or pylint
+    "   r            ... Requires lint::lint or svTools::lint
+    "   ruby         ... Requires ruby
+    "   tex, latex   ... Requires chktex
+    "   viki         ... Requires deplate
+    "   xhtml        ... Requires tidy
+    "   xml, docbk   ... Requires xmllint
+    "
+    " Syntax checker definitions are kept in:
+    " autoload/checksyntax/defs/{&filetype}.vim
+    "
+    " If |g:checksyntax#syntastic_dir| is set, syntastic's syntax 
+    " checkers can be used too.
     " :read: let g:checksyntax = {...}   "{{{2
     let g:checksyntax = {}
 endif
 
-if !exists('g:checksyntax.php')
-    let g:checksyntax['php'] = {
-                \ 'auto': executable('php') == 1,
-                \ 'cmd': 'php -l -d error_reporting=E_PARSE -d display_errors=1',
-                \ 'efm': '%*[^:]: %m in %f on line %l',
-                \ 'okrx': 'No syntax errors detected in ',
-                \ 'alt': 'phpp'
-                \ }
+
+if !exists('g:checksyntax#syntastic_dir')
+    " The directory where the syntastic plugin (see 
+    " https://github.com/scrooloose/syntastic/) is installed.
+    " If non-empty, use syntastic syntax checkers if available and if 
+    " checksyntax does not have one defined for the current filetype.
+    "
+    " The syntastic directory does not have to be included in 
+    " 'runtimepath'. Actually, using both, the syntastic and checksyntax 
+    " plugin, simultaneously could cause conflicts.
+    "
+    " The value must not include a trailing (back)slash.
+    " Optinally, the value may also point directly to the 
+    " 'syntax_checkers' subdirectory.
+    "
+    " NOTE: Not all syntastic syntax checkers definitions are guaranteed 
+    " to work with checksyntax.
+    let g:checksyntax#syntastic_dir = ''   "{{{2
 endif
 
-if !exists('g:checksyntax.phpp')
-    let g:checksyntax['phpp'] = {
-                \ 'cmd': 'php -f',
-                \ 'efm': g:checksyntax.php.efm,
-                \ 'okrx': g:checksyntax.php.okrx
-                \ }
+
+if !exists('g:checksyntax#preferred')
+    " A dictionary of 'filetype' => |regexp|.
+    " If only one alternative should be run (see 
+    " |g:checksyntax#run_alternatives|), check only those syntax 
+    " checkers whose names matches |regexp|.
+    let g:checksyntax#preferred = {}   "{{{2
 endif
 
-autocmd CheckSyntax BufReadPost *.php if exists(':EclimValidate') && !empty(eclim#project#util#GetCurrentProjectName()) | let g:checksyntax.php.auto = 0 | endif
-
-if !exists('g:checksyntax.javascript')
-    if exists('g:checksyntax_javascript') ? (g:checksyntax_javascript == 'gjslint') : executable('gjslint')
-        let g:checksyntax['javascript'] = {
-                    \ 'cmd': 'gjslint',
-                    \ 'ignore_nr': [1, 110],
-                    \ 'efm': '%P%*[^F]FILE%*[^:]: %f %*[-],Line %l%\, %t:%n: %m,%Q',
-                    \ }
-    elseif exists('g:checksyntax_javascript') ? (g:checksyntax_javascript == 'jsl') : executable('jsl')
-        let g:checksyntax['javascript'] = {
-                    \ 'cmd': 'jsl -nofilelisting -nocontext -nosummary -nologo -process',
-                    \ 'okrx': '0 error(s), 0 warning(s)',
-                    \ }
-    endif
-endif
-
-if !exists('g:checksyntax.python')
-    let g:checksyntax['python'] = {
-                \ 'cmd': 'pyflakes',
-                \ 'alt': 'pylint'
-                \ }
-endif
-
-if !exists('g:checksyntax.pylint')
-    let g:checksyntax['pylint'] = {
-                \ 'compiler': 'pylint'
-                \ }
-endif
-
-if !exists('g:checksyntax.ruby')
-    let g:checksyntax['ruby'] = {
-                \ 'prepare': 'compiler ruby',
-                \ 'cmd': 'ruby -c',
-                \ 'okrx': 'Syntax OK\|No Errors'
-                \ }
-endif
-
-if !exists('g:checksyntax.viki')
-    let g:checksyntax['viki'] = {
-                \ 'cmd': 'deplate -f null',
-                \ }
-endif
-
-if !exists('g:checksyntax.tex')
-    if executable('chktex')
-        let g:checksyntax['tex'] = {
-                    \ 'cmd': 'chktex -q -v0',
-                    \ 'efm': '%f:%l:%m',
-                    \ }
-    endif
-endif
-
-if !exists('g:checksyntax.c')
-    if executable('splint')
-        let g:checksyntax['c'] = {
-                    \ 'compiler': 'splint',
-                    \ }
-    endif
-endif
-
-if !exists('g:checksyntax.cpp') && exists('g:checksyntax.c')
-    let g:checksyntax['cpp'] = copy(g:checksyntax.c)
-endif
-
-if !exists('g:checksyntax.java')
-    if executable('jlint')
-        let g:checksyntax['java'] = {
-                    \ 'exec': 'call checksyntax#Jlint()',
-                    \ 'alt': 'javaCheckstyle'
-                    \ }
-
-        " :nodoc:
-        function! checksyntax#Jlint() "{{{3
-            let filename = expand('%:r') .'.class'
-            " TLogVAR filename
-            " echom '! jlint -done '. shellescape(filename)
-            exec '! jlint -done '. shellescape(filename)
-        endf
-    endif
-endif
-
-if !exists('g:checksyntax.javaCheckstyle')
-    if executable('checkstyle')
-        let g:checksyntax['javaCheckstyle'] = {
-                    \ 'compiler': 'checkstyle',
-                    \ }
-    endif
-endif
-
-if !exists('g:checksyntax.lua')
-    let g:checksyntax['lua'] = {
-                \ 'auto': executable('luac') == 1,
-                \ 'cmd': 'luac -p',
-                \ 'efm': 'luac\:\ %f:%l:\ %m'
-                \ }
-    " efm: File:Line:Column:Warning number:Warning message
-endif
-
-if !exists('g:checksyntax.html')
-    let g:checksyntax['html'] = {
-                \ 'cmd': 'tidy -eq',
-                \ 'efm': 'line %l column %c - %m'
-                \ }
-endif
-
-if !exists('g:checksyntax.xhtml')
-    let g:checksyntax['xhtml'] = copy(g:checksyntax.html)
-endif
-
-if !exists('g:checksyntax.xml')
-    let g:checksyntax['xml'] = {
-                \ 'compiler': 'xmllint'
-                \ }
-endif
-
-if !exists('g:checksyntax.docbk')
-    let g:checksyntax['docbk'] = copy(g:checksyntax.xml)
+if !exists('g:checksyntax#run_alternatives')
+    " How to handle alternatives. Possible values:
+    "     first ... Use the first valid entry
+    "     all   ... Run all valid alternatives one after another
+    let g:checksyntax#run_alternatives = 'first'   "{{{2
 endif
 
 
@@ -220,61 +133,68 @@ if !exists('*CheckSyntaxFail')
 endif
 
 
-let g:checksyntax#prototypes = {'loc': {}, 'qfl': {}}
+if !exists('g:checksyntax#prototypes')
+    " Contains prototype definitions for syntax checkers that use the 
+    " |location-list| ("loc") or the |quixfix|-list.
+    let g:checksyntax#prototypes = {'loc': {}, 'qfl': {}} "{{{2
+endif
 
-function! g:checksyntax#prototypes.loc.Close() dict "{{{3
-    lclose
-endf
+if empty(g:checksyntax#prototypes.loc)
+    function! g:checksyntax#prototypes.loc.Close() dict "{{{3
+        lclose
+    endf
 
-function! g:checksyntax#prototypes.loc.Open(bg) dict "{{{3
-    " TLogVAR a:bg
-    lopen
-    if a:bg
-        wincmd p
-    endif
-endf
+    function! g:checksyntax#prototypes.loc.Open(bg) dict "{{{3
+        " TLogVAR a:bg
+        lopen
+        if a:bg
+            wincmd p
+        endif
+    endf
 
-function! g:checksyntax#prototypes.loc.Make(args) dict "{{{3
-    exec 'silent lmake' a:args
-endf
+    function! g:checksyntax#prototypes.loc.Make(args) dict "{{{3
+        exec 'silent lmake!' a:args
+    endf
 
-function! g:checksyntax#prototypes.loc.Get() dict "{{{3
-    return copy(getloclist(0))
-endf
+    function! g:checksyntax#prototypes.loc.Get() dict "{{{3
+        return copy(getloclist(0))
+    endf
 
-function! g:checksyntax#prototypes.loc.Set(list) dict "{{{3
-    call setloclist(0, a:list)
-endf
+    function! g:checksyntax#prototypes.loc.Set(list) dict "{{{3
+        call setloclist(0, a:list)
+    endf
+endif
+
+if empty(g:checksyntax#prototypes.qfl)
+    function! g:checksyntax#prototypes.qfl.Close() dict "{{{3
+        cclose
+    endf
+
+    function! g:checksyntax#prototypes.qfl.Open(bg) dict "{{{3
+        copen
+        if a:bg
+            wincmd p
+        endif
+    endf
+
+    function! g:checksyntax#prototypes.qfl.Make(args) dict "{{{3
+        exec 'silent make!' a:args
+    endf
+
+    function! g:checksyntax#prototypes.qfl.Get() dict "{{{3
+        return copy(getqflist())
+    endf
+
+    function! g:checksyntax#prototypes.qfl.Set(list) dict "{{{3
+        call setqflist(a:list)
+    endf
+endif
 
 
-function! g:checksyntax#prototypes.qfl.Close() dict "{{{3
-    cclose
-endf
-
-function! g:checksyntax#prototypes.qfl.Open(bg) dict "{{{3
-    copen
-    if a:bg
-        wincmd p
-    endif
-endf
-
-function! g:checksyntax#prototypes.qfl.Make(args) dict "{{{3
-    exec 'silent make' a:args
-endf
-
-function! g:checksyntax#prototypes.qfl.Get() dict "{{{3
-    return copy(getqflist())
-endf
-
-function! g:checksyntax#prototypes.qfl.Set(list) dict "{{{3
-    call setqflist(a:list)
-endf
-
-
-function! s:Make(def)
+function! s:Make(filetype, def)
     let bufnr = bufnr('%')
     let pos = getpos('.')
-    let type = get(a:def, 'listtype', 'qfl')
+    let type = get(a:def, 'listtype', 'loc')
     try
         if has_key(a:def, 'compiler')
 
@@ -294,38 +214,21 @@ function! s:Make(def)
                 endif
             endtry
 
+        elseif has_key(a:def, 'syntastic')
+
+            " TLogVAR a:def
+            try
+                call call(a:def.syntastic, [])
+                return 1
+            catch /^Vim\%((\a\+)\)\=:E117/
+                call remove(a:def, 'syntastic')
+                echom "CheckSytnax: Syntastic not supported for this filetype. Please add" a:filetype "to g:checksyntax#syntastic#blacklist (and report to the author of checksyntax.vim)"
+                call add(g:checksyntax#syntastic#blacklist, a:filetype)
+            endtry
+
         else
 
-            let makeprg = &makeprg
-            let shellpipe = &shellpipe
-            let errorformat = &errorformat
-            if has_key(a:def, 'shellpipe')
-                let &l:shellpipe = get(a:def, 'shellpipe')
-            endif
-            if has_key(a:def, 'efm')
-                let &l:errorformat = get(a:def, 'efm')
-            endif
-            try
-                if has_key(a:def, 'cmd')
-                    let &l:makeprg = a:def.cmd
-                    " TLogVAR &l:makeprg, &l:errorformat
-                    call g:checksyntax#prototypes[type].Make('%')
-                    return 1
-                elseif has_key(a:def, 'exec')
-                    exec a:def.exec
-                    return 1
-                endif
-            finally
-                if &l:makeprg != makeprg
-                    let &l:makeprg = makeprg
-                endif
-                if &l:shellpipe != shellpipe
-                    let &l:shellpipe = shellpipe
-                endif
-                if &l:errorformat != errorformat
-                    let &l:errorformat = errorformat
-                endif
-            endtry
+            return checksyntax#Make(a:def)
 
         endif
     catch
@@ -343,82 +246,337 @@ function! s:Make(def)
 endf
 
 
-function! s:GetDef(ft) "{{{3
-    if exists('b:checksyntax') && has_key(b:checksyntax, a:ft)
-        return b:checksyntax[a:ft]
-    elseif has_key(g:checksyntax, a:ft)
-        return g:checksyntax[a:ft]
+" :nodoc:
+" Run |:make| based on a syntax checker definition.
+function! checksyntax#Make(def) "{{{3
+    " TLogVAR a:def
+    let type = get(a:def, 'listtype', 'loc')
+    let makeprg = &makeprg
+    let shellpipe = &shellpipe
+    let errorformat = &errorformat
+    if has_key(a:def, 'shellpipe')
+        let &l:shellpipe = get(a:def, 'shellpipe')
+        " TLogVAR &l:shellpipe
+    endif
+    if has_key(a:def, 'efm')
+        let &l:errorformat = get(a:def, 'efm')
+        " TLogVAR &l:errorformat
+    endif
+    try
+        if has_key(a:def, 'cmd')
+            let &l:makeprg = a:def.cmd
+            " TLogVAR &l:makeprg
+            call g:checksyntax#prototypes[type].Make(get(a:def, 'args', '%'))
+            return 1
+        elseif has_key(a:def, 'exec')
+            exec a:def.exec
+            return 1
+        endif
+    finally
+        if &l:makeprg != makeprg
+            let &l:makeprg = makeprg
+        endif
+        if &l:shellpipe != shellpipe
+            let &l:shellpipe = shellpipe
+        endif
+        if &l:errorformat != errorformat
+            let &l:errorformat = errorformat
+        endif
+    endtry
+endf
+
+
+let s:loaded_checkers = {}
+
+" :nodoc:
+function! checksyntax#Require(filetype) "{{{3
+    if empty(a:filetype)
+        return 0
     else
-        return {}
+        if !has_key(s:loaded_checkers, a:filetype)
+            exec 'runtime! autoload/checksyntax/defs/'. a:filetype .'.vim'
+            let s:loaded_checkers[a:filetype] = 1
+            if !has_key(g:checksyntax, a:filetype) || checksyntax#RunAlternativesMode(g:checksyntax[a:filetype]) !~? '\<first\>'
+                if !empty(g:checksyntax#syntastic_dir)
+                    call checksyntax#syntastic#Require(a:filetype)
+                endif
+            endif
+        endif
+        return has_key(g:checksyntax, a:filetype)
     endif
 endf
 
 
-" :def: function! checksyntax#Check(manually, ?bang='', ?type=&ft, ?background=1)
-function! checksyntax#Check(manually, ...)
-    let bang = a:0 >= 1 && a:1 != '' ? 1 : 0
-    let ft   = a:0 >= 2 && a:2 != '' ? a:2 : &filetype
-    let bg   = a:0 >= 3 && a:3 != '' ? a:3 : 0
-    " TLogVAR a:manually, bang, ft, bg
-    let def = a:manually ? {} : s:GetDef(ft .',auto')
-    if empty(def)
-        let def  = s:GetDef(ft)
+" :nodoc:
+function! s:Cmd(def) "{{{3
+    if has_key(a:def, 'cmd')
+        let cmd = matchstr(a:def.cmd, '^\(\\\s\|\S\+\|"\([^"]\|\\"\)\+"\)\+')
+        let cmd = fnamemodify(cmd, ':t')
+    else
+        let cmd = ''
     endif
-    if &modified
-        if has_key(def, 'modified')
-            let def = s:GetDef(def.modified)
-        else
-            echohl WarningMsg
-            echom "Buffer was modified. Please save it before calling :CheckSyntax."
-            echohl NONE
-            return
+    return cmd
+endf
+
+
+" :nodoc:
+function! checksyntax#Name(def) "{{{3
+    let name = get(a:def, 'name', '')
+    if empty(name)
+        let name = get(a:def, 'compiler', '')
+    endif
+    if empty(name)
+        let name = s:Cmd(a:def)
+    endif
+    return name
+endf
+
+
+let s:executables = {}
+
+function! s:Executable(cmd) "{{{3
+    if !has_key(s:executables, a:cmd)
+        let s:executables[a:cmd] = executable(a:cmd) != 0
+    endif
+    return s:executables[a:cmd]
+endf
+
+
+function! s:ValidAlternative(def) "{{{3
+    if has_key(a:def, 'if')
+        return eval(a:def.if)
+    elseif has_key(a:def, 'if_executable')
+        return s:Executable(a:def.if_executable)
+    else
+        return 1
+    endif
+endf
+
+
+function! s:CleanAlternatives(filetype, run_alternatives, alternatives) "{{{3
+    let valid = []
+    for alternative in a:alternatives
+        " TLogVAR alternative
+        if s:ValidAlternative(alternative)
+            if has_key(alternative, 'cmd')
+                let cmd = s:Cmd(alternative)
+                " TLogVAR cmd
+                if !empty(cmd) && !s:Executable(cmd)
+                    continue
+                endif
+            endif
+            call add(valid, alternative)
+            if a:run_alternatives =~? '\<first\>'
+                break
+            endif
+        endif
+    endfor
+    return valid
+endf
+
+
+let s:run_alternatives_all = 0
+
+" :nodoc:
+function! checksyntax#RunAlternativesMode(def) "{{{3
+    let rv = s:run_alternatives_all ? 'all' : get(a:def, 'run_alternatives', g:checksyntax#run_alternatives)
+    " TLogVAR a:def, rv
+    return rv
+endf
+
+
+function! s:GetDef(filetype) "{{{3
+    " TLogVAR a:filetype
+    if exists('b:checksyntax') && has_key(b:checksyntax, a:filetype)
+        let dict = b:checksyntax
+        let rv = b:checksyntax[a:filetype]
+    elseif has_key(g:checksyntax, a:filetype)
+        let dict = g:checksyntax
+        let rv = g:checksyntax[a:filetype]
+    else
+        let dict = {}
+        let rv = {}
+    endif
+    if !empty(dict)
+        let alternatives = get(rv, 'alternatives', [])
+        " TLogVAR alternatives
+        if !empty(alternatives)
+            let alternatives = s:CleanAlternatives(a:filetype, checksyntax#RunAlternativesMode(rv), alternatives)
+            " TLogVAR alternatives
+            if len(alternatives) == 0
+                let rv = {}
+            else
+                if len(alternatives) == 1
+                    let rv = alternatives[0]
+                else
+                    let rv.alternatives = alternatives
+                endif
+            endif
+        endif
+        if empty(rv)
+            call remove(dict, a:filetype)
         endif
     endif
-    if bang && has_key(def, 'alt')
-        let def = s:GetDef(def.alt)
-    endif
-    " TLogVAR def
-    if empty(def)
-        return
-    endif
-    let auto = get(def, 'auto', 0)
-    " TLogVAR auto
-    if !(a:manually || auto)
-        return
-    endif
-    if !exists('b:checksyntax_runs')
-        let b:checksyntax_runs = 1
-    else
-        let b:checksyntax_runs += 1
-    endif
-    " TLogVAR &makeprg, &l:makeprg, &g:makeprg, &errorformat
-    exec get(def, 'prepare', '')
-    if s:Make(def)
-        let failrx = get(def, 'failrx', g:checksyntax#failrx)
-        let okrx   = get(def, 'okrx', g:checksyntax#okrx)
-        let type = get(def, 'listtype', 'qfl')
-        let list = g:checksyntax#prototypes[type].Get()
-        let list = filter(list, 's:FilterItem(def, v:val)')
-        let list = map(list, 's:CompleteItem(def, v:val)')
-        call g:checksyntax#prototypes[type].Set(list)
+    return rv
+endf
+
+
+" :def: function! checksyntax#Check(manually, ?bang='', ?filetype=&ft, ?background=1)
+" Perform a syntax check.
+" If bang is not empty, run all alternatives (see 
+" |g:checksyntax#run_alternatives|).
+" If filetype is empty, the current buffer's 'filetype' will be used.
+" If background is true, display the list of issues in the background, 
+" i.e. the active window will keep the focus.
+function! checksyntax#Check(manually, ...)
+    let bang = a:0 >= 1 ? !empty(a:1) : 0
+    let filetype   = a:0 >= 2 && a:2 != '' ? a:2 : &filetype
+    let bg   = a:0 >= 3 && a:3 != '' ? a:3 : 0
+    " TLogVAR a:manually, bang, filetype, bg
+    let s:run_alternatives_all = bang
+    try
+        call checksyntax#Require(filetype)
+        let def = a:manually ? {} : s:GetDef(filetype .',auto')
+        if empty(def)
+            let def = s:GetDef(filetype)
+        endif
+        if &modified
+            if has_key(def, 'modified')
+                let def = s:GetDef(def.modified)
+            else
+                echohl WarningMsg
+                echom "Buffer was modified. Please save it before calling :CheckSyntax."
+                echohl NONE
+                return
+            endif
+        endif
+        " TLogVAR def
+        if empty(def)
+            return
+        endif
+        if g:checksyntax#auto_mode == 0
+            let auto = 0
+        elseif g:checksyntax#auto_mode == 1
+            let auto = get(def, 'auto', 0)
+        elseif g:checksyntax#auto_mode == 2
+            let auto = 1
+        endif
+        " TLogVAR auto
+        if !(a:manually || auto)
+            return
+        endif
+        if !exists('b:checksyntax_runs')
+            let b:checksyntax_runs = 1
+        else
+            let b:checksyntax_runs += 1
+        endif
+        " TLogVAR &makeprg, &l:makeprg, &g:makeprg, &errorformat
+        let defs = get(def, 'alternatives', [def])
+        let run_alternatives = checksyntax#RunAlternativesMode(def)
+        if run_alternatives =~? '\<first\>' && has_key(g:checksyntax#preferred, filetype)
+            let preferred_rx = g:checksyntax#preferred[filetype]
+            let defs = filter(defs, 'checksyntax#Name(v:val) =~ preferred_rx')
+        endif
+        let use_qfl = 0
+        let all_issues = []
+        for make_def in defs
+            " TLogVAR make_def
+            let name = checksyntax#Name(make_def)
+            if run_alternatives =~? '\<async\>'   " TODO: support asynchronous execution
+                throw "CheckSyntax: Not supported yet: run_alternatives = ". string(run_alternatives)
+            else
+                let use_qfl += s:Run_sync(all_issues, name, filetype, make_def)
+            endif
+        endfor
         " echom "DBG 1" string(list)
-        redraw!
-        if len(list) == 0
+        let type = use_qfl > 0 ? 'qfl' : 'loc'
+        if empty(all_issues)
+            call g:checksyntax#prototypes[type].Set(all_issues)
             call CheckSyntaxSucceed(type, a:manually)
         else
+            " TLogVAR all_issues
+            call sort(all_issues, 's:CompareIssues')
+            " TLogVAR all_issues
+            call g:checksyntax#prototypes[type].Set(all_issues)
             " TLogVAR type
             " TLogVAR a:manually
             " TLogVAR bg
             call CheckSyntaxFail(type, a:manually, bg)
         endif
-    endif
+    finally
+        let s:run_alternatives_all = 0
+    endtry
+    redraw!
 endf
 
 
-function! s:CompleteItem(def, val) "{{{3
+function! s:CompareIssues(i1, i2) "{{{3
+    let l1 = get(a:i1, 'lnum', 0)
+    let l2 = get(a:i2, 'lnum', 0)
+    " TLogVAR l1, l2, type(l1), type(l2)
+    return l1 == l2 ? 0 : l1 > l2 ? 1 : -1
+endf
+
+
+function! s:Run_sync(all_issues, name, filetype, def) "{{{3
+    " TLogVAR a:name, a:filetype, a:def
+    let use_qfl = 0
+    let def = a:def
+    if has_key(def, 'include')
+        let include = s:GetDef(def.include)
+        if !empty(include)
+            let def = extend(copy(def), include, 'keep')
+        endif
+    endif
+    exec get(def, 'prepare', '')
+    if s:Make(a:filetype, def)
+        let type = get(def, 'listtype', 'loc')
+        if type != 'loc'
+            let use_qfl = 1
+        endif
+        let list = g:checksyntax#prototypes[type].Get()
+        " TLogVAR type, list
+        " TLogVAR 1, len(list)
+        if !empty(list)
+            if has_key(def, 'process_list')
+                let list = call(def.process_list, [list])
+            endif
+            " TLogVAR 2, len(list)
+            " TLogVAR type, list
+            if !empty(list)
+                let list = filter(list, 's:FilterItem(def, v:val)')
+                " TLogVAR 3, len(list)
+                " TLogVAR type, list
+                if !empty(list)
+                    let list = map(list, 's:CompleteItem(a:name, def, v:val)')
+                    " TLogVAR type, list
+                    call extend(a:all_issues, list)
+                endif
+            endif
+        endif
+    endif
+    return use_qfl
+endf
+
+
+function! s:CompleteItem(name, def, val) "{{{3
+    " TLogVAR a:name, a:def, a:val
     if get(a:val, 'bufnr', 0) == 0
         let a:val.bufnr = bufnr('%')
     endif
+    let text = get(a:val, 'text', '')
+    let a:val.text = substitute(text, '^\s\+\|\s\+$', '', 'g')
+    let type = get(a:val, 'type', '')
+    if !empty(type)
+        let a:val.text = printf('[%s] %s', type, a:val.text)
+    endif
+    if !empty(a:name)
+        let text = get(a:val, 'text', '')
+        if !empty(text)
+            let a:val.text = a:name .': '. text
+        endif
+    endif
+    " TLogVAR a:val
     return a:val
 endf
 
@@ -430,5 +588,56 @@ function! s:FilterItem(def, val) "{{{3
         return 0
     endif
     return 1
+endf
+
+
+" :nodoc:
+" :display: checksyntax#CopyFunction(old, new, overwrite=0)
+function! checksyntax#CopyFunction(old, new, ...) "{{{3
+    let overwrite = a:0 >= 1 ? a:1 : 0
+    redir => oldfn
+    exec 'silent function' a:old
+    redir END
+    if exists('*'. a:new)
+        if overwrite > 0
+            exec 'delfunction' a:new
+        elseif overwrite < 0
+            throw 'checksyntax#CopyFunction: Function already exists: '. a:old .' -> '. a:new
+        else
+            return
+        endif
+    endif
+    let fn = split(oldfn, '\n')
+    let fn = map(fn, 'substitute(v:val, ''^\d\+'', "", "")')
+    let fn[0] = substitute(fn[0], '\V\^\s\*fu\%[nction]!\?\s\+\zs'. a:old, a:new, '')
+    let t = @t
+    try
+        let @t = join(fn, "\n")
+        redir => out
+        @t
+        redir END
+    finally
+        let @t = t
+    endtry
+endf
+
+
+" :nodoc:
+" Define a syntax checker definition for a given filetype.
+function! checksyntax#Alternative(filetype, alternative) "{{{3
+    if has_key(g:checksyntax, a:filetype)
+        if !has_key(g:checksyntax[a:filetype], 'alternatives')
+            let odef = g:checksyntax[a:filetype]
+            let g:checksyntax[a:filetype] = {'alternatives': [odef]}
+            for key in ['modified', 'alt', 'auto']
+                if has_key(odef, key)
+                    let g:checksyntax[a:filetype][key] = odef[key]
+                endif
+            endfor
+        endif
+        call add(g:checksyntax[a:filetype].alternatives, a:alternative)
+    else
+        let g:checksyntax[a:filetype] = a:alternative
+    endif
 endf
 
