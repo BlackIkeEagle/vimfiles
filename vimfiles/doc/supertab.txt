@@ -1,13 +1,8 @@
 *supertab.txt*
 
-Authors:
-  Original: Gergely Kontra <kgergely@mcl.hu>
-  Current:  Eric Van Dewoestine <ervandew@gmail.com> (as of version 0.4)
-
-Contributors:
-  Christophe-Marie Duquesne <chm.duquesne@gmail.com> (documentation)
-
-Please direct all correspondence to Eric.
+Author: Eric Van Dewoestine <ervandew@gmail.com>
+        Original concept and versions up to 0.32 written by
+        Gergely Kontra <kgergely@mcl.hu>
 
 This plugin is licensed under the terms of the BSD License.  Please see
 supertab.vim for the license in its entirety.
@@ -214,14 +209,14 @@ Preventing completion after...      *supertab-preventcomplete*
                                     *g:SuperTabNoCompleteAfter*
 
 g:SuperTabNoCompleteBefore (default value: [])
-g:SuperTabNoCompleteAfter (default value: ['\s'])
+g:SuperTabNoCompleteAfter (default value: ['^', '\s'])
 
 These two variables are used to control when supertab will attempt completion
 or instead fall back to inserting a literal <tab>, by specifying a list of
 patterns which are tested against the text before and after the current cursor
 position that when matched, prevent completion. So if you don't want supertab
-to start completion after a comma or space, you can set
-g:SuperTabNoCompleteAfter to [',', '\s'].
+to start completion at the start of a line, after a comma, or after a space,
+you can set g:SuperTabNoCompleteAfter to ['^', ',', '\s'].
 
 Note: That a buffer local version of these variables
 (b:SuperTabNoCompleteBefore, b:SuperTabNoCompleteAfter) is also supported
@@ -323,8 +318,6 @@ when the completion popup closes (completion is finished or canceled).
 
 Completion Chaining                  *supertab-completionchaining*
 
-Note: Experimental
-
 SuperTab provides the ability to chain one of the completion functions
 (|completefunc| or |omnifunc|) together with a one of the default vim
 completion key sequences (|ins-completion|), giving you the ability to attempt
@@ -349,7 +342,7 @@ try that, then fall back to supertab's default, <c-p>, completion:
     \   call SuperTabSetDefaultCompletionType("<c-x><c-u>") |
     \ endif
 
-Note that this feature does not support chaining any other combination of
+Note: This feature does not support chaining any other combination of
 completions (2 or more completion functions, 2 or more key bindings, etc.). It
 can only support 1 completion function followed by 1 key binding. This is due
 to limitations imposed by vim's code completion implementation.
