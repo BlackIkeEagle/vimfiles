@@ -9,8 +9,8 @@ set nocompatible
 let mapleader = ','
 
 " WHO ARE YOU ?
-let g:AuthorName="Ike Devolder"
-let g:AuthorEmail="ike DOT devolder AT gmail DOT com"
+let g:AuthorName="Nobody"
+let g:AuthorEmail="nobody@example.com"
 
 " DEFAULT WORKSPACE AREA
 let g:Workspace="~/devel/"

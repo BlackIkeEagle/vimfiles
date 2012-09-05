@@ -4,9 +4,14 @@
 gvimrc=0
 clean=0
 
+authorname=""
+authoremail=""
+
 # usage
 function usage() {
 	echo "use: $0 [options]"
+	echo "  -a  author name (required)"
+	echo "  -e  author email (required)"
 	echo "  -g  also install gvimrc"
 	echo "  -c  do clean installation"
 	echo "  -h  show this usage"
@@ -14,20 +19,35 @@ function usage() {
 }
 
 # process options
-while getopts ":gch" arg; do
+while getopts ":a:e:gch" arg; do
 	case "$arg" in
+		a) authorname="$OPTARG" ;;
+		e) authoremail="$OPTARG" ;;
 		g) gvimrc=1 ;;
 		c) clean=1 ;;
 		h) usage ;;
 	esac
 done
 
+if [ "$authorname" = "" ] || [ "$authoremail" = "" ]; then
+	echo "author name and author email are required"
+	echo ""
+	usage
+fi
+
+# clean current vim stuff
 if [ $clean -ne 0 ]; then
 	rm -f ~/.gvimrc
 	rm -f ~/.vimrc
 	rm -rf ~/.vim
 fi
+
+# copy new vimrc
 cp -a ./vimrc ~/.vimrc
+# set authorname and authoremail in vimrc
+sed -e "s#\(.*AuthorName=\).*#\1\"$authorname\"#" -e "s#\(.*AuthorEmail=\).*#\1\"$authoremail\"#" -i ~/.vimrc
+# copy gvimrc when requested
 [ $gvimrc -eq 1 ] && cp -a ./gvimrc ~/.gvimrc
+# put the vimfiles in place
 [ ! -d ~/.vim ] && mkdir ~/.vim
 cp -a ./vimfiles/* ~/.vim/
