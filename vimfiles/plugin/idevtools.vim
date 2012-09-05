@@ -3,7 +3,7 @@ command! -n=0 -bar ReplaceDosEol :call ReplaceDosEol()
 command! -n=0 -bar ReplaceMacEol :call ReplaceMacEol()
 command! -n=0 -bar CSVtoSQL :call CSVtoSQL()
 command! -n=0 -bar CodeTidy :call CodeTidy()
-command! -n=? -bar Workspace :call Workspace('<args>')
+command! -n=? -bar -complete=custom,WorkspaceList Workspace :call Workspace('<args>')
 
 function! RemoveEolWhitespaces()
 	let l:save_position = getpos(".")
@@ -70,5 +70,13 @@ function! Workspace(project)
 		exe 'set tags+=' . tagfile
 	endif
 	NERDTree
+endfunction
+
+function! WorkspaceList(A,L,P)
+	if has("win32")
+		return
+	endif
+
+	return system("cd ".g:Workspace." > \/dev\/null; find . -mindepth 1 -maxdepth 1 -type d | sed -e 's\/^\.\\\/\/\/' | sort")
 endfunction
 
