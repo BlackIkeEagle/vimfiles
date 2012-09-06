@@ -103,8 +103,11 @@ let javascript_fold=1
 let g:AutoCloseOn=0
 "let g:AutoClosePairs= {'(': ')', '[': ']', '"': '"', "'": "'", '<': '>'}
 
+" syntastic
+let g:syntastic_enable_signs=1
+let g:syntastic_auto_loc_list=1
+
 " custom functionkey mapping
-map <silent> <F2> :CheckSyntax<CR>
 map <silent> <F3> :CodeTidy<CR>
 map <silent> <F4> :PhpDoc<CR>
 map <silent> <F5> :NERDTreeToggle<CR>
