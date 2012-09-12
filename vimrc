@@ -92,8 +92,9 @@ set diffopt=filler,iwhite,vertical
 
 " php settings
 let php_sql_query=0
-let php_htmlInStrings=0
-let php_noShortTags=1
+let php_html_in_strings=0
+let php_parent_error_close=1
+let php_parent_error_open=1
 
 " Folding stuff
 let php_folding=1
