@@ -10,9 +10,9 @@
 #   file name).
 # - mkTags [dir] [alias]
 #
-# Tags are created in $HOME/.vim/tags/
+# Tags are created in $HOME/.vim.tags/
 
-tagsfolder="$HOME/.vim/tags"
+tagsfolder="$HOME/.vim.tags"
 # create the tags dir if not exists
 [ ! -d "$tagsfolder" ] && mkdir -p "$tagsfolder"
 
