@@ -21,12 +21,6 @@ endif
 
 map <silent> <F12> :silent exec '!gvim'<CR>
 
-" Highlight EOL whitespace, http://vim.wikia.com/wiki/Highlight_unwanted_spaces
-highlight ExtraWhitespace guibg=#642b36
-autocmd BufWinEnter * match ExtraWhitespace /\s\+$/
-" the above flashes annoyingly while typing, be calmer in insert mode
-autocmd InsertLeave * match ExtraWhitespace /\s\+$/
-autocmd InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
 if version >= 702
 	autocmd BufWinLeave * call clearmatches()
 endif
