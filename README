@@ -3,9 +3,8 @@ my vimfiles, modded stuff for vim and self small stuff
 plugins:
 - autoclose
 	http://www.vim.org/scripts/script.php?script_id=2009
-- buffet
-	http://www.vim.org/scripts/script.php?script_id=3896
-	https://github.com/sandeepcr529/Buffet.vim
+- bufferlist
+	http://www.vim.org/scripts/script.php?script_id=1325
 - checksyntax
 	http://www.vim.org/scripts/script.php?script_id=1431
 	https://github.com/tomtom/checksyntax_vim

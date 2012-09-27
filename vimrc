@@ -113,7 +113,7 @@ map <silent> <F3> :CodeTidy<CR>
 map <silent> <F4> :PhpDoc<CR>
 map <silent> <F5> :NERDTreeToggle<CR>
 map <silent> <F6> :TagbarToggle<CR>
-map <silent> <F8> :Bufferlist<CR>
+map <silent> <F8> :call BufferList()<CR>
 map <silent> <F9> :noh<CR>
 map <silent> <F11> :set list!<CR>
 
