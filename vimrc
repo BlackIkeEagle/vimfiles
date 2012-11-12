@@ -47,7 +47,6 @@ set nocursorcolumn
 set nocursorline
 
 " allow project specific settings
-set exrc
 set secure
 
 " some interface options
