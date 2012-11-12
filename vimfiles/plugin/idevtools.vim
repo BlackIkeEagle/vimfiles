@@ -69,6 +69,9 @@ function! Workspace(project)
 	if filereadable(tagfile)
 		exe 'set tags+=' . tagfile
 	endif
+	if filereadable('./.vimrc')
+		exe 'source ./.vimrc'
+	endif
 	NERDTree
 endfunction
 
