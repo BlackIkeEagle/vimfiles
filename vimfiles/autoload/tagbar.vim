@@ -49,7 +49,15 @@ let s:autocommands_done   = 0
 let s:checked_ctags       = 0
 let s:checked_ctags_types = 0
 let s:ctags_types         = {}
-let s:window_expanded     = 0
+
+let s:new_window      = 1
+let s:is_maximized    = 0
+let s:short_help      = 1
+let s:window_expanded = 0
+
+" Script-local variable needed since compare functions can't
+" take extra arguments
+let s:compare_typeinfo = {}
 
 
 let s:access_symbols = {
@@ -84,7 +92,7 @@ function! s:Init(silent) abort
 
     if !s:autocommands_done
         call s:CreateAutocommands()
-        doautocmd CursorHold
+        call s:AutoUpdate(fnamemodify(expand('%'), ':p'), 0)
     endif
 
     return 1
@@ -428,6 +436,7 @@ function! s:InitTypes() abort
         \ {'short' : 'f', 'long' : 'functions', 'fold' : 0, 'stl' : 1}
     \ ]
     let s:known_types.lisp = type_lisp
+    let s:known_types.clojure = type_lisp
     " Lua {{{3
     let type_lua = s:TypeInfo.New()
     let type_lua.ctagstype = 'lua'
@@ -1647,7 +1656,7 @@ function! s:OpenWindow(flags) abort
     if tagbarwinnr != -1
         if winnr() != tagbarwinnr && jump
             call s:winexec(tagbarwinnr . 'wincmd w')
-            call s:HighlightTag(1, curline)
+            call s:HighlightTag(1, 1, curline)
         endif
         call s:LogDebugMessage("OpenWindow finished, Tagbar already open")
         return
@@ -1677,7 +1686,7 @@ function! s:OpenWindow(flags) abort
     call s:InitWindow(autoclose)
 
     call s:AutoUpdate(curfile, 0)
-    call s:HighlightTag(1, curline)
+    call s:HighlightTag(1, 1, curline)
 
     if !(g:tagbar_autoclose || autofocus || g:tagbar_autofocus)
         call s:winexec('wincmd p')
@@ -1703,8 +1712,6 @@ function! s:InitWindow(autoclose) abort
     setlocal nowrap
     setlocal winfixwidth
     setlocal textwidth=0
-    setlocal nocursorline
-    setlocal nocursorcolumn
     setlocal nospell
 
     if exists('+relativenumber')
@@ -1726,13 +1733,7 @@ function! s:InitWindow(autoclose) abort
         setlocal statusline=Tagbar
     endif
 
-    " Script-local variable needed since compare functions can't
-    " take extra arguments
-    let s:compare_typeinfo = {}
-
-    let s:is_maximized = 0
-    let s:short_help   = 1
-    let s:new_window   = 1
+    let s:new_window = 1
 
     let w:autoclose = a:autoclose
 
@@ -2061,13 +2062,16 @@ function! s:ParseTagline(part1, part2, typeinfo, fileinfo) abort
     let pattern         = strpart(pattern, start, end - start)
     let taginfo.pattern = '\V\^\C' . pattern . dollar
 
-    let fields = split(a:part2, '\t')
+    " When splitting fields make sure not to create empty keys or values in
+    " case a value illegally contains tabs
+    let fields = split(a:part2, '^\t\|\t\ze\w\+:')
     let taginfo.fields.kind = remove(fields, 0)
     for field in fields
         " can't use split() since the value can contain ':'
         let delimit = stridx(field, ':')
-        let key     = strpart(field, 0, delimit)
-        let val     = strpart(field, delimit + 1)
+        let key = strpart(field, 0, delimit)
+        " Remove all tabs that may illegally be in the value
+        let val = substitute(strpart(field, delimit + 1), '\t', '', 'g')
         if len(val) > 0
             let taginfo.fields[key] = val
         endif
@@ -2495,7 +2499,8 @@ function! s:PrintKinds(typeinfo, fileinfo) abort
                             " only if they are not scope-defining tags (since
                             " those already have an identifier)
                             if !has_key(a:typeinfo.kind2scope, ckind.short)
-                                silent put ='    [' . ckind.long . ']'
+                                silent put =repeat(' ', g:tagbar_indent + 2) .
+                                                 \ '[' . ckind.long . ']'
                                 " Add basic tag to allow folding when on the
                                 " header line
                                 let headertag = s:BaseTag.New(ckind.long)
@@ -2540,7 +2545,7 @@ function! s:PrintKinds(typeinfo, fileinfo) abort
             if !kindtag.isFolded()
                 for tag in curtags
                     let str = tag.strfmt()
-                    silent put ='  ' . str
+                    silent put =repeat(' ', g:tagbar_indent) . str
 
                     " Save the current tagbar line in the tag for easy
                     " highlighting access
@@ -2563,7 +2568,7 @@ endfunction
 " s:PrintTag() {{{2
 function! s:PrintTag(tag, depth, fileinfo, typeinfo) abort
     " Print tag indented according to depth
-    silent put =repeat(' ', a:depth * 2) . a:tag.strfmt()
+    silent put =repeat(' ', a:depth * g:tagbar_indent) . a:tag.strfmt()
 
     " Save the current tagbar line in the tag for easy
     " highlighting access
@@ -2581,8 +2586,8 @@ function! s:PrintTag(tag, depth, fileinfo, typeinfo) abort
                 " are not scope-defining tags (since those already have an
                 " identifier)
                 if !has_key(a:typeinfo.kind2scope, ckind.short)
-                    silent put ='    ' . repeat(' ', a:depth * 2) .
-                              \ '[' . ckind.long . ']'
+                    silent put =repeat(' ', (a:depth + 1) * g:tagbar_indent + 2)
+                              \ . '[' . ckind.long . ']'
                     " Add basic tag to allow folding when on the header line
                     let headertag = s:BaseTag.New(ckind.long)
                     let headertag.parent = a:tag
@@ -2661,8 +2666,10 @@ endfunction
 function! s:HighlightTag(openfolds, ...) abort
     let tagline = 0
 
-    if a:0 > 0
-        let tag = s:GetNearbyTag(1, a:1)
+    let force = a:0 > 0 ? a:1 : 0
+
+    if a:0 > 1
+        let tag = s:GetNearbyTag(1, a:2)
     else
         let tag = s:GetNearbyTag(1)
     endif
@@ -2673,7 +2680,7 @@ function! s:HighlightTag(openfolds, ...) abort
     " Don't highlight the tag again if it's the same one as last time.
     " This prevents the Tagbar window from jumping back after scrolling with
     " the mouse.
-    if tagline == s:last_highlight_tline
+    if !force && tagline == s:last_highlight_tline
         return
     else
         let s:last_highlight_tline = tagline
@@ -2683,7 +2690,7 @@ function! s:HighlightTag(openfolds, ...) abort
     if tagbarwinnr == -1
         return
     endif
-    let prevwinnr   = winnr()
+    let prevwinnr = winnr()
     call s:winexec(tagbarwinnr . 'wincmd w')
 
     match none
@@ -2714,7 +2721,7 @@ function! s:HighlightTag(openfolds, ...) abort
     call s:LogDebugMessage("Highlight pattern: '" . pattern . "'")
     execute 'match TagbarHighlight ' . pattern
 
-    if a:0 == 0 " no line explicitly given, so assume we were in the file window
+    if a:0 <= 1 " no line explicitly given, so assume we were in the file window
         call s:winexec(prevwinnr . 'wincmd w')
     endif
 
@@ -2996,9 +3003,10 @@ function! s:OpenParents(...) abort
         let tag = s:GetNearbyTag(1)
     endif
 
-    call tag.openParents()
-
-    call s:RenderKeepView()
+    if !empty(tag)
+        call tag.openParents()
+        call s:RenderKeepView()
+    endif
 endfunction
 
 " Helper functions {{{1
@@ -3151,7 +3159,12 @@ function! s:EscapeCtagsCmd(ctags_bin, args, ...) abort
 
     " Stupid cmd.exe quoting
     if &shell =~ 'cmd\.exe'
-        let ctags_cmd = substitute(ctags_cmd, '\(&\|\^\)', '^\0', 'g')
+        let reserved_chars = '&()@^'
+        " not allowed in filenames, but escape anyway just in case
+        let reserved_chars .= '<>|'
+        let pattern = join(split(reserved_chars, '\zs'), '\|')
+        let ctags_cmd = substitute(ctags_cmd, '\V\(' . pattern . '\)',
+                                 \ '^\0', 'g')
     endif
 
     if exists('+shellslash')
@@ -3419,8 +3432,15 @@ function! tagbar#SetFoldLevel(level, force) abort
     call s:SetFoldLevel(a:level, a:force)
 endfunction
 
-function! tagbar#OpenParents() abort
-    call s:OpenParents()
+function! tagbar#highlighttag(openfolds, force) abort
+    let tagbarwinnr = bufwinnr('__Tagbar__')
+    if tagbarwinnr == -1
+        echohl WarningMsg
+        echomsg "Warning: Can't highlight tag, Tagbar window not open"
+        echohl None
+        return
+    endif
+    call s:HighlightTag(a:openfolds, a:force)
 endfunction
 
 function! tagbar#StartDebug(...) abort
@@ -3486,11 +3506,13 @@ endfunction
 function! tagbar#currenttag(fmt, default, ...) abort
     if a:0 > 0
         " also test for non-zero value for backwards compatibility
-        let longsig  = a:1 =~# 's' || (type(a:1) == type(0) && a:1 != 0)
-        let fullpath = a:1 =~# 'f'
+        let longsig   = a:1 =~# 's' || (type(a:1) == type(0) && a:1 != 0)
+        let fullpath  = a:1 =~# 'f'
+        let prototype = a:1 =~# 'p'
     else
-        let longsig  = 0
-        let fullpath = 0
+        let longsig   = 0
+        let fullpath  = 0
+        let prototype = 0
     endif
 
     if !s:Init(1)
@@ -3500,7 +3522,11 @@ function! tagbar#currenttag(fmt, default, ...) abort
     let tag = s:GetNearbyTag(0)
 
     if !empty(tag)
-        return printf(a:fmt, tag.str(longsig, fullpath))
+        if prototype
+            return tag.getPrototype(1)
+        else
+            return printf(a:fmt, tag.str(longsig, fullpath))
+        endif
     else
         return a:default
     endif

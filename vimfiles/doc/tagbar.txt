@@ -271,6 +271,10 @@ COMMANDS                                                     *tagbar-commands*
     Open the parent folds of the current tag in the file window as much as
     needed for the tag to be visible in the Tagbar window.
 
+:TagbarCurrentTag [{flags}]                                *:TagbarCurrentTag*
+    Echo the current tag in the command line. For {flags} see
+    |tagbar-statusline|.
+
 :TagbarGetTypeConfig {filetype}                         *:TagbarGetTypeConfig*
     Paste the Tagbar configuration of the vim filetype {filetype} at the
     current cursor position (provided that filetype is supported by Tagbar)
@@ -402,6 +406,18 @@ save screen real estate.
 Example:
 >
         let g:tagbar_compact = 1
+<
+
+                                                             *g:tagbar_indent*
+g:tagbar_indent~
+Default: 2
+
+The number of spaces by which each level is indented. This allows making the
+display more compact or more spacious.
+
+Example:
+>
+        let g:tagbar_indent = 1
 <
 
                                                              *g:tagbar_expand*
@@ -611,10 +627,13 @@ tagbar#currenttag({format}, {default} [, {flags}])
     's'   If the tag is a function, the complete signature will be shown,
           otherwise just "()" will be appended to distinguish functions from
           other tags.
+    'p'   Display the raw prototype instead of the parsed tag. This can be
+          useful in cases where ctags doesn't report some information, like
+          the signature. Note that this can get quite long.
 
     For example, if you put the following into your statusline: >
-        %{tagbar#currenttag('[%s] ', '')}
-<   then the function "myfunc" will be show as "[myfunc()] ".
+        %{tagbar#currenttag('[%s] ','')}
+<   then the function "myfunc" will be shown as "[myfunc()] ".
 
 ==============================================================================
 6. Extending Tagbar                                            *tagbar-extend*
