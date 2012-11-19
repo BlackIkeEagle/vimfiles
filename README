@@ -5,9 +5,6 @@ plugins:
 	http://www.vim.org/scripts/script.php?script_id=2009
 - bufferlist
 	http://www.vim.org/scripts/script.php?script_id=1325
-- checksyntax
-	http://www.vim.org/scripts/script.php?script_id=1431
-	https://github.com/tomtom/checksyntax_vim
 - idevdiff (simple diff buffer stuff)
 - idevtools (some handy functions)
 - jsfolding (derived from phpfolding)
@@ -27,6 +24,9 @@ plugins:
 - supertab
 	http://www.vim.org/scripts/script.php?script_id=1643
 	https://github.com/ervandew/supertab
+- syntastic
+	http://www.vim.org/scripts/script.php?script_id=2736
+	https://github.com/scrooloose/syntastic
 - tabular
 	http://www.vim.org/scripts/script.php?script_id=3464
 	https://github.com/godlygeek/tabular
