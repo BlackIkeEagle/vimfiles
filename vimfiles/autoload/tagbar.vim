@@ -45,6 +45,7 @@ let s:icon_open   = g:tagbar_iconchars[1]
 
 let s:type_init_done      = 0
 let s:autocommands_done   = 0
+let s:autocommands_enabled = 0
 " 0: not checked yet; 1: checked and found; 2: checked and not found
 let s:checked_ctags       = 0
 let s:checked_ctags_types = 0
@@ -60,7 +61,7 @@ let s:window_expanded = 0
 let s:compare_typeinfo = {}
 
 
-let s:access_symbols = {
+let s:visibility_symbols = {
     \ 'public'    : '+',
     \ 'protected' : '#',
     \ 'private'   : '-'
@@ -971,6 +972,19 @@ function! s:CreateAutocommands() abort
     augroup END
 
     let s:autocommands_done = 1
+    let s:autocommands_enabled = 1
+endfunction
+
+" s:PauseAutocommands() {{{2
+" Toggle autocommands 
+function! s:PauseAutocommands() abort
+    if s:autocommands_enabled == 1
+        autocmd! TagbarAutoCmds
+        let s:autocommands_enabled = 0
+    else
+        call s:CreateAutocommands()
+        call s:AutoUpdate(fnamemodify(expand('%'), ':p'), 0)
+    endif
 endfunction
 
 " s:CheckForExCtags() {{{2
@@ -1193,10 +1207,13 @@ function! s:BaseTag._getPrefix() abort dict
     else
         let prefix = ' '
     endif
-    if has_key(self.fields, 'access')
-        let prefix .= get(s:access_symbols, self.fields.access, ' ')
-    else
-        let prefix .= ' '
+    " Visibility is called 'access' in the ctags output
+    if g:tagbar_show_visibility
+        if has_key(self.fields, 'access')
+            let prefix .= get(s:visibility_symbols, self.fields.access, ' ')
+        else
+            let prefix .= ' '
+        endif
     endif
 
     return prefix
@@ -2499,7 +2516,10 @@ function! s:PrintKinds(typeinfo, fileinfo) abort
                             " only if they are not scope-defining tags (since
                             " those already have an identifier)
                             if !has_key(a:typeinfo.kind2scope, ckind.short)
-                                silent put =repeat(' ', g:tagbar_indent + 2) .
+                                let indent  = g:tagbar_indent
+                                let indent += g:tagbar_show_visibility
+                                let indent += 1 " fold symbol
+                                silent put =repeat(' ', indent) .
                                                  \ '[' . ckind.long . ']'
                                 " Add basic tag to allow folding when on the
                                 " header line
@@ -2532,10 +2552,11 @@ function! s:PrintKinds(typeinfo, fileinfo) abort
                 let foldmarker = s:icon_open
             endif
 
+            let padding = g:tagbar_show_visibility ? ' ' : ''
             if g:tagbar_compact && first_tag && s:short_help
-                silent 0put =foldmarker . ' ' . kind.long
+                silent 0put =foldmarker . padding . kind.long
             else
-                silent  put =foldmarker . ' ' . kind.long
+                silent  put =foldmarker . padding . kind.long
             endif
 
             let curline                   = line('.')
@@ -2586,7 +2607,10 @@ function! s:PrintTag(tag, depth, fileinfo, typeinfo) abort
                 " are not scope-defining tags (since those already have an
                 " identifier)
                 if !has_key(a:typeinfo.kind2scope, ckind.short)
-                    silent put =repeat(' ', (a:depth + 1) * g:tagbar_indent + 2)
+                    let indent  = g:tagbar_indent
+                    let indent += g:tagbar_show_visibility
+                    let indent += 1 " fold symbol
+                    silent put =repeat(' ', (a:depth + 1) * indent)
                               \ . '[' . ckind.long . ']'
                     " Add basic tag to allow folding when on the header line
                     let headertag = s:BaseTag.New(ckind.long)
@@ -3455,6 +3479,11 @@ endfunction
 function! tagbar#RestoreSession() abort
     call s:RestoreSession()
 endfunction
+
+function! tagbar#PauseAutocommands() abort
+    call s:PauseAutocommands() 
+endfunction
+
 " }}}2
 
 " tagbar#getusertypes() {{{2
