@@ -19,6 +19,9 @@ elseif has("gui")
 	 set guifont=-monotype-*-medium-r-*-*-*-*-*-*-*-*-*-*
 endif
 
+map <S-Insert> <MiddleMouse>
+map! <S-Insert> <MiddleMouse>
+
 map <silent> <F12> :silent exec '!gvim'<CR>
 
 if version >= 702
