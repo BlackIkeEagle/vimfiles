@@ -96,8 +96,8 @@ let php_parent_error_close=1
 let php_parent_error_open=1
 
 " Folding stuff
-let php_folding=1
-let javascript_fold=1
+let g:DisableAutoPHPFolding=1
+let g:DisableAutoJSFolding=1
 
 " AutoClose settings
 let g:AutoCloseOn=0
