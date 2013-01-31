@@ -17,6 +17,8 @@ if exists("g:loaded_syntastic_plugin")
 endif
 let g:loaded_syntastic_plugin = 1
 
+runtime plugin/syntastic/*.vim
+
 let s:running_windows = has("win16") || has("win32")
 
 if !exists("g:syntastic_enable_signs")
@@ -103,8 +105,10 @@ if !exists("g:syntastic_loc_list_height")
     let g:syntastic_loc_list_height = 10
 endif
 
+let s:registry = g:SyntasticRegistry.Instance()
+
 command! SyntasticToggleMode call s:ToggleMode()
-command! SyntasticCheck call s:UpdateErrors(0) <bar> redraw!
+command! SyntasticCheck call s:UpdateErrors(0) <bar> call s:Redraw()
 command! Errors call s:ShowLocList()
 
 highlight link SyntasticError SpellBad
@@ -199,14 +203,21 @@ function! s:CacheErrors()
         "functions legally for filetypes like "gentoo-metadata"
         let fts = substitute(&ft, '-', '_', 'g')
         for ft in split(fts, '\.')
-            if SyntasticCheckable(ft)
-                let errors = SyntaxCheckers_{ft}_GetLocList()
-                "keep only lines that effectively match an error/warning
-                let errors = s:FilterLocList({'valid': 1}, errors)
-                "make errors have type "E" by default
-                call SyntasticAddToErrors(errors, {'type': 'E'})
-                call extend(s:LocList(), errors)
-            endif
+            let checkers = s:registry.getActiveCheckers(ft)
+            for checker in checkers
+                let errors = checker.getLocList()
+
+                if !empty(errors)
+                    "keep only lines that effectively match an error/warning
+                    let errors = s:FilterLocList({'valid': 1}, errors)
+                    "make errors have type "E" by default
+                    call SyntasticAddToErrors(errors, {'type': 'E'})
+                    call extend(s:LocList(), errors)
+
+                    "only get errors from one checker at a time
+                    break
+                endif
+            endfor
         endfor
     endif
 endfunction
@@ -495,6 +506,21 @@ function! s:IsRedrawRequiredAfterMake()
     return !s:running_windows && (s:uname() =~ "FreeBSD" || s:uname() =~ "OpenBSD")
 endfunction
 
+"Redraw in a way that doesnt make the screen flicker or leave anomalies behind.
+"
+"Some terminal versions of vim require `redraw!` - otherwise there can be
+"random anomalies left behind.
+"
+"However, on some versions of gvim using `redraw!` causes the screen to
+"flicker - so use redraw.
+function! s:Redraw()
+    if has('gui_running')
+        redraw
+    else
+        redraw!
+    endif
+endfunction
+
 function! s:uname()
     if !exists('s:uname')
         let s:uname = system('uname')
@@ -502,14 +528,21 @@ function! s:uname()
     return s:uname
 endfunction
 
+"find all syntax checkers matching `&rtp/syntax_checkers/a:ft/*.vim`
+function s:FindCheckersForFt(ft)
+    let checkers = []
+    for ft_checker_fname in split(globpath(&runtimepath, "syntax_checkers/" . a:ft . "/*.vim"), '\n')
+        let checker_name = fnamemodify(ft_checker_fname, ':t:r')
+        call add(checkers, checker_name)
+    endfor
+
+    return checkers
+endfunction
+
 "check if a syntax checker exists for the given filetype - and attempt to
 "load one
 function! SyntasticCheckable(ft)
-    if !exists("g:loaded_" . a:ft . "_syntax_checker")
-        exec "runtime syntax_checkers/" . a:ft . ".vim"
-    endif
-
-    return exists("*SyntaxCheckers_". a:ft ."_GetLocList")
+    return s:registry.checkable(a:ft)
 endfunction
 
 "the args must be arrays of the form [major, minor, macro]
@@ -614,7 +647,7 @@ function! SyntasticMake(options)
     let &shell=old_shell
 
     if s:IsRedrawRequiredAfterMake()
-        redraw!
+        call s:Redraw()
     endif
 
     if has_key(a:options, 'defaults')
@@ -649,30 +682,36 @@ function! SyntasticAddToErrors(errors, options)
     return a:errors
 endfunction
 
-"take a list of syntax checkers for the current filetype and load the right
-"one based on the global settings and checker executable availabity
+"find all checkers for the given filetype and load the right one based on the
+"global settings and checker executable availabity
 "
-"a:checkers should be a list of syntax checker names. These names are assumed
-"to be the names of the vim syntax checker files that should be sourced, as
-"well as the names of the actual syntax checker executables. The checkers
-"should be listed in order of default preference.
+"Find all files matching `&rtp/syntax_checkers/a:ft/*.vim`. These files should
+"contain syntastic syntax checkers. The file names are also assumed to be the
+"names of syntax checker executables.
+"
+"e.g. ~/.vim/syntax_checkers/python/flake8.vim is a syntax checker for python
+"that calls the `flake8` executable.
 "
 "a:ft should be the filetype for the checkers being loaded
 "
-"if a option called 'g:syntastic_{a:ft}_checker' exists then attempt to
-"load the checker that it points to
-function! SyntasticLoadChecker(checkers, ft)
+"If a option called 'g:syntastic_{a:ft}_checker' exists then attempt to
+"load the checker that it points to.
+"
+"e.g. let g:syntastic_python_checker="flake8" will tell syntastic to use
+"flake8 for python.
+function! SyntasticLoadChecker(ft)
     let opt_name = "g:syntastic_" . a:ft . "_checker"
+    let checkers = s:FindCheckersForFt(&ft)
 
     if exists(opt_name)
         let opt_val = {opt_name}
-        if index(a:checkers, opt_val) != -1
+        if index(checkers, opt_val) != -1
             call s:LoadChecker(opt_val, a:ft)
         else
             echoerr &ft . " syntax not supported or not installed."
         endif
     else
-        for checker in a:checkers
+        for checker in checkers
             if executable(checker)
                 return s:LoadChecker(checker, a:ft)
             endif
