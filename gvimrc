@@ -21,11 +21,12 @@ endif
 
 vnoremap <C-S-C> "+y
 vnoremap <C-Insert> "+y
-
-map <C-S-V>		"+gP
-map <S-Insert>		"+gP
-cmap <C-S-V>		<C-R>+
-cmap <S-Insert>		<C-R>+
+map <C-S-V> "+gP
+map <S-Insert> "+gP
+imap <C-S-V> <MiddleMouse>
+imap <S-Insert> <MiddleMouse>
+cmap <C-S-V> <C-R>+
+cmap <S-Insert> <C-R>+
 
 map <silent> <F12> :silent exec '!gvim'<CR>
 
