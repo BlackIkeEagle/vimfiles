@@ -24,9 +24,6 @@ plugins:
 	http://www.vim.org/scripts/script.php?script_id=1355
 - phpfolding
 	http://www.vim.org/scripts/script.php?script_id=1623
-- powerline
-	http://www.vim.org/scripts/script.php?script_id=3881
-	https://github.com/Lokaltog/vim-powerline
 - supertab
 	http://www.vim.org/scripts/script.php?script_id=1643
 	https://github.com/ervandew/supertab
