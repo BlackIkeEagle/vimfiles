@@ -1,6 +1,6 @@
 " BlackEagles vimrc for Linux && Windows
 "
-" (c) 2010 - 2012
+" (c) 2010 - 2013
 
 " nocompatible has to be the first of all ( use the real vimpower )
 set nocompatible
