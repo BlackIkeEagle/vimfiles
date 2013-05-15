@@ -8,13 +8,9 @@ Plugins
 ---
 
 * Autoclose
-
-  http://www.vim.org/scripts/script.php?script_id=2009
-
+  * http://www.vim.org/scripts/script.php?script_id=2009
 * bufferlist
-
-  http://www.vim.org/scripts/script.php?script_id=1325
-
+  * http://www.vim.org/scripts/script.php?script_id=1325
 * fugitive
   http://www.vim.org/scripts/script.php?script_id=2975
   https://github.com/tpope/vim-fugitive
