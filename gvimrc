@@ -15,8 +15,6 @@ if has("gui_gtk2") || has("gui_qt")
 	set guifont=DejaVu\ Sans\ Mono\ 10
 elseif has("gui_win32")
 	set guifont=Lucida_Console:h10:cANSI
-elseif has("gui")
-	 set guifont=-monotype-*-medium-r-*-*-*-*-*-*-*-*-*-*
 endif
 
 vnoremap <C-Insert> "+y
