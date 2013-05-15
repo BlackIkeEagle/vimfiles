@@ -65,7 +65,10 @@ Syntax/Filetype
 
 * extjs
   * http://xant.us/extjs/javascript.vim
-* javascript (modified)
+* html
+  * https://github.com/pangloss/vim-javascript
+* javascript
+  * https://github.com/pangloss/vim-javascript
 * jquery
   * http://www.vim.org/scripts/script.php?script_id=2416
 * php (vim distributed one + docblocks)
