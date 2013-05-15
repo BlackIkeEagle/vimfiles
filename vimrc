@@ -95,10 +95,6 @@ let php_htmlInStrings =0
 let php_parent_error_close=1
 let php_parent_error_open=1
 
-" Folding stuff
-let g:DisableAutoPHPFolding=1
-let g:DisableAutoJSFolding=1
-
 " AutoClose settings
 let g:AutoCloseOn=0
 "let g:AutoClosePairs= {'(': ')', '[': ']', '"': '"', "'": "'", '<': '>'}
