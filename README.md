@@ -16,7 +16,6 @@ Plugins
   * https://github.com/tpope/vim-fugitive
 * idevdiff (simple diff buffer stuff)
 * idevtools (some handy functions)
-* jsfolding (derived from phpfolding)
 * nerd_commenter
   * http://www.vim.org/scripts/script.php?script_id=1218
   * https://github.com/scrooloose/nerdcommenter
@@ -27,8 +26,6 @@ Plugins
   * http://www.vim.org/scripts/script.php?script_id=3357
 * php-doc
   * http://www.vim.org/scripts/script.php?script_id=1355
-* phpfolding
-  * http://www.vim.org/scripts/script.php?script_id=1623
 * supertab
   * http://www.vim.org/scripts/script.php?script_id=1643
   * https://github.com/ervandew/supertab
