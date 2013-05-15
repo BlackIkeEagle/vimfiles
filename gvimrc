@@ -5,7 +5,7 @@
 set guioptions=aiA "dont show toolbar
 
 " set the colorsheme
-colorscheme solarized
+colorscheme molokai
 set background=dark
 
 " vim size stuff
