@@ -11,6 +11,9 @@ Plugins
   * http://www.vim.org/scripts/script.php?script_id=2009
 * bufferlist
   * http://www.vim.org/scripts/script.php?script_id=1325
+* CtrlP
+  * http://www.vim.org/scripts/script.php?script_id=3736
+  * https://github.com/kien/ctrlp.vim
 * fugitive
   * http://www.vim.org/scripts/script.php?script_id=2975
   * https://github.com/tpope/vim-fugitive
