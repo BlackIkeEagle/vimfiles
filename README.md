@@ -65,8 +65,11 @@ Syntax/Filetype
 ---
 
 * extjs
+  * http://xant.us/extjs/javascript.vim
 * javascript (modified)
 * jquery
+  * http://www.vim.org/scripts/script.php?script_id=2416
 * php (vim distributed one + docblocks)
 * xt (xdebug)
+  * https://github.com/xdebug/xdebug/tree/master/contrib
 
