@@ -9,7 +9,12 @@
 "             See http://sam.zoy.org/wtfpl/COPYING for more details.
 "============================================================================
 
-function! SyntaxCheckers_json_jsonlint_IsAvailable()
+if exists("g:loaded_syntastic_json_jsonval_checker")
+    finish
+endif
+let g:loaded_syntastic_json_jsonval_checker=1
+
+function! SyntaxCheckers_json_jsonval_IsAvailable()
     return executable('jsonval')
 endfunction
 

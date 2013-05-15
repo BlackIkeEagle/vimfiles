@@ -4,24 +4,36 @@
 "Author:      Parantapa Bhattacharya <parantapa at gmail dot com>
 "
 "============================================================================
+if exists("g:loaded_syntastic_python_pylint_checker")
+    finish
+endif
+let g:loaded_syntastic_python_pylint_checker=1
+
 function! SyntaxCheckers_python_pylint_IsAvailable()
     return executable('pylint')
 endfunction
 
 function! SyntaxCheckers_python_pylint_GetLocList()
     let makeprg = syntastic#makeprg#build({
-                \ 'exe': 'pylint',
-                \ 'args': ' -f parseable -r n -i y',
-                \ 'tail': s:MakeprgTail(),
-                \ 'subchecker': 'pylint' })
-    let errorformat = '%f:%l: [%t] %m,%Z,%-GNo config %m'
+        \ 'exe': 'pylint',
+        \ 'args': ' -f parseable -r n -i y',
+        \ 'subchecker': 'pylint' })
+    let errorformat =
+        \ '%A%f:%l:%m,' .
+        \ '%A%f:(%l):%m,' .
+        \ '%-Z%p^%.%#,' .
+        \ '%-G%.%#'
 
-    return SyntasticMake({ 'makeprg': makeprg, 'errorformat': errorformat })
-endfunction
+    let loclist=SyntasticMake({
+        \ 'makeprg': makeprg,
+        \ 'errorformat': errorformat,
+        \ 'postprocess': ['sort'] })
 
-function! s:MakeprgTail()
-    return ' 2>&1 \| sed ''s_: \[\([RCW]\)_: \[W] \[\1_''' .
-         \ ' \| sed ''s_: \[\([FE]\)_:\ \[E] \[\1_'''
+    for n in range(len(loclist))
+        let loclist[n]['type'] = match(['R', 'C', 'W'], loclist[n]['text'][2]) >= 0 ? 'W' : 'E'
+    endfor
+
+    return loclist
 endfunction
 
 call g:SyntasticRegistry.CreateAndRegisterChecker({

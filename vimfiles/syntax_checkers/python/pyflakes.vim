@@ -6,6 +6,11 @@
 "             Parantapa Bhattacharya <parantapa@gmail.com>
 "
 "============================================================================
+if exists("g:loaded_syntastic_python_pyflakes_checker")
+    finish
+endif
+let g:loaded_syntastic_python_pyflakes_checker=1
+
 function! SyntaxCheckers_python_pyflakes_IsAvailable()
     return executable('pyflakes')
 endfunction
@@ -30,7 +35,12 @@ function! SyntaxCheckers_python_pyflakes_GetLocList()
     let makeprg = syntastic#makeprg#build({
                 \ 'exe': 'pyflakes',
                 \ 'subchecker': 'pyflakes' })
-    let errorformat = '%E%f:%l: could not compile,%-Z%p^,%E%f:%l:%c: %m,%E%f:%l: %m,%-G%.%#'
+    let errorformat =
+        \ '%E%f:%l: could not compile,'.
+        \ '%-Z%p^,'.
+        \ '%E%f:%l:%c: %m,'.
+        \ '%E%f:%l: %m,'.
+        \ '%-G%.%#'
 
     return SyntasticMake({ 'makeprg': makeprg,
                          \ 'errorformat': errorformat,

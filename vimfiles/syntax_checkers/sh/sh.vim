@@ -10,8 +10,13 @@
 "
 "============================================================================
 
+if exists("g:loaded_syntastic_sh_sh_checker")
+    finish
+endif
+let g:loaded_syntastic_sh_sh_checker=1
+
 function! s:GetShell()
-    if !exists('b:shell') || b:shell == ""
+    if !exists('b:shell') || b:shell == ''
         let b:shell = ''
         let shebang = getbufline(bufnr('%'), 1)[0]
         if len(shebang) > 0
@@ -23,12 +28,17 @@ function! s:GetShell()
                 let b:shell = 'sh'
             endif
         endif
+        " try to use env variable in case no shebang could be found
+        if b:shell == ''
+            let b:shell = fnamemodify(expand('$SHELL'), ':t')
+        endif
     endif
     return b:shell
 endfunction
 
 function! s:ForwardToZshChecker()
-    if SyntasticCheckable('zsh')
+    let registry = g:SyntasticRegistry.Instance()
+    if registry.checkable('zsh')
         return SyntaxCheckers_zsh_zsh_GetLocList()
     else
         return []
@@ -57,7 +67,8 @@ function! SyntaxCheckers_sh_sh_GetLocList()
 
     let makeprg = syntastic#makeprg#build({
                 \ 'exe': s:GetShell(),
-                \ 'args': '-n' })
+                \ 'args': '-n',
+                \ 'subchecker': 'sh'})
 
     let errorformat = '%f: line %l: %m'
     return SyntasticMake({ 'makeprg': makeprg, 'errorformat': errorformat})

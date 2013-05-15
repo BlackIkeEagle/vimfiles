@@ -10,6 +10,11 @@
 "
 "============================================================================
 
+if exists("g:loaded_syntastic_cs_mcs_checker")
+    finish
+endif
+let g:loaded_syntastic_cs_mcs_checker=1
+
 function! SyntaxCheckers_cs_mcs_IsAvailable()
     return executable('mcs')
 endfunction
@@ -17,7 +22,8 @@ endfunction
 function! SyntaxCheckers_cs_mcs_GetLocList()
     let makeprg = syntastic#makeprg#build({
                 \ 'exe': 'mcs',
-                \ 'args': '--parse' })
+                \ 'args': '--parse',
+                \ 'subchecker': 'mcs' })
     let errorformat = '%f(%l\,%c): %trror %m'
     return SyntasticMake({ 'makeprg': makeprg,
                          \ 'errorformat': errorformat,

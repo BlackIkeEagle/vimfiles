@@ -10,12 +10,17 @@
 "
 "============================================================================
 
+if exists("g:loaded_syntastic_tex_lacheck_checker")
+    finish
+endif
+let g:loaded_syntastic_tex_lacheck_checker=1
+
 function! SyntaxCheckers_tex_lacheck_IsAvailable()
     return executable("lacheck")
 endfunction
 
 function! SyntaxCheckers_tex_lacheck_GetLocList()
-    let makeprg = syntastic#makeprg#build({ 'exe': 'lacheck' })
+    let makeprg = syntastic#makeprg#build({ 'exe': 'lacheck', 'subchecker': 'lacheck' })
     let errorformat =  '%-G** %f:,%E"%f"\, line %l: %m'
     return SyntasticMake({ 'makeprg': makeprg, 'errorformat': errorformat })
 endfunction

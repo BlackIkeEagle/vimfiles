@@ -13,14 +13,20 @@
 "
 "============================================================================
 
-function! SyntaxCheckers_yaml_jsyaml_GetLocList()
+if exists("g:loaded_syntastic_yaml_jsyaml_checker")
+    finish
+endif
+let g:loaded_syntastic_yaml_jsyaml_checker=1
+
+function! SyntaxCheckers_yaml_jsyaml_IsAvailable()
     return executable("js-yaml")
 endfunction
 
 function! SyntaxCheckers_yaml_jsyaml_GetLocList()
     let makeprg = syntastic#makeprg#build({
                 \ 'exe': 'js-yaml',
-                \ 'args': '--compact' })
+                \ 'args': '--compact',
+                \ 'subchecker': 'jsyaml' })
     let errorformat='Error on line %l\, col %c:%m,%-G%.%#'
     return SyntasticMake({ 'makeprg': makeprg,
                          \ 'errorformat': errorformat,

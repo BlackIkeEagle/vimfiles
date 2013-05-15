@@ -1,7 +1,7 @@
 if exists("g:loaded_syntastic_checker")
     finish
 endif
-let g:loaded_syntastic_checker=1
+let g:loaded_syntastic_checker = 1
 
 let g:SyntasticChecker = {}
 
@@ -36,7 +36,9 @@ function! g:SyntasticChecker.name()
 endfunction
 
 function! g:SyntasticChecker.getLocList()
-    return self._locListFunc()
+    let list = self._locListFunc()
+    call self._populateHighlightRegexes(list)
+    return g:SyntasticLoclist.New(list)
 endfunction
 
 function! g:SyntasticChecker.getHighlightRegexFor(error)
@@ -49,6 +51,21 @@ endfunction
 
 function! g:SyntasticChecker.isAvailable()
     return self._isAvailableFunc()
+endfunction
+
+function! g:SyntasticChecker._populateHighlightRegexes(list)
+    let list = a:list
+    if !empty(self._highlightRegexFunc)
+        for i in range(0, len(list)-1)
+            if list[i]['valid']
+                let term = self._highlightRegexFunc(list[i])
+                if len(term) > 0
+                    let list[i]['hl'] = term
+                endif
+            endif
+        endfor
+    endif
+    return list
 endfunction
 
 " vim: set sw=4 sts=4 et fdm=marker:

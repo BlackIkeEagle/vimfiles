@@ -9,7 +9,12 @@
 "             See http://sam.zoy.org/wtfpl/COPYING for more details.
 "
 "============================================================================
-function! SyntaxCheckers_nasm_nasm_GetLocList()
+if exists("g:loaded_syntastic_nasm_nasm_checker")
+    finish
+endif
+let g:loaded_syntastic_nasm_nasm_checker=1
+
+function! SyntaxCheckers_nasm_nasm_IsAvailable()
     return executable("nasm")
 endfunction
 
@@ -22,7 +27,8 @@ function! SyntaxCheckers_nasm_nasm_GetLocList()
     let wd = shellescape(expand("%:p:h") . "/")
     let makeprg = syntastic#makeprg#build({
                 \ 'exe': 'nasm',
-                \ 'args': '-X gnu -f elf -I ' . wd . ' -o ' . outfile })
+                \ 'args': '-X gnu -f elf -I ' . wd . ' -o ' . outfile,
+                \ 'subchecker': 'nasm' })
     let errorformat = '%f:%l: %t%*[^:]: %m'
     return SyntasticMake({ 'makeprg': makeprg, 'errorformat': errorformat })
 endfunction

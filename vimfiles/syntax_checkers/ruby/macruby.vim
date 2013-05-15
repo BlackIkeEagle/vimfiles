@@ -8,6 +8,11 @@
 "             See http://sam.zoy.org/wtfpl/COPYING for more details.
 "
 "============================================================================
+if exists("g:loaded_syntastic_ruby_macruby_checker")
+    finish
+endif
+let g:loaded_syntastic_ruby_macruby_checker=1
+
 function! SyntaxCheckers_ruby_macruby_IsAvailable()
     return executable('macruby')
 endfunction
@@ -17,7 +22,14 @@ function! SyntaxCheckers_ruby_macruby_GetLocList()
                 \ 'exe': 'RUBYOPT= macruby',
                 \ 'args': '-W1 -c',
                 \ 'subchecker': 'macruby' })
-    let errorformat =  '%-GSyntax OK,%E%f:%l: syntax error\, %m,%Z%p^,%W%f:%l: warning: %m,%Z%p^,%W%f:%l: %m,%-C%.%#'
+    let errorformat =
+        \ '%-GSyntax OK,'.
+        \ '%E%f:%l: syntax error\, %m,'.
+        \ '%Z%p^,'.
+        \ '%W%f:%l: warning: %m,'.
+        \ '%Z%p^,'.
+        \ '%W%f:%l: %m,'.
+        \ '%-C%.%#'
     return SyntasticMake({ 'makeprg': makeprg, 'errorformat': errorformat })
 endfunction
 

@@ -25,6 +25,11 @@
 "   let g:syntastic_perl_efm_program = "foo.pl -o -m -g"
 "
 
+if exists("g:loaded_syntastic_perl_perl_checker")
+    finish
+endif
+let g:loaded_syntastic_perl_perl_checker=1
+
 function! SyntaxCheckers_perl_perl_IsAvailable()
     return executable("perl")
 endfunction
@@ -47,7 +52,7 @@ function! SyntaxCheckers_perl_perl_GetLocList()
 endfunction
 
 function! s:ExtraMakeprgArgs()
-    let shebang = syntastic#util#ParseShebang()
+    let shebang = syntastic#util#parseShebang()
     if index(shebang['args'], '-T') != -1
         return ' -Tc'
     endif

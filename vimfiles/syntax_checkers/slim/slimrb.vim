@@ -10,6 +10,11 @@
 "
 "============================================================================
 
+if exists("g:loaded_syntastic_slim_slimrb_checker")
+    finish
+endif
+let g:loaded_syntastic_slim_slimrb_checker=1
+
 function! SyntaxCheckers_slim_slimrb_IsAvailable()
     return executable("slimrb")
 endfunction
@@ -27,11 +32,20 @@ endfunction
 function! SyntaxCheckers_slim_slimrb_GetLocList()
     let makeprg = syntastic#makeprg#build({
                 \ 'exe': 'slimrb',
-                \ 'args': '-c' })
-    if SyntasticIsVersionAtLeast(s:SlimrbVersion(), [1,3,1])
-        let errorformat = '%C\ %#%f\, Line %l\, Column %c,%-G\ %.%#,%ESlim::Parser::SyntaxError: %m,%+C%.%#'
+                \ 'args': '-c',
+                \ 'subchecker': 'slimrb' })
+    if syntastic#util#versionIsAtLeast(s:SlimrbVersion(), [1,3,1])
+        let errorformat =
+            \ '%C\ %#%f\, Line %l\, Column %c,'.
+            \ '%-G\ %.%#,'.
+            \ '%ESlim::Parser::SyntaxError: %m,'.
+            \ '%+C%.%#'
     else
-        let errorformat = '%C\ %#%f\, Line %l,%-G\ %.%#,%ESlim::Parser::SyntaxError: %m,%+C%.%#'
+        let errorformat =
+            \ '%C\ %#%f\, Line %l,'.
+            \ '%-G\ %.%#,'.
+            \ '%ESlim::Parser::SyntaxError: %m,'.
+            \ '%+C%.%#'
     endif
     return SyntasticMake({ 'makeprg': makeprg, 'errorformat': errorformat })
 endfunction

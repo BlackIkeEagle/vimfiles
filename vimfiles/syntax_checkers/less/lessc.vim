@@ -17,6 +17,11 @@
 " To use less-lint instead of less set the variable
 " g:syntastic_less_use_less_lint.
 
+if exists("g:loaded_syntastic_less_lessc_checker")
+    finish
+endif
+let g:loaded_syntastic_less_lessc_checker=1
+
 if !exists("g:syntastic_less_options")
     let g:syntastic_less_options = "--no-color"
 endif
@@ -31,7 +36,7 @@ else
     let s:check_file = 'lessc'
 end
 
-function! SyntaxCheckers_less_lessc_GetLocList()
+function! SyntaxCheckers_less_lessc_IsAvailable()
     return executable('lessc')
 endfunction
 
@@ -39,7 +44,8 @@ function! SyntaxCheckers_less_lessc_GetLocList()
     let makeprg = syntastic#makeprg#build({
                 \ 'exe': s:check_file,
                 \ 'args': g:syntastic_less_options,
-                \ 'tail': syntastic#util#DevNull() })
+                \ 'tail': syntastic#util#DevNull(),
+                \ 'subchecker': 'lessc' })
     let errorformat = '%m in %f:%l:%c'
 
     return SyntasticMake({ 'makeprg': makeprg,

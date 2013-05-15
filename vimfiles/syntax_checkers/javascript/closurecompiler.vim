@@ -21,6 +21,11 @@
 " g:syntastic_javascript_closure_compiler_options.
 "
 
+if exists("g:loaded_syntastic_javascript_closurecompiler_checker")
+    finish
+endif
+let g:loaded_syntastic_javascript_closurecompiler_checker=1
+
 if !exists("g:syntastic_javascript_closure_compiler_options")
     let g:syntastic_javascript_closure_compiler_options = ""
 endif
@@ -42,7 +47,12 @@ function! SyntaxCheckers_javascript_closurecompiler_GetLocList()
                 \ 'fname': file_list,
                 \ 'subchecker': 'closurecompiler' })
 
-    let errorformat = '%-GOK,%E%f:%l: ERROR - %m,%Z%p^,%W%f:%l: WARNING - %m,%Z%p^'
+    let errorformat =
+        \ '%-GOK,'.
+        \ '%E%f:%l: ERROR - %m,'.
+        \ '%Z%p^,'.
+        \ '%W%f:%l: WARNING - %m,'.
+        \ '%Z%p^'
     return SyntasticMake({ 'makeprg': makeprg, 'errorformat': errorformat })
 endfunction
 

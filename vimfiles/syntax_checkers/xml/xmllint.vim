@@ -10,27 +10,34 @@
 "
 "============================================================================
 
+if exists("g:loaded_syntastic_xml_xmllint_checker")
+    finish
+endif
+let g:loaded_syntastic_xml_xmllint_checker=1
+
 " You can use a local installation of DTDs to significantly speed up validation
 " and allow you to validate XML data without network access, see xmlcatalog(1)
 " and http://www.xmlsoft.org/catalog.html for more information.
 
 function! SyntaxCheckers_xml_xmllint_IsAvailable()
-    return executable("xmllint")
+    return executable('xmllint')
 endfunction
 
 function! SyntaxCheckers_xml_xmllint_GetLocList()
     let makeprg = syntastic#makeprg#build({
                 \ 'exe': 'xmllint',
-                \ 'args': '--xinclude --noout --postvalid' })
-    let errorformat='%E%f:%l:\ error\ :\ %m,
-        \%-G%f:%l:\ validity\ error\ :\ Validation\ failed:\ no\ DTD\ found\ %m,
-        \%W%f:%l:\ warning\ :\ %m,
-        \%W%f:%l:\ validity\ warning\ :\ %m,
-        \%E%f:%l:\ validity\ error\ :\ %m,
-        \%E%f:%l:\ parser\ error\ :\ %m,
-        \%E%f:%l:\ %m,
-        \%-Z%p^,
-        \%-G%.%#'
+                \ 'args': '--xinclude --noout --postvalid',
+                \ 'subchecker': 'xmllint' })
+    let errorformat=
+        \ '%E%f:%l: error : %m,' .
+        \ '%-G%f:%l: validity error : Validation failed: no DTD found %m,' .
+        \ '%W%f:%l: warning : %m,' .
+        \ '%W%f:%l: validity warning : %m,' .
+        \ '%E%f:%l: validity error : %m,' .
+        \ '%E%f:%l: parser error : %m,' .
+        \ '%E%f:%l: %m,' .
+        \ '%-Z%p^,' .
+        \ '%-G%.%#'
     let loclist = SyntasticMake({ 'makeprg': makeprg, 'errorformat': errorformat })
 
     return loclist

@@ -23,7 +23,7 @@
 "============================================================================
 
 function! SyntaxCheckers_vala_valac_IsAvailable()
-    return executable('valac') || (exists('g:syntastic_vala_check_disabled') && g:syntastic_vala_check_disabled)
+    return executable('valac')
 endfunction
 
 function! SyntaxCheckers_vala_valac_GetHighlightRegex(pos)
@@ -36,7 +36,7 @@ function! s:GetValaModules()
         if type(g:syntastic_vala_modules) == type('')
             return split(g:syntastic_vala_modules, '\s\+')
         elseif type(g:syntastic_vala_modules) == type([])
-            return g:syntastic_vala_modules
+            return copy(g:syntastic_vala_modules)
         else
             echoerr 'g:syntastic_vala_modules must be either list or string: fallback to in file modules string'
         endif
@@ -51,12 +51,15 @@ function! SyntaxCheckers_vala_valac_GetLocList()
     let vala_pkg_args = join(map(s:GetValaModules(), '"--pkg ".v:val'), ' ')
     let makeprg = syntastic#makeprg#build({
                 \ 'exe': 'valac',
-                \ 'args': '-C ' . vala_pkg_args })
-    let errorformat = '%A%f:%l.%c-%\d%\+.%\d%\+: %t%[a-z]%\+: %m,%C%m,%Z%m'
+                \ 'args': '-C ' . vala_pkg_args,
+                \ 'subchecker': 'valac' })
+    let errorformat =
+        \ '%A%f:%l.%c-%\d%\+.%\d%\+: %t%[a-z]%\+: %m,'.
+        \ '%C%m,'.
+        \ '%Z%m'
 
     return SyntasticMake({ 'makeprg': makeprg,
-                         \ 'errorformat': errorformat,
-                         \ 'defaults': {'force_highlight_callback': 1} })
+                         \ 'errorformat': errorformat })
 endfunction
 
 call g:SyntasticRegistry.CreateAndRegisterChecker({

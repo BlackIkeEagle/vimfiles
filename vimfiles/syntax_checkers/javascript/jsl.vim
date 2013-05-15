@@ -8,6 +8,11 @@
 "             Want To Public License, Version 2, as published by Sam Hocevar.
 "             See http://sam.zoy.org/wtfpl/COPYING for more details.
 "============================================================================
+if exists("g:loaded_syntastic_javascript_jsl_checker")
+    finish
+endif
+let g:loaded_syntastic_javascript_jsl_checker=1
+
 if !exists("g:syntastic_javascript_jsl_conf")
     let g:syntastic_javascript_jsl_conf = ""
 endif
@@ -29,7 +34,14 @@ function! SyntaxCheckers_javascript_jsl_GetLocList()
                 \ 'exe': 'jsl',
                 \ 'args': s:ConfFlag() . " -nologo -nofilelisting -nosummary -nocontext -process",
                 \ 'subchecker': 'jsl' })
-    let errorformat='%W%f(%l): lint warning: %m,%-Z%p^,%W%f(%l): warning: %m,%-Z%p^,%E%f(%l): SyntaxError: %m,%-Z%p^,%-G'
+    let errorformat =
+        \ '%W%f(%l): lint warning: %m,'.
+        \ '%-Z%p^,'.
+        \ '%W%f(%l): warning: %m,'.
+        \ '%-Z%p^,'.
+        \ '%E%f(%l): SyntaxError: %m,'.
+        \ '%-Z%p^,'.
+        \ '%-G'
     return SyntasticMake({ 'makeprg': makeprg, 'errorformat': errorformat })
 endfunction
 

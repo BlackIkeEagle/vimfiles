@@ -10,6 +10,11 @@
 "
 "============================================================================
 
+if exists("g:loaded_syntastic_z80_z80syntaxchecker_checker")
+    finish
+endif
+let g:loaded_syntastic_z80_z80syntaxchecker_checker=1
+
 "bail if the user doesnt have z80_syntax_checker.py installed
 "To obtain this application there are two solutions:
 " - Install this python package: https://github.com/rgiot/pycpcdemotools
@@ -19,8 +24,10 @@ function! SyntaxCheckers_z80_z80syntaxchecker_IsAvailable()
 endfunction
 
 function! SyntaxCheckers_z80_z80syntaxchecker_GetLocList()
-    let makeprg = syntastic#makeprg#build({ 'exe': 'z80_syntax_checker.py' })
-    let errorformat =  '%f:%l %m' 
+    let makeprg = syntastic#makeprg#build({
+        \ 'exe': 'z80_syntax_checker.py',
+        \ 'subchecker': 'z80syntaxchecker' })
+    let errorformat =  '%f:%l %m'
     let loclist = SyntasticMake({ 'makeprg': makeprg, 'errorformat': errorformat })
     return loclist
 endfunction

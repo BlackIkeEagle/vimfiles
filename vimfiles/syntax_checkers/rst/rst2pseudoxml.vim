@@ -13,23 +13,34 @@
 " We use rst2pseudoxml.py, as it is ever so marginally faster than the other
 " rst2${x} tools in docutils.
 
+if exists("g:loaded_syntastic_rst_rst2pseudoxml_checker")
+    finish
+endif
+let g:loaded_syntastic_rst_rst2pseudoxml_checker=1
+
 function! SyntaxCheckers_rst_rst2pseudoxml_IsAvailable()
-    return executable("rst2pseudoxml.py")
+    return executable("rst2pseudoxml.py") || executable("rst2pseudoxml")
 endfunction
 
 function! SyntaxCheckers_rst_rst2pseudoxml_GetLocList()
     let makeprg = syntastic#makeprg#build({
-                \ 'exe': 'rst2pseudoxml.py',
+                \ 'exe': s:exe(),
                 \ 'args': '--report=2 --exit-status=1',
-                \ 'tail': syntastic#util#DevNull() })
+                \ 'tail': syntastic#util#DevNull(),
+                \ 'subchecker': 'rst2pseudoxml' })
 
-    let errorformat = '%f:%l:\ (%tNFO/1)\ %m,
-      \%f:%l:\ (%tARNING/2)\ %m,
-      \%f:%l:\ (%tRROR/3)\ %m,
-      \%f:%l:\ (%tEVERE/4)\ %m,
-      \%-G%.%#'
+    let errorformat =
+        \ '%f:%l:\ (%tNFO/1)\ %m,'.
+        \ '%f:%l:\ (%tARNING/2)\ %m,'.
+        \ '%f:%l:\ (%tRROR/3)\ %m,'.
+        \ '%f:%l:\ (%tEVERE/4)\ %m,'.
+        \ '%-G%.%#'
 
     return SyntasticMake({ 'makeprg': makeprg, 'errorformat': errorformat })
+endfunction
+
+function s:exe()
+    return executable("rst2pseudoxml.py") ? "rst2pseudoxml.py" : "rst2pseudoxml"
 endfunction
 
 call g:SyntasticRegistry.CreateAndRegisterChecker({

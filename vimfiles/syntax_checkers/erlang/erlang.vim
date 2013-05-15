@@ -10,6 +10,11 @@
 "
 "============================================================================
 
+if exists("g:loaded_syntastic_erlang_erlang_checker")
+    finish
+endif
+let g:loaded_syntastic_erlang_erlang_checker=1
+
 let s:check_file = expand('<sfile>:p:h') . '/erlang_check_file.erl'
 if !exists("g:syntastic_erlc_include_path")
     let g:syntastic_erlc_include_path=""
@@ -29,12 +34,14 @@ function! SyntaxCheckers_erlang_escript_GetLocList()
         if match(shebang, 'escript') >= 0
             let makeprg = 'escript -s '.shellescape(expand('%:p'))
         else
-            let makeprg = s:check_file . ' '. shellescape(expand('%:p')).' '.g:syntastic_erlc_include_path
+            let makeprg = 'escript ' . s:check_file . ' '. shellescape(expand('%:p')).' '.g:syntastic_erlc_include_path
         endif
     else
-        let makeprg =  s:check_file . ' ' . shellescape(expand('%:p')).' '.g:syntastic_erlc_include_path
+        let makeprg =  'escript ' . s:check_file . ' ' . shellescape(expand('%:p')).' '.g:syntastic_erlc_include_path
     endif
-    let errorformat = '%f:%l:\ %tarning:\ %m,%E%f:%l:\ %m'
+    let errorformat =
+        \ '%f:%l:\ %tarning:\ %m,'.
+        \ '%E%f:%l:\ %m'
 
     return SyntasticMake({ 'makeprg': makeprg, 'errorformat': errorformat })
 endfunction

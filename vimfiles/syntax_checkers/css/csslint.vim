@@ -14,6 +14,11 @@
 "
 "   let g:syntastic_csslint_options = "--warnings=none"
 
+if exists("g:loaded_syntastic_css_csslint_checker")
+    finish
+endif
+let g:loaded_syntastic_css_csslint_checker=1
+
 if !exists('g:syntastic_csslint_options')
     let g:syntastic_csslint_options = ""
 endif
@@ -25,10 +30,16 @@ endfunction
 function! SyntaxCheckers_css_csslint_GetLocList()
     let makeprg = syntastic#makeprg#build({
                 \ 'exe': 'csslint',
-                \ 'args': '--format=compact ' . g:syntastic_csslint_options })
+                \ 'args': '--format=compact ' . g:syntastic_csslint_options,
+                \ 'subchecker': 'csslint' })
 
     " Print CSS Lint's error/warning messages from compact format. Ignores blank lines.
-    let errorformat = '%-G,%-G%f: lint free!,%f: line %l\, col %c\, %trror - %m,%f: line %l\, col %c\, %tarning - %m,%f: line %l\, col %c\, %m,'
+    let errorformat =
+        \ '%-G,' .
+        \ '%-G%f: lint free!,' .
+        \ '%f: line %l\, col %c\, %trror - %m,' .
+        \ '%f: line %l\, col %c\, %tarning - %m,'.
+        \ '%f: line %l\, col %c\, %m,'
 
     return SyntasticMake({ 'makeprg': makeprg,
                          \ 'errorformat': errorformat,

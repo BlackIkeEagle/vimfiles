@@ -9,6 +9,10 @@
 "             See http://sam.zoy.org/wtfpl/COPYING for more details.
 "
 "============================================================================
+if exists("g:loaded_syntastic_co_coco_checker")
+    finish
+endif
+let g:loaded_syntastic_co_coco_checker=1
 
 "bail if the user doesnt have coco installed
 if !executable("coco")
@@ -22,8 +26,13 @@ endfunction
 function! SyntaxCheckers_co_coco_GetLocList()
     let makeprg = syntastic#makeprg#build({
                 \ 'exe': 'coco',
-                \ 'args': '-c -o /tmp' })
-    let errorformat = '%EFailed at: %f,%ZSyntax%trror: %m on line %l,%EFailed at: %f,%Z%trror: Parse error on line %l: %m'
+                \ 'args': '-c -o /tmp',
+                \ 'subchecker': 'coco' })
+    let errorformat =
+        \ '%EFailed at: %f,' .
+        \ '%ZSyntax%trror: %m on line %l,'.
+        \ '%EFailed at: %f,'.
+        \ '%Z%trror: Parse error on line %l: %m'
 
     return SyntasticMake({ 'makeprg': makeprg, 'errorformat': errorformat })
 endfunction

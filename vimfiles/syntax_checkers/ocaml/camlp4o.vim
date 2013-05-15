@@ -48,6 +48,11 @@
 " For best results your current directory should be the project root
 " (same situation if you want useful output from :make).
 
+if exists("g:loaded_syntastic_ocaml_camlp4o_checker")
+    finish
+endif
+let g:loaded_syntastic_ocaml_camlp4o_checker=1
+
 if exists('g:syntastic_ocaml_camlp4r') &&
     \ g:syntastic_ocaml_camlp4r != 0
     let s:ocamlpp="camlp4r"
@@ -77,15 +82,16 @@ function! SyntaxCheckers_ocaml_camlp4o_GetLocList()
         return []
     endif
 
-    let errorformat = '%AFile "%f"\, line %l\, characters %c-%*\d:,'.
-                \ '%AFile "%f"\, line %l\, characters %c-%*\d (end at line %*\d\, character %*\d):,'.
-                \ '%AFile "%f"\, line %l\, character %c:,'.
-                \ '%AFile "%f"\, line %l\, character %c:%m,'.
-                \ '%-GPreprocessing error %.%#,'.
-                \ '%-GCommand exited %.%#,'.
-                \ '%C%tarning %n: %m,'.
-                \ '%C%m,'.
-                \ '%-G+%.%#'
+    let errorformat =
+        \ '%AFile "%f"\, line %l\, characters %c-%*\d:,'.
+        \ '%AFile "%f"\, line %l\, characters %c-%*\d (end at line %*\d\, character %*\d):,'.
+        \ '%AFile "%f"\, line %l\, character %c:,'.
+        \ '%AFile "%f"\, line %l\, character %c:%m,'.
+        \ '%-GPreprocessing error %.%#,'.
+        \ '%-GCommand exited %.%#,'.
+        \ '%C%tarning %n: %m,'.
+        \ '%C%m,'.
+        \ '%-G+%.%#'
 
     return SyntasticMake({ 'makeprg': makeprg, 'errorformat': errorformat })
 endfunction
