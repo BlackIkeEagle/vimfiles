@@ -17,7 +17,6 @@ Plugins
 * idevdiff (simple diff buffer stuff)
 * idevtools (some handy functions)
 * jsfolding (derived from phpfolding)
-* manpageviewplugin
 * nerd_commenter
   * http://www.vim.org/scripts/script.php?script_id=1218
   * https://github.com/scrooloose/nerdcommenter
