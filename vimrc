@@ -23,10 +23,12 @@ set background=dark
 
 " backup rules
 set backup
+set undofile
 if has("win32")
 	set backupdir=$TEMP
 	set directory=$TEMP
 	set viewdir=$TEMP
+	set undodir=$TEMP
 else
 	silent execute '!mkdir -p $HOME/.vim/tmp/backup'
 	set backupdir=$HOME/.vim/tmp/backup
@@ -34,6 +36,8 @@ else
 	set directory=$HOME/.vim/tmp/swap
 	silent execute '!mkdir -p $HOME/.vim/tmp/views'
 	set viewdir=$HOME/.vim/tmp/views
+	silent execute '!mkdir -p $HOME/.vim/tmp/undo'
+	set undodir=$HOME/.vim/tmp/undo
 endif
 
 " commandline history
