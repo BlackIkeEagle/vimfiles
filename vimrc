@@ -68,7 +68,7 @@ set scrolloff=4    " keep at least 4 lines above or below the cursor
 " fileformat stuff
 "set fileformat=unix
 set fileformats=unix,dos
-"set encoding=utf-8
+set encoding=utf-8
 "set fileencoding=utf-8
 set fileencodings=utf-8,ucs-bom,cp1250,iso-8859-1
 
