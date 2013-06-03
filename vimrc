@@ -54,16 +54,16 @@ set nocursorline
 set secure
 
 " some interface options
-set ruler			" show cursorposition
-set cursorline      " highlight current line
-set showcmd			" display incomplete commands
-set incsearch		" incremental searching
-set hlsearch		" highlight searchresult
-set number			" show linennumbers
-set relativenumber  " show how far a number line is from the current
-set linespace=0		" stick together (usefull for nfo files)
-set hidden          " hide buffer even when changed
-set scrolloff=4     " keep at least 4 lines above or below the cursor
+set ruler          " show cursorposition
+set cursorline     " highlight current line
+set showcmd        " display incomplete commands
+set incsearch      " incremental searching
+set hlsearch       " highlight searchresult
+set number         " show linennumbers
+set relativenumber " show how far a number line is from the current
+set linespace=0    " stick together (usefull for nfo files)
+set hidden         " hide buffer even when changed
+set scrolloff=4    " keep at least 4 lines above or below the cursor
 
 " fileformat stuff
 "set fileformat=unix
