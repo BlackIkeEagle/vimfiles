@@ -59,6 +59,10 @@ set cursorline     " highlight current line
 set showcmd        " display incomplete commands
 set incsearch      " incremental searching
 set hlsearch       " highlight searchresult
+set ignorecase     " ignore case
+set smartcase      " when searching case sensitive case will be used
+                   " if no case (lowercase) is used both lower/upper/mixed
+                   " case is searched
 set number         " show linennumbers
 set relativenumber " show how far a number line is from the current
 set linespace=0    " stick together (usefull for nfo files)
