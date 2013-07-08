@@ -12,7 +12,7 @@ set background=dark
 set lines=60 columns=100
 
 if has("gui_gtk2") || has("gui_qt")
-	set guifont=DejaVu\ Sans\ Mono\ 10
+	set guifont=DejaVu\ Sans\ Mono\ for\ Powerline\ 10,DejaVu\ Sans\ Mono\ 10
 elseif has("gui_win32")
 	set guifont=Lucida_Console:h10:cANSI
 endif

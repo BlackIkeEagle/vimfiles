@@ -89,7 +89,11 @@ set noexpandtab
 
 " statusline stuff
 set laststatus=2
-set statusline=%<%F%h\ %(%y\ %)[%{&ff}]\ %{\"[\".(&fenc==\"\"?&enc:&fenc).\"]\"}\ %([%R%M]\ %)%=%{fugitive#statusline()}\ #%n\ %l/%L,%c%V\ %P
+"set statusline=%<%F%h\ %(%y\ %)[%{&ff}]\ %{\"[\".(&fenc==\"\"?&enc:&fenc).\"]\"}\ %([%R%M]\ %)%=#%n\ %l/%L,%c%V\ %P
+let g:airline_theme='dark'
+if has("gui_gtk2") || has("gui_qt")
+	let g:airline_powerline_fonts=1
+endif
 
 " diff settings
 set diffopt=filler,iwhite,vertical
