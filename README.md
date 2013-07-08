@@ -34,6 +34,8 @@ Plugins
 	* http://www.vim.org/scripts/script.php?script_id=3357
 * php-doc
 	* http://www.vim.org/scripts/script.php?script_id=1355
+* php_getset
+	* https://github.com/EvanDotPro/php_getset.vim
 * supertab
 	* http://www.vim.org/scripts/script.php?script_id=1643
 	* https://github.com/ervandew/supertab
