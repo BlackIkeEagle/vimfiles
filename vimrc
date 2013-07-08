@@ -64,7 +64,7 @@ set smartcase      " when searching case sensitive case will be used
                    " if no case (lowercase) is used both lower/upper/mixed
                    " case is searched
 set number         " show linennumbers
-set relativenumber " show how far a number line is from the current
+"set relativenumber " show how far a number line is from the current
 set linespace=0    " stick together (usefull for nfo files)
 set hidden         " hide buffer even when changed
 set scrolloff=4    " keep at least 4 lines above or below the cursor
