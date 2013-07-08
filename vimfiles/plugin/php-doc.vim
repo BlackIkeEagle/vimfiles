@@ -88,7 +88,7 @@ let g:pdv_cfg_Uses = 1
 let g:pdv_cfg_paste = 1
 
 " Wether for PHP5 code PHP4 tags should be set, like @access,... (1|0)?
-let g:pdv_cfg_php4always = 1
+let g:pdv_cfg_php4always = 0
  
 " Wether to guess scopes after PEAR coding standards:
 " $_foo/_bar() == <private|protected> (1|0)?
