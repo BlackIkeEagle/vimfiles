@@ -10,6 +10,8 @@ Plugins
 * Ack
 	* http://www.vim.org/scripts/script.php?script_id=2572
 	* https://github.com/mileszs/ack.vim
+* Airline
+	* https://github.com/bling/vim-airline
 * Autoclose
 	* http://www.vim.org/scripts/script.php?script_id=2009
 * bufferlist
