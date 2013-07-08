@@ -44,6 +44,8 @@ exec ctags -f "$tagsfolder/$name" \
 -h ".php" -R \
 --extra=+f \
 --exclude="\.svn" \
+--exclude="\.git" \
+--exclude="\.hg" \
 --totals=yes \
 --tag-relative=yes \
 --fields=+afkst \
