@@ -24,6 +24,8 @@ Plugins
 	* https://github.com/tpope/vim-fugitive
 * idevdiff (simple diff buffer stuff)
 * idevtools (some handy functions)
+* multiple-cursors
+	* https://github.com/terryma/vim-multiple-cursors
 * nerd_commenter
 	* http://www.vim.org/scripts/script.php?script_id=1218
 	* https://github.com/scrooloose/nerdcommenter
