@@ -59,8 +59,8 @@ set cursorline     " highlight current line
 set showcmd        " display incomplete commands
 set incsearch      " incremental searching
 set hlsearch       " highlight searchresult
-set ignorecase     " ignore case
-set smartcase      " when searching case sensitive case will be used
+"set ignorecase     " ignore case
+"set smartcase      " when searching case sensitive case will be used
                    " if no case (lowercase) is used both lower/upper/mixed
                    " case is searched
 set number         " show linennumbers
