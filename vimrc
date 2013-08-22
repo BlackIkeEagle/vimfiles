@@ -98,6 +98,10 @@ endif
 " diff settings
 set diffopt=filler,iwhite,vertical
 
+" tab completion
+inoremap <tab> <c-n>
+inoremap <S-tab> <C-V><tab>
+inoremap <C-tab> <c-x><c-o>
 " SuperTab settings
 "let g:SuperTabDefaultCompletionType = "<c-x><c-o>"
 "let g:SuperTabContextDefaultCompletionType = "<c-x><c-o>"
@@ -126,6 +130,7 @@ nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
 
 " custom functionkey mapping
+map <silent> <F2> :pc<CR>
 map <silent> <F3> :CodeTidy<CR>
 map <silent> <F4> :PhpDoc<CR>
 map <silent> <F5> :NERDTreeToggle<CR>
