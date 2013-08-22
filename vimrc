@@ -112,6 +112,11 @@ let php_htmlInStrings =0
 let php_parent_error_close=1
 let php_parent_error_open=1
 
+" php documentor settings
+"let g:pdv_cfg_Package = 'YourPackage'
+let g:pdv_cfg_Author = g:AuthorName . " <" . g:AuthorEmail . ">"
+let g:pdv_cfg_ClassTags = ["package","author"]
+
 " AutoClose settings
 let g:AutoCloseOn=0
 "let g:AutoClosePairs= {'(': ')', '[': ']', '"': '"', "'": "'", '<': '>'}
@@ -132,7 +137,7 @@ nnoremap <C-l> <C-w>l
 " custom functionkey mapping
 map <silent> <F2> :pc<CR>
 map <silent> <F3> :CodeTidy<CR>
-map <silent> <F4> :PhpDoc<CR>
+map <silent> <F4> :call PhpDoc()<CR>
 map <silent> <F5> :NERDTreeToggle<CR>
 map <silent> <F6> :TagbarToggle<CR>
 map <silent> <F8> :call BufferList()<CR>
