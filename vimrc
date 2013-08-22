@@ -107,8 +107,8 @@ inoremap <C-tab> <c-x><c-o>
 "let g:SuperTabContextDefaultCompletionType = "<c-x><c-o>"
 
 " php settings
-let php_sql_query=0
-let php_htmlInStrings =0
+"let php_sql_query=0
+"let php_htmlInStrings =0
 let php_parent_error_close=1
 let php_parent_error_open=1
 
