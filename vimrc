@@ -15,6 +15,9 @@ let g:AuthorEmail="nobody@example.com"
 " DEFAULT WORKSPACE AREA
 let g:Workspace="~/devel/"
 
+" enable pathogen
+execute pathogen#infect()
+
 syntax on
 
 " set the colorsheme
