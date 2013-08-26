@@ -1,3 +1,6 @@
 [submodule "vimfiles/bundle/ack"]
 	path = vimfiles/bundle/ack
 	url = https://github.com/mileszs/ack.vim
+[submodule "vimfiles/bundle/airline"]
+	path = vimfiles/bundle/airline
+	url = https://github.com/bling/vim-airline
