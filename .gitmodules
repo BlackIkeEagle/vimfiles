@@ -25,3 +25,6 @@
 [submodule "vimfiles/bundle/nerdtree"]
 	path = vimfiles/bundle/nerdtree
 	url = https://github.com/scrooloose/nerdtree
+[submodule "vimfiles/bundle/php-documentor"]
+	path = vimfiles/bundle/php-documentor
+	url = https://github.com/sumpygump/php-documentor-vim
