@@ -19,3 +19,6 @@
 [submodule "vimfiles/bundle/multiple-cursors"]
 	path = vimfiles/bundle/multiple-cursors
 	url = https://github.com/terryma/vim-multiple-cursors
+[submodule "vimfiles/bundle/nerdcommenter"]
+	path = vimfiles/bundle/nerdcommenter
+	url = https://github.com/scrooloose/nerdcommenter
