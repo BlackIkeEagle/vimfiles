@@ -16,6 +16,7 @@ Plugins
 	* https://github.com/bling/vim-airline
 * Autoclose
 	* http://www.vim.org/scripts/script.php?script_id=2009
+	* https://github.com/Townk/vim-autoclose
 * bufferlist
 	* http://www.vim.org/scripts/script.php?script_id=1325
 * CtrlP

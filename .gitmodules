@@ -4,3 +4,6 @@
 [submodule "vimfiles/bundle/airline"]
 	path = vimfiles/bundle/airline
 	url = https://github.com/bling/vim-airline
+[submodule "vimfiles/bundle/autoclose"]
+	path = vimfiles/bundle/autoclose
+	url = https://github.com/Townk/vim-autoclose
