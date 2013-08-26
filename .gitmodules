@@ -31,3 +31,6 @@
 [submodule "vimfiles/bundle/php_getset"]
 	path = vimfiles/bundle/php_getset
 	url = https://github.com/EvanDotPro/php_getset.vim
+[submodule "vimfiles/bundle/syntastic"]
+	path = vimfiles/bundle/syntastic
+	url = https://github.com/scrooloose/syntastic
