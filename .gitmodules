@@ -43,3 +43,6 @@
 [submodule "vimfiles/bundle/lucius"]
 	path = vimfiles/bundle/lucius
 	url = https://github.com/jonathanfilip/vim-lucius
+[submodule "vimfiles/bundle/molokai"]
+	path = vimfiles/bundle/molokai
+	url = https://github.com/tomasr/molokai
