@@ -7,3 +7,6 @@
 [submodule "vimfiles/bundle/autoclose"]
 	path = vimfiles/bundle/autoclose
 	url = https://github.com/Townk/vim-autoclose
+[submodule "vimfiles/bundle/bufferlist"]
+	path = vimfiles/bundle/bufferlist
+	url = https://github.com/roblillack/vim-bufferlist

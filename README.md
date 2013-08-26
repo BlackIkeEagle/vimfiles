@@ -19,6 +19,7 @@ Plugins
 	* https://github.com/Townk/vim-autoclose
 * bufferlist
 	* http://www.vim.org/scripts/script.php?script_id=1325
+	* https://github.com/roblillack/vim-bufferlist
 * CtrlP
 	* http://www.vim.org/scripts/script.php?script_id=3736
 	* https://github.com/kien/ctrlp.vim
