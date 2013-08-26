@@ -40,3 +40,6 @@
 [submodule "vimfiles/bundle/tagbar"]
 	path = vimfiles/bundle/tagbar
 	url = https://github.com/majutsushi/tagbar
+[submodule "vimfiles/bundle/lucius"]
+	path = vimfiles/bundle/lucius
+	url = https://github.com/jonathanfilip/vim-lucius
