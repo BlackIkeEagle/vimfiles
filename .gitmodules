@@ -16,3 +16,6 @@
 [submodule "vimfiles/bundle/fugitive"]
 	path = vimfiles/bundle/fugitive
 	url = https://github.com/tpope/vim-fugitive
+[submodule "vimfiles/bundle/multiple-cursors"]
+	path = vimfiles/bundle/multiple-cursors
+	url = https://github.com/terryma/vim-multiple-cursors
