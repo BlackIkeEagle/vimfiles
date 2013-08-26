@@ -28,3 +28,6 @@
 [submodule "vimfiles/bundle/php-documentor"]
 	path = vimfiles/bundle/php-documentor
 	url = https://github.com/sumpygump/php-documentor-vim
+[submodule "vimfiles/bundle/php_getset"]
+	path = vimfiles/bundle/php_getset
+	url = https://github.com/EvanDotPro/php_getset.vim
