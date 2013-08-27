@@ -30,14 +30,15 @@ Plugins
 * idevtools (some handy functions)
 * multiple-cursors
 	* https://github.com/terryma/vim-multiple-cursors
-* nerd_commenter
+* nerdcommenter
 	* http://www.vim.org/scripts/script.php?script_id=1218
 	* https://github.com/scrooloose/nerdcommenter
-* nerd_tree
+* nerdtree
 	* http://www.vim.org/scripts/script.php?script_id=1658
 	* https://github.com/scrooloose/nerdtree
-* nerd_tree ack (found in nerdtree_plugin)
-	* http://www.vim.org/scripts/script.php?script_id=3357
+* nerdtree-ack
+	* http://www.vim.org/scripts/script.php?script_id=3878
+	* https://github.com/tyok/nerdtree-ack
 * php-doc
 	* http://www.vim.org/scripts/script.php?script_id=1355
 	* https://github.com/sumpygump/php-documentor-vim

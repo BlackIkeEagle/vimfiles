@@ -55,3 +55,6 @@
 [submodule "vimfiles/bundle/supertab"]
 	path = vimfiles/bundle/supertab
 	url = https://github.com/ervandew/supertab
+[submodule "vimfiles/bundle/nerdtree-ack"]
+	path = vimfiles/bundle/nerdtree-ack
+	url = https://github.com/tyok/nerdtree-ack
