@@ -52,3 +52,6 @@
 [submodule "vimfiles/bundle/javascript"]
 	path = vimfiles/bundle/javascript
 	url = https://github.com/pangloss/vim-javascript
+[submodule "vimfiles/bundle/supertab"]
+	path = vimfiles/bundle/supertab
+	url = https://github.com/ervandew/supertab

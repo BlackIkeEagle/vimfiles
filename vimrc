@@ -102,9 +102,6 @@ endif
 set diffopt=filler,iwhite,vertical
 
 " tab completion
-inoremap <tab> <c-n>
-inoremap <S-tab> <C-V><tab>
-inoremap <C-tab> <c-x><c-o>
 " SuperTab settings
 "let g:SuperTabDefaultCompletionType = "<c-x><c-o>"
 "let g:SuperTabContextDefaultCompletionType = "<c-x><c-o>"
