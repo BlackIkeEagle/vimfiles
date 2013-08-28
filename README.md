@@ -7,6 +7,8 @@ The config should be working fine on any OS.
 Plugins
 -------
 
+* pathogen
+	* https://github.com/tpope/vim-pathogen
 * Ack
 	* http://www.vim.org/scripts/script.php?script_id=2572
 	* https://github.com/mileszs/ack.vim
@@ -14,8 +16,10 @@ Plugins
 	* https://github.com/bling/vim-airline
 * Autoclose
 	* http://www.vim.org/scripts/script.php?script_id=2009
+	* https://github.com/Townk/vim-autoclose
 * bufferlist
 	* http://www.vim.org/scripts/script.php?script_id=1325
+	* https://github.com/roblillack/vim-bufferlist
 * CtrlP
 	* http://www.vim.org/scripts/script.php?script_id=3736
 	* https://github.com/kien/ctrlp.vim
@@ -26,18 +30,23 @@ Plugins
 * idevtools (some handy functions)
 * multiple-cursors
 	* https://github.com/terryma/vim-multiple-cursors
-* nerd_commenter
+* nerdcommenter
 	* http://www.vim.org/scripts/script.php?script_id=1218
 	* https://github.com/scrooloose/nerdcommenter
-* nerd_tree
+* nerdtree
 	* http://www.vim.org/scripts/script.php?script_id=1658
 	* https://github.com/scrooloose/nerdtree
-* nerd_tree ack (found in nerdtree_plugin)
-	* http://www.vim.org/scripts/script.php?script_id=3357
+* nerdtree-ack
+	* http://www.vim.org/scripts/script.php?script_id=3878
+	* https://github.com/tyok/nerdtree-ack
 * php-doc
 	* http://www.vim.org/scripts/script.php?script_id=1355
+	* https://github.com/sumpygump/php-documentor-vim
 * php_getset
 	* https://github.com/EvanDotPro/php_getset.vim
+* supertab
+	* http://www.vim.org/scripts/script.php?script_id=1643
+	* https://github.com/ervandew/supertab
 * syntastic
 	* http://www.vim.org/scripts/script.php?script_id=2736
 	* https://github.com/scrooloose/syntastic

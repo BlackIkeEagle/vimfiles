@@ -1,0 +1,60 @@
+[submodule "vimfiles/bundle/ack"]
+	path = vimfiles/bundle/ack
+	url = https://github.com/mileszs/ack.vim
+[submodule "vimfiles/bundle/airline"]
+	path = vimfiles/bundle/airline
+	url = https://github.com/bling/vim-airline
+[submodule "vimfiles/bundle/autoclose"]
+	path = vimfiles/bundle/autoclose
+	url = https://github.com/Townk/vim-autoclose
+[submodule "vimfiles/bundle/bufferlist"]
+	path = vimfiles/bundle/bufferlist
+	url = https://github.com/roblillack/vim-bufferlist
+[submodule "vimfiles/bundle/ctrlp"]
+	path = vimfiles/bundle/ctrlp
+	url = https://github.com/kien/ctrlp.vim
+[submodule "vimfiles/bundle/fugitive"]
+	path = vimfiles/bundle/fugitive
+	url = https://github.com/tpope/vim-fugitive
+[submodule "vimfiles/bundle/multiple-cursors"]
+	path = vimfiles/bundle/multiple-cursors
+	url = https://github.com/terryma/vim-multiple-cursors
+[submodule "vimfiles/bundle/nerdcommenter"]
+	path = vimfiles/bundle/nerdcommenter
+	url = https://github.com/scrooloose/nerdcommenter
+[submodule "vimfiles/bundle/nerdtree"]
+	path = vimfiles/bundle/nerdtree
+	url = https://github.com/scrooloose/nerdtree
+[submodule "vimfiles/bundle/php-documentor"]
+	path = vimfiles/bundle/php-documentor
+	url = https://github.com/sumpygump/php-documentor-vim
+[submodule "vimfiles/bundle/php_getset"]
+	path = vimfiles/bundle/php_getset
+	url = https://github.com/EvanDotPro/php_getset.vim
+[submodule "vimfiles/bundle/syntastic"]
+	path = vimfiles/bundle/syntastic
+	url = https://github.com/scrooloose/syntastic
+[submodule "vimfiles/bundle/tabular"]
+	path = vimfiles/bundle/tabular
+	url = https://github.com/godlygeek/tabular
+[submodule "vimfiles/bundle/tagbar"]
+	path = vimfiles/bundle/tagbar
+	url = https://github.com/majutsushi/tagbar
+[submodule "vimfiles/bundle/lucius"]
+	path = vimfiles/bundle/lucius
+	url = https://github.com/jonathanfilip/vim-lucius
+[submodule "vimfiles/bundle/molokai"]
+	path = vimfiles/bundle/molokai
+	url = https://github.com/tomasr/molokai
+[submodule "vimfiles/bundle/solarized"]
+	path = vimfiles/bundle/solarized
+	url = https://github.com/BlackIkeEagle/vim-colors-solarized
+[submodule "vimfiles/bundle/javascript"]
+	path = vimfiles/bundle/javascript
+	url = https://github.com/pangloss/vim-javascript
+[submodule "vimfiles/bundle/supertab"]
+	path = vimfiles/bundle/supertab
+	url = https://github.com/ervandew/supertab
+[submodule "vimfiles/bundle/nerdtree-ack"]
+	path = vimfiles/bundle/nerdtree-ack
+	url = https://github.com/tyok/nerdtree-ack

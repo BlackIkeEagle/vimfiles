@@ -51,3 +51,5 @@ sed -e "s#\(.*AuthorName=\).*#\1\"$authorname\"#" -e "s#\(.*AuthorEmail=\).*#\1\
 # put the vimfiles in place
 [ ! -d ~/.vim ] && mkdir ~/.vim
 cp -a ./vimfiles/* ~/.vim/
+# remove git leftovers
+find ~/.vim -name ".git*" -delete
