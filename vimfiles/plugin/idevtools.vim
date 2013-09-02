@@ -80,6 +80,6 @@ function! WorkspaceList(A,L,P)
 		return
 	endif
 
-	return system("cd ".g:Workspace." > \/dev\/null; find . -mindepth 1 -maxdepth 1 -type d | sed -e 's\/^\.\\\/\/\/' | sort")
+	return system("cd ".g:Workspace." > \/dev\/null; find . -mindepth 1 -maxdepth 3 -type d | sed -e 's\/^\.\\\/\/\/' | sort")
 endfunction
 
