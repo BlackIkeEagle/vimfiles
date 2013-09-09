@@ -5,6 +5,9 @@
 " nocompatible has to be the first of all ( use the real vimpower )
 set nocompatible
 
+" big nesting with new regexpengine is slooooooow
+set regexpengine=1
+
 " set leader key
 let mapleader = ','
 
