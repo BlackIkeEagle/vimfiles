@@ -6,7 +6,7 @@
 set nocompatible
 
 " big nesting with new regexpengine is slooooooow
-set regexpengine=1
+" set regexpengine=1
 
 " set leader key
 let mapleader = ','
