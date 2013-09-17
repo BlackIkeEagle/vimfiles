@@ -56,6 +56,9 @@ Plugins
 * tagbar
 	* http://www.vim.org/scripts/script.php?script_id=3465
 	* http://majutsushi.github.com/tagbar/
+* undotree
+	* http://www.vim.org/scripts/script.php?script_id=4177
+	* https://github.com/mbbill/undotree
 
 Colorschemes
 ------------
