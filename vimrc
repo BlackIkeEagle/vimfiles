@@ -144,6 +144,7 @@ map <silent> <F3> :CodeTidy<CR>
 map <silent> <F4> :call PhpDoc()<CR>
 map <silent> <F5> :NERDTreeToggle<CR>
 map <silent> <F6> :TagbarToggle<CR>
+map <silent> <F7> :UndotreeToggle<CR>
 map <silent> <F8> :call BufferList()<CR>
 map <silent> <F9> :noh<CR>
 map <silent> <F11> :set list!<CR>
