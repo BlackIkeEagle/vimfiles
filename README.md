@@ -23,6 +23,9 @@ Plugins
 * CtrlP
 	* http://www.vim.org/scripts/script.php?script_id=3736
 	* https://github.com/kien/ctrlp.vim
+* DrawIt
+	* http://www.vim.org/scripts/script.php?script_id=40
+	* https://github.com/vim-scripts/DrawIt
 * fugitive
 	* http://www.vim.org/scripts/script.php?script_id=2975
 	* https://github.com/tpope/vim-fugitive
