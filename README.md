@@ -36,12 +36,6 @@ Plugins
 * nerdcommenter
 	* http://www.vim.org/scripts/script.php?script_id=1218
 	* https://github.com/scrooloose/nerdcommenter
-* nerdtree
-	* http://www.vim.org/scripts/script.php?script_id=1658
-	* https://github.com/scrooloose/nerdtree
-* nerdtree-ack
-	* http://www.vim.org/scripts/script.php?script_id=3878
-	* https://github.com/tyok/nerdtree-ack
 * php-doc
 	* http://www.vim.org/scripts/script.php?script_id=1355
 	* https://github.com/sumpygump/php-documentor-vim
@@ -62,6 +56,8 @@ Plugins
 * undotree
 	* http://www.vim.org/scripts/script.php?script_id=4177
 	* https://github.com/mbbill/undotree
+* vinegar
+	* https://github.com/tpope/vim-vinegar
 
 Colorschemes
 ------------
