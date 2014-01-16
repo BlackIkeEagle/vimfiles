@@ -137,7 +137,7 @@ cmap w!! w !sudo tee % >/dev/null
 map <silent> <F2> :pc<CR>
 map <silent> <F3> :CodeTidy<CR>
 map <silent> <F4> :call PhpDoc()<CR>
-"map <silent> <F5> :NERDTreeToggle<CR>
+map <silent> <F5> :CtrlP<CR>
 map <silent> <F6> :TagbarToggle<CR>
 map <silent> <F7> :UndotreeToggle<CR>
 map <silent> <F8> :call BufferList()<CR>
