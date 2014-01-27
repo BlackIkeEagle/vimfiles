@@ -72,7 +72,7 @@ function! Workspace(project)
 	if filereadable('./.vimrc')
 		exe 'source ./.vimrc'
 	endif
-	"NERDTree
+	NERDTree
 endfunction
 
 function! WorkspaceList(A,L,P)
