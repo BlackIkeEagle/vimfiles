@@ -92,7 +92,6 @@ Syntax/Filetype
 	* https://github.com/pangloss/vim-javascript
 * jquery
 	* http://www.vim.org/scripts/script.php?script_id=2416
-* php (vim distributed one + docblocks)
 * vcl (varnish configuration language)
 * xt (xdebug)
 	* https://github.com/xdebug/xdebug/tree/master/contrib
