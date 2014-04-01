@@ -128,6 +128,9 @@ let g:AutoCloseOn=0
 let g:syntastic_enable_signs=1
 let g:syntastic_auto_loc_list=1
 
+" ack.vim with the_silver_searcher
+let g:ackprg = 'ag --nogroup --nocolor --column'
+
 " extra keymappings
 " sudo save (when one forgets to sudo vim)
 cmap w!! w !sudo tee % >/dev/null

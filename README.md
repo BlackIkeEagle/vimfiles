@@ -96,3 +96,8 @@ Syntax/Filetype
 * xt (xdebug)
 	* https://github.com/xdebug/xdebug/tree/master/contrib
 
+Notes
+-----
+
+* vimrc contains a change to use [the_silver_searcher](https://github.com/ggreer/the_silver_searcher)
+  with the ack plugin. install on archlinux: `$ pacman -S the_silver_searcher`
