@@ -64,3 +64,6 @@
 [submodule "vimfiles/bundle/DrawIt"]
 	path = vimfiles/bundle/DrawIt
 	url = https://github.com/vim-scripts/DrawIt.git
+[submodule "vimfiles/bundle/vdebug"]
+	path = vimfiles/bundle/vdebug
+	url = https://github.com/joonty/vdebug.git

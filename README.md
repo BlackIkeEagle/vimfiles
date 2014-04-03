@@ -62,6 +62,9 @@ Plugins
 * undotree
 	* http://www.vim.org/scripts/script.php?script_id=4177
 	* https://github.com/mbbill/undotree
+* vdebug
+	* http://www.vim.org/scripts/script.php?script_id=4170
+	* https://github.com/joonty/vdebug
 
 Colorschemes
 ------------
