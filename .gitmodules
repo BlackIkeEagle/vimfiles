@@ -67,3 +67,6 @@
 [submodule "vimfiles/bundle/vdebug"]
 	path = vimfiles/bundle/vdebug
 	url = https://github.com/joonty/vdebug.git
+[submodule "vimfiles/bundle/sauce"]
+	path = vimfiles/bundle/sauce
+	url = https://github.com/joonty/vim-sauce.git

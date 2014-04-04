@@ -47,6 +47,9 @@ Plugins
 	* https://github.com/sumpygump/php-documentor-vim
 * php_getset
 	* https://github.com/EvanDotPro/php_getset.vim
+* sauce
+	* http://www.vim.org/scripts/script.php?script_id=3992
+	* https://github.com/joonty/vim-sauce
 * supertab
 	* http://www.vim.org/scripts/script.php?script_id=1643
 	* https://github.com/ervandew/supertab
