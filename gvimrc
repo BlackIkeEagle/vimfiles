@@ -22,7 +22,11 @@ map <S-Insert> "+gP
 imap <S-Insert> <MiddleMouse>
 cmap <S-Insert> <C-R>+
 
-map <silent> <F12> :silent exec '!gvim'<CR>
+if has("gui_gtk2")
+	map <silent> <F12> :silent exec '!gvim'<CR>
+elseif has("gui_qt")
+	map <silent> <F12> :silent exec '!qvim'<CR>
+endif
 
 if version >= 702
 	autocmd BufWinLeave * call clearmatches()
