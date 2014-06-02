@@ -52,16 +52,15 @@ set history=1000
 " backspace stuff
 set backspace=indent,eol,start
 
-" some weird stuff to make it faster
-set nocursorcolumn
-set nocursorline
+" make higlighting faster
+set nocursorcolumn " dont change bg color column on cursorposition
+set nocursorline   " dont change bg color line on cursorpostion
 
 " allow project specific settings
 set secure
 
 " some interface options
 set ruler              " show cursorposition
-set cursorline         " highlight current line
 set showcmd            " display incomplete commands
 set incsearch          " incremental searching
 set hlsearch           " highlight searchresult
