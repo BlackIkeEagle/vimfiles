@@ -5,6 +5,9 @@
 " nocompatible has to be the first of all ( use the real vimpower )
 set nocompatible
 
+" dont do matchparen
+let loaded_matchparen = 1
+
 " big nesting with new regexpengine is slooooooow
 " set regexpengine=1
 
