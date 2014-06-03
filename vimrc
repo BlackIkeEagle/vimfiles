@@ -103,7 +103,6 @@ endif
 " diff settings
 set diffopt=filler,iwhite,vertical
 
-" tab completion
 " SuperTab settings
 "let g:SuperTabDefaultCompletionType = "<c-x><c-o>"
 "let g:SuperTabContextDefaultCompletionType = "<c-x><c-o>"
