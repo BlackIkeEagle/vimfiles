@@ -63,17 +63,17 @@ set nocursorline   " dont change bg color line on cursorpostion
 set secure
 
 " some interface options
-set ruler              " show cursorposition
-set showcmd            " display incomplete commands
-set nowrap             " dont wrap long lines
-set incsearch          " incremental searching
-set hlsearch           " highlight searchresult
-set number             " show linennumbers
-set linespace=0        " stick together (usefull for nfo files)
-set hidden             " hide buffer even when changed
-set scrolloff=4        " keep at least 4 lines above or below the cursor
-set colorcolumn=80,120 " show column 80 and 120 in different color
-set wildmode=longest,full  " command completion longest common part, then all.
+set ruler                 " show cursorposition
+set showcmd               " display incomplete commands
+set nowrap                " dont wrap long lines
+set incsearch             " incremental searching
+set hlsearch              " highlight searchresult
+set number                " show linennumbers
+set linespace=0           " stick together (usefull for nfo files)
+set hidden                " hide buffer even when changed
+set scrolloff=4           " keep at least 4 lines above or below the cursor
+set colorcolumn=80,120    " show column 80 and 120 in different color
+set wildmode=longest,full " command completion longest common part, then all.
 
 " fileformat stuff
 "set fileformat=unix
