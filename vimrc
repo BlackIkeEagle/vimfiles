@@ -130,12 +130,29 @@ let g:AutoCloseOn=0
 let g:syntastic_enable_signs=1
 let g:syntastic_auto_loc_list=1
 
+" Ack.vim
 if executable('ag')
 	" ack.vim with the_silver_searcher
 	let g:ackprg = 'ag --nogroup --nocolor --column --smart-case'
 elseif executable('ack-grep')
 	" ack.vim with renamed ack
 	let g:ackprg="ack-grep -H --nocolor --nogroup --column"
+endif
+
+" CtrlP
+let g:ctrlp_working_path_mode = 'ra'
+let g:ctrlp_custom_ignore = {
+	\ 'dir':  '\.git$\|\.hg$\|\.svn$',
+	\ 'file': '\.exe$\|\.so$\|\.dll$\|\.pyc$' }
+
+if executable('ag')
+	let s:ctrlp_fallback = 'ag %s --nocolor -l -g ""'
+elseif executable('ack-grep')
+	let s:ctrlp_fallback = 'ack-grep %s --nocolor -f'
+elseif executable('ack')
+	let s:ctrlp_fallback = 'ack %s --nocolor -f'
+else
+	let s:ctrlp_fallback = 'find %s -type f'
 endif
 
 " extra keymappings
