@@ -130,8 +130,13 @@ let g:AutoCloseOn=0
 let g:syntastic_enable_signs=1
 let g:syntastic_auto_loc_list=1
 
-" ack.vim with the_silver_searcher
-let g:ackprg = 'ag --nogroup --nocolor --column'
+if executable('ag')
+	" ack.vim with the_silver_searcher
+	let g:ackprg = 'ag --nogroup --nocolor --column --smart-case'
+elseif executable('ack-grep')
+	" ack.vim with renamed ack
+	let g:ackprg="ack-grep -H --nocolor --nogroup --column"
+endif
 
 " extra keymappings
 " sudo save (when one forgets to sudo vim)
