@@ -40,15 +40,14 @@ fi
 
 echo "Creating tags for directory '$dir' using alias '$name'"
 cd "$dir"
-find -name '*.php' -print \
-	| ctags -f "$tagsfolder/$name" \
-	-L - -R \
+
+ctags -f "$tagsfolder/$name" \
+	-R \
 	--extra=+f \
 	--exclude="\.svn" \
 	--exclude="\.git" \
 	--exclude="\.hg" \
 	--totals=yes \
 	--tag-relative=yes \
-	--fields=+afkst \
-	--PHP-kinds=+cf
+	--fields=+afkst
 echo "[DONE]"
