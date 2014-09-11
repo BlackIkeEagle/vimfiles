@@ -62,12 +62,16 @@ Plugins
 * tagbar
 	* http://www.vim.org/scripts/script.php?script_id=3465
 	* http://majutsushi.github.com/tagbar/
+* ultisnips
+	* https://github.com/SirVer/ultisnips
 * undotree
 	* http://www.vim.org/scripts/script.php?script_id=4177
 	* https://github.com/mbbill/undotree
 * vdebug
 	* http://www.vim.org/scripts/script.php?script_id=4170
 	* https://github.com/joonty/vdebug
+* vim-snippets (contains snippets for ultisnips and snipmate)
+	* https://github.com/honza/vim-snippets
 
 Colorschemes
 ------------

@@ -70,3 +70,9 @@
 [submodule "vimfiles/bundle/sauce"]
 	path = vimfiles/bundle/sauce
 	url = https://github.com/joonty/vim-sauce.git
+[submodule "vimfiles/bundle/vim-snippets"]
+	path = vimfiles/bundle/vim-snippets
+	url = https://github.com/honza/vim-snippets.git
+[submodule "vimfiles/bundle/ultisnips"]
+	path = vimfiles/bundle/ultisnips
+	url = https://github.com/SirVer/ultisnips.git
