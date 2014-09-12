@@ -1,0 +1,18 @@
+priority -60
+
+snippet ak_migration "Akrabat Migration"
+class ${1:`!p snip.rv=re.sub('[0-9]*-', '', snip.fn.split('.')[0])`} extends Akrabat_Db_Schema_AbstractChange
+{
+	public function up()
+	{
+		$sql = "$2";
+		$this->_db->query($sql);
+	}
+
+	public function down()
+	{
+		$sql = "$3";
+		$this->_db->query($sql);
+	}
+}
+endsnippet
