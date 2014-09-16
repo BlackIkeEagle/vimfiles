@@ -42,9 +42,6 @@ Plugins
 * nerdtree-ack
 	* http://www.vim.org/scripts/script.php?script_id=3878
 	* https://github.com/tyok/nerdtree-ack
-* php-doc
-	* http://www.vim.org/scripts/script.php?script_id=1355
-	* https://github.com/sumpygump/php-documentor-vim
 * php_getset
 	* https://github.com/EvanDotPro/php_getset.vim
 * sauce
