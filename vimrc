@@ -118,6 +118,9 @@ let php_parent_error_open=1
 let g:pdv_cfg_Author = g:AuthorName . " <" . g:AuthorEmail . ">"
 let g:pdv_cfg_ClassTags = ["package","author"]
 
+" snips author
+let g:snips_author = g:AuthorName . " <" . g:AuthorEmail . ">"
+
 " AutoClose settings
 let g:AutoCloseOn=0
 "let g:AutoClosePairs= {'(': ')', '[': ']', '"': '"', "'": "'", '<': '>'}
