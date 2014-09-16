@@ -158,16 +158,12 @@ endif
 " sudo save (when one forgets to sudo vim)
 cmap w!! w !sudo tee % >/dev/null
 
-" custom functionkey mapping
-map <silent> <F1> :NERDTreeToggle<CR>
-map <silent> <F2> :TagbarToggle<CR>
-map <silent> <F3> :UndotreeToggle<CR>
-map <silent> <F4> :call BufferList()<CR>
-map <silent> <F6> :pc<CR>
-map <silent> <F7> :CodeTidy<CR>
-map <silent> <F8> :call PhpDoc()<CR>
-map <silent> <F9> :noh<CR>
-map <silent> <F11> :set list!<CR>
+" custom mapping
+nnoremap <silent> <Leader>nt :NERDTreeToggle<CR>
+nnoremap <silent> <Leader>tb :TagbarToggle<CR>
+nnoremap <silent> <Leader>ut :UndotreeToggle<CR>
+nnoremap <silent> <Leader>bl :call BufferList()<CR>
+nnoremap <silent> <Leader>lt :set list!<CR>
 
 " nfo shit
 au BufReadPre *.nfo set fileencodings=cp437
