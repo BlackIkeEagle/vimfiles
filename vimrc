@@ -160,6 +160,7 @@ cmap w!! w !sudo tee % >/dev/null
 
 " custom mapping
 nnoremap <silent> <Leader>nt :NERDTreeToggle<CR>
+nnoremap <silent> <Leader>nf :NERDTreeFind<CR>
 nnoremap <silent> <Leader>tb :TagbarToggle<CR>
 nnoremap <silent> <Leader>ut :UndotreeToggle<CR>
 nnoremap <silent> <Leader>bl :call BufferList()<CR>
