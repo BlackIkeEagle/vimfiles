@@ -113,11 +113,6 @@ set diffopt=filler,iwhite,vertical
 let php_parent_error_close=1
 let php_parent_error_open=1
 
-" php documentor settings
-"let g:pdv_cfg_Package = 'YourPackage'
-let g:pdv_cfg_Author = g:AuthorName . " <" . g:AuthorEmail . ">"
-let g:pdv_cfg_ClassTags = ["package","author"]
-
 " snips author
 let g:snips_author = g:AuthorName . " <" . g:AuthorEmail . ">"
 
