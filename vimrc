@@ -91,7 +91,7 @@ filetype indent on
 set tabstop=4     " a tab found in a file will be represented with 4 columns
 set softtabstop=4 " when in insert mode <tab> is pressed move 4 columns
 set shiftwidth=4  " indentation is 4 columns
-set noexpandtab   " tabs are tabs, do not replace with spaces
+set expandtab     " tabs are tabs, do not replace with spaces
 
 " statusline stuff
 set laststatus=2
