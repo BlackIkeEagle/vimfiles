@@ -6,7 +6,7 @@
 set nocompatible
 
 " dont do matchparen
-let loaded_matchparen = 1
+"let loaded_matchparen = 1
 
 " big nesting with new regexpengine is slooooooow
 " set regexpengine=1
