@@ -31,6 +31,8 @@ Plugins
 	* https://github.com/tpope/vim-fugitive
 * idevdiff (simple diff buffer stuff)
 * idevtools (some handy functions)
+* MatchTagAlways
+    * https://github.com/Valloric/MatchTagAlways
 * multiple-cursors
 	* https://github.com/terryma/vim-multiple-cursors
 * nerdcommenter

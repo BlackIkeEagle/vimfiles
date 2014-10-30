@@ -73,3 +73,6 @@
 [submodule "vimfiles/bundle/ultisnips"]
 	path = vimfiles/bundle/ultisnips
 	url = https://github.com/SirVer/ultisnips.git
+[submodule "vimfiles/bundle/MatchTagAlways"]
+	path = vimfiles/bundle/MatchTagAlways
+	url = https://github.com/Valloric/MatchTagAlways.git
