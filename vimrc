@@ -99,6 +99,8 @@ set laststatus=2
 if has("gui_gtk2") || has("gui_qt")
 	let g:airline_powerline_fonts=1
 endif
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#tab_nr_type = 1
 
 " diff settings
 set diffopt=filler,iwhite,vertical
