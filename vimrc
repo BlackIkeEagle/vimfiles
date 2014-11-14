@@ -23,6 +23,8 @@ let g:Workspace="~/devel/"
 
 " enable pathogen
 execute pathogen#infect()
+" build helptags
+execute pathogen#helptags()
 
 syntax on
 
