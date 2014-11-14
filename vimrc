@@ -149,6 +149,16 @@ else
 	let s:ctrlp_fallback = 'find %s -type f'
 endif
 
+" MatchTagAlways
+let g:mta_filetypes = {
+    \ 'html' : 1,
+    \ 'xhtml' : 1,
+    \ 'xml' : 1,
+    \ 'jinja' : 1,
+    \ 'phtml' : 1,
+    \ 'twig' : 1,
+    \}
+
 " extra keymappings
 " sudo save (when one forgets to sudo vim)
 cmap w!! w !sudo tee % >/dev/null
