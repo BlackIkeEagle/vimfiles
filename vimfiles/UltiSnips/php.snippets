@@ -16,3 +16,8 @@ class ${1:`!p snip.rv=re.sub('[0-9]*-', '', snip.fn.split('.')[0])`} extends Akr
 	}
 }
 endsnippet
+
+snippet ak_sql "Akrabat Migration sql"
+$sql = "$1";
+$this->_db->query($sql);
+endsnippet
