@@ -163,6 +163,9 @@ let g:mta_filetypes = {
     \ 'twig' : 1,
     \}
 
+" vim-signify
+let g:signify_vcs_list = [ 'git', 'hg', 'svn' ]
+
 " extra keymappings
 " sudo save (when one forgets to sudo vim)
 cmap w!! w !sudo tee % >/dev/null

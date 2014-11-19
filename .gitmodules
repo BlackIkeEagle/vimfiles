@@ -76,3 +76,6 @@
 [submodule "vimfiles/bundle/MatchTagAlways"]
 	path = vimfiles/bundle/MatchTagAlways
 	url = https://github.com/Valloric/MatchTagAlways.git
+[submodule "vimfiles/bundle/vim-signify"]
+	path = vimfiles/bundle/vim-signify
+	url = https://github.com/mhinz/vim-signify.git

@@ -49,6 +49,8 @@ Plugins
 * sauce
 	* http://www.vim.org/scripts/script.php?script_id=3992
 	* https://github.com/joonty/vim-sauce
+* signify
+    * https://github.com/mhinz/vim-signify
 * supertab
 	* http://www.vim.org/scripts/script.php?script_id=1643
 	* https://github.com/ervandew/supertab
