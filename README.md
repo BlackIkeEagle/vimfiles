@@ -91,6 +91,8 @@ Colorschemes
 	* http://www.vim.org/scripts/script.php?script_id=3520
 	* https://github.com/altercation/vim-colors-solarized
 	* https://github.com/BlackIkeEagle/solarized (my changes)
+* base16
+    * https://github.com/chriskempson/base16-vim
 
 Syntax/Filetype
 ---------------
