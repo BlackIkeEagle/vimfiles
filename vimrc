@@ -67,7 +67,8 @@ set secure
 " some interface options
 set ruler                 " show cursorposition
 set showcmd               " display incomplete commands
-set nowrap                " dont wrap long lines
+"set nowrap                " dont wrap long lines
+set wrap                  " wrap long lines
 set incsearch             " incremental searching
 set hlsearch              " highlight searchresult
 set number                " show linennumbers
