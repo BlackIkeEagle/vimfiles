@@ -1,12 +1,12 @@
 " BlackEagles gvimrc for Linux && Windows
 "
-" (c) 2010 - 2014
+" (c) 2010 - 2015
 
 set guioptions=aiA "dont show toolbar
 
 " set the colorsheme
-colorscheme molokai
-set background=dark
+colorscheme solarized
+set background=light
 
 " vim size stuff
 set lines=60 columns=100
