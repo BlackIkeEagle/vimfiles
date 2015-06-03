@@ -93,6 +93,8 @@ Colorschemes
 	* https://github.com/BlackIkeEagle/solarized (my changes)
 * base16
     * https://github.com/chriskempson/base16-vim
+* PaperColor
+    * https://github.com/NLKNguyen/papercolor-theme
 
 Syntax/Filetype
 ---------------
