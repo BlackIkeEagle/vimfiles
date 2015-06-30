@@ -5,11 +5,8 @@
 set guioptions=aiA "dont show toolbar
 
 " set the colorsheme
-colorscheme PaperColor
+colorscheme solarized
 set background=light
-
-" set papercolor airline
-AirlineTheme papercolor
 
 " vim size stuff
 set lines=60 columns=100
