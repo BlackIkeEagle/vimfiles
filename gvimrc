@@ -4,10 +4,6 @@
 
 set guioptions=aiA "dont show toolbar
 
-" set the colorsheme
-colorscheme solarized
-set background=light
-
 " vim size stuff
 set lines=60 columns=100
 
