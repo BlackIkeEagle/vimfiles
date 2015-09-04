@@ -99,9 +99,7 @@ set expandtab     " tabs are tabs, do not replace with spaces
 " statusline stuff
 set laststatus=2
 "set statusline=%<%F%h\ %(%y\ %)[%{&ff}]\ %{\"[\".(&fenc==\"\"?&enc:&fenc).\"]\"}\ %([%R%M]\ %)%=#%n\ %l/%L,%c%V\ %P
-if has("gui_gtk2") || has("gui_qt")
-	let g:airline_powerline_fonts=1
-endif
+let g:airline_powerline_fonts=1
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#tab_nr_type = 1
 let g:airline#extensions#whitespace#enabled = 0
