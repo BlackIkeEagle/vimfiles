@@ -91,3 +91,6 @@
 [submodule "vimfiles/bundle/yowish"]
 	path = vimfiles/bundle/yowish
 	url = https://github.com/KabbAmine/yowish.vim.git
+[submodule "vimfiles/bundle/QFGrep"]
+	path = vimfiles/bundle/QFGrep
+	url = https://github.com/sk1418/QFGrep.git

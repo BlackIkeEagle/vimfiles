@@ -48,6 +48,8 @@ Plugins
 	* https://github.com/tyok/nerdtree-ack
 * php_getset
 	* https://github.com/EvanDotPro/php_getset.vim
+* QFGRep
+    * https://github.com/sk1418/QFGrep
 * sauce
 	* http://www.vim.org/scripts/script.php?script_id=3992
 	* https://github.com/joonty/vim-sauce
