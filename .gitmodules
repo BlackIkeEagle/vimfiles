@@ -88,3 +88,6 @@
 [submodule "vimfiles/bundle/i3-vim-syntax"]
 	path = vimfiles/bundle/i3-vim-syntax
 	url = https://github.com/PotatoesMaster/i3-vim-syntax.git
+[submodule "vimfiles/bundle/yowish"]
+	path = vimfiles/bundle/yowish
+	url = https://github.com/KabbAmine/yowish.vim.git

@@ -97,6 +97,8 @@ Colorschemes
     * https://github.com/chriskempson/base16-vim
 * PaperColor
     * https://github.com/NLKNguyen/papercolor-theme
+* yowish
+    * https://github.com/KabbAmine/yowish.vim
 
 Syntax/Filetype
 ---------------
