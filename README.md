@@ -75,6 +75,8 @@ Plugins
 	* https://github.com/joonty/vdebug
 * vim-snippets (contains snippets for ultisnips and snipmate)
 	* https://github.com/honza/vim-snippets
+* vim-markdown
+    * https://github.com/gabrielelana/vim-markdown
 
 Colorschemes
 ------------
