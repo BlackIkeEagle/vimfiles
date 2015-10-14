@@ -29,8 +29,6 @@ Plugins
 * fugitive
 	* http://www.vim.org/scripts/script.php?script_id=2975
 	* https://github.com/tpope/vim-fugitive
-* i3-vim-syntax
-    * https://github.com/PotatoesMaster/i3-vim-syntax
 * idevdiff (simple diff buffer stuff)
 * idevtools (some handy functions)
 * MatchTagAlways
@@ -109,6 +107,8 @@ Syntax/Filetype
 	* http://xant.us/extjs/javascript.vim
 * html
 	* https://github.com/pangloss/vim-javascript
+* i3-vim-syntax
+    * https://github.com/PotatoesMaster/i3-vim-syntax
 * javascript
 	* https://github.com/pangloss/vim-javascript
 * jquery
