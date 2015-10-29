@@ -3,6 +3,7 @@
 # defaults
 gvimrc=0
 clean=0
+nvim=0
 
 authorname=""
 authoremail=""
@@ -12,19 +13,21 @@ function usage() {
 	echo "use: $0 [options]"
 	echo "  -a  author name (required)"
 	echo "  -e  author email (required)"
-	echo "  -g  also install gvimrc"
+    echo "  -g  also install gvimrc (ignore for nvim)"
 	echo "  -c  do clean installation"
+    echo "  -n  install for nvim"
 	echo "  -h  show this usage"
 	exit 0
 }
 
 # process options
-while getopts ":a:e:gch" arg; do
+while getopts ":a:e:gcnh" arg; do
 	case "$arg" in
 		a) authorname="$OPTARG" ;;
 		e) authoremail="$OPTARG" ;;
 		g) gvimrc=1 ;;
 		c) clean=1 ;;
+        n) nvim=1 ;;
 		h) usage ;;
 	esac
 done
@@ -35,21 +38,31 @@ if [ "$authorname" = "" ] || [ "$authoremail" = "" ]; then
 	usage
 fi
 
-# clean current vim stuff
-if [ $clean -ne 0 ]; then
-	rm -f ~/.gvimrc
-	rm -f ~/.vimrc
-	rm -rf ~/.vim
+if [[ $nvim -eq 1 ]]; then
+    configpath="$HOME/.config/nvim"
+    vimrcfile="$HOME/.config/nvim/init.vim"
+    gvimrcfile=""
+else
+    configpath="$HOME/.vim"
+    vimrcfile="$HOME/.vimrc"
+    gvimrcfile="$HOME/.gvimrc"
 fi
 
-# copy new vimrc
-cp -a ./vimrc ~/.vimrc
-# set authorname and authoremail in vimrc
-sed -e "s#\(.*AuthorName=\).*#\1\"$authorname\"#" -e "s#\(.*AuthorEmail=\).*#\1\"$authoremail\"#" -i ~/.vimrc
-# copy gvimrc when requested
-[ $gvimrc -eq 1 ] && cp -a ./gvimrc ~/.gvimrc
+# clean current vim stuff
+if [[ $clean -ne 0 ]]; then
+    [[ "$configpath" != "" ]] && rm -rf "$configpath"
+    [[ "$vimrcfile" != "" ]] && rm -f "$vimrcfile"
+    [[ "$gvimrcfile" != "" ]] && rm -f "$gvimrcfile"
+fi
+
 # put the vimfiles in place
-[ ! -d ~/.vim ] && mkdir ~/.vim
-cp -a ./vimfiles/* ~/.vim/
+[[ ! -d "$configpath" ]] && mkdir "$configpath"
+cp -a ./vimfiles/* "$configpath/"
+# copy new vimrc
+cp -a ./vimrc "$vimrcfile"
+# set authorname and authoremail in vimrc
+sed -e "s#\(.*AuthorName=\).*#\1\"$authorname\"#" -e "s#\(.*AuthorEmail=\).*#\1\"$authoremail\"#" -i "$vimrcfile"
+# copy gvimrc when requested
+[[ $gvimrc -eq 1 ]] && [[ "$gvimrcfile" != "" ]] && cp -a ./gvimrc "$gvimrcfile"
 # remove git leftovers
-find ~/.vim -name ".git*" -delete
+find "$configpath" -name ".git*" -delete
