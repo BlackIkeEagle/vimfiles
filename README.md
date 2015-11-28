@@ -81,26 +81,13 @@ Plugins
 Colorschemes
 ------------
 
-* CodeFactory
-	* http://www.vim.org/scripts/script.php?script_id=3079
-* Lucius
-	* http://www.vim.org/scripts/script.php?script_id=2536
-	* https://github.com/jonathanfilip/vim-lucius
 * Molokai
 	* http://www.vim.org/scripts/script.php?script_id=2340
 	* https://github.com/tomasr/molokai
-* Peaksea
-	* http://www.vim.org/scripts/script.php?script_id=760
 * Solarized
 	* http://www.vim.org/scripts/script.php?script_id=3520
 	* https://github.com/altercation/vim-colors-solarized
 	* https://github.com/BlackIkeEagle/solarized (my changes)
-* base16
-    * https://github.com/chriskempson/base16-vim
-* PaperColor
-    * https://github.com/NLKNguyen/papercolor-theme
-* yowish
-    * https://github.com/KabbAmine/yowish.vim
 
 Syntax/Filetype
 ---------------

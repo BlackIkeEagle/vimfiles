@@ -6,6 +6,21 @@
 set nocompatible
 
 """"
+" Plug config
+""""
+
+call plug#begin('~/.vim/plugged')
+
+" colors
+Plug 'tomasr/molokai'
+Plug 'BlackIkeEagle/solarized'
+
+" filetype ?
+
+" plugins
+call plug#end()
+
+""""
 " default vim settings
 """""
 
@@ -153,13 +168,6 @@ nnoremap <silent> <Leader>tb :TagbarToggle<CR>
 nnoremap <silent> <Leader>ut :UndotreeToggle<CR>
 nnoremap <silent> <Leader>bl :call BufferList()<CR>
 nnoremap <silent> <Leader>lt :set list!<CR>
-
-""""
-" Plug config
-""""
-
-call plug#begin('~/.vim/plugged')
-call plug#end()
 
 if version >= 702
 	autocmd BufWinLeave * call clearmatches()
