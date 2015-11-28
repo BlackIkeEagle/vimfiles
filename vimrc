@@ -13,7 +13,7 @@ call plug#begin('~/.vim/plugged')
 
 " colors
 Plug 'tomasr/molokai'
-Plug 'BlackIkeEagle/solarized'
+Plug 'BlackIkeEagle/vim-colors-solarized'
 
 " filetype ?
 
