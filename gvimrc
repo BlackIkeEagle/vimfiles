@@ -1,4 +1,4 @@
-" BlackEagles gvimrc for Linux && Windows
+" BlackEagles gvimrc for Linux and other unix flavours
 "
 " (c) 2010 - 2015
 

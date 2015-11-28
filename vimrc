@@ -1,4 +1,4 @@
-" BlackEagles vimrc for Linux && Windows
+" BlackEagles vimrc for Linux and other unix flavours
 "
 " (c) 2010 - 2015
 
@@ -26,6 +26,27 @@ NeoBundle 'BlackIkeEagle/vim-colors-solarized' "{{{
 " filetype
 
 " plugins
+NeoBundle 'Shougo/vimproc.vim', {
+    \ 'build': {
+        \ 'mac': 'make -f make_mac.mak',
+        \ 'unix': 'make -f make_unix.mak',
+        \ 'cygwin': 'make -f make_cygwin.mak',
+    \ },
+\ }
+NeoBundle 'Shougo/unite.vim' "{{{
+let g:unite_source_history_yank_enable=1
+let g:unite_source_rec_max_cache_files=5000
+
+if executable('ag')
+    let g:unite_source_grep_command='ag'
+    let g:unite_source_grep_default_opts='--nocolor --line-numbers --nogroup -S -C4'
+    let g:unite_source_grep_recursive_opt=''
+elseif executable('ack')
+    let g:unite_source_grep_command='ack'
+    let g:unite_source_grep_default_opts='--no-heading --no-color -C4'
+    let g:unite_source_grep_recursive_opt=''
+endif
+"}}}
 
 call neobundle#end()
 
@@ -132,36 +153,36 @@ au BufReadPost *.diz set fileencodings=utf-8,ucs-bom,cp1250
 """"
 
 " airline
-let g:airline_powerline_fonts=1
-let g:airline#extensions#tabline#enabled = 1
-let g:airline#extensions#tabline#tab_nr_type = 1
-let g:airline#extensions#whitespace#enabled = 0
+"let g:airline_powerline_fonts=1
+"let g:airline#extensions#tabline#enabled = 1
+"let g:airline#extensions#tabline#tab_nr_type = 1
+"let g:airline#extensions#whitespace#enabled = 0
 
 " syntastic
-let g:syntastic_enable_signs=1
-let g:syntastic_auto_loc_list=1
+"let g:syntastic_enable_signs=1
+"let g:syntastic_auto_loc_list=1
 
 " Ack.vim
-if executable('ag')
+"if executable('ag')
 	" ack.vim with the_silver_searcher
-	let g:ackprg = 'ag --nogroup --nocolor --column --smart-case'
-elseif executable('ack-grep')
+"	let g:ackprg = 'ag --nogroup --nocolor --column --smart-case'
+"elseif executable('ack-grep')
 	" ack.vim with renamed ack
-	let g:ackprg="ack-grep -H --nocolor --nogroup --column"
-endif
+"	let g:ackprg="ack-grep -H --nocolor --nogroup --column"
+"endif
 
 " MatchTagAlways
-let g:mta_filetypes = {
-    \ 'html' : 1,
-    \ 'xhtml' : 1,
-    \ 'xml' : 1,
-    \ 'jinja' : 1,
-    \ 'phtml' : 1,
-    \ 'twig' : 1,
-    \}
+"let g:mta_filetypes = {
+"    \ 'html' : 1,
+"    \ 'xhtml' : 1,
+"    \ 'xml' : 1,
+"    \ 'jinja' : 1,
+"    \ 'phtml' : 1,
+"    \ 'twig' : 1,
+"    \}
 
 " vim-signify
-let g:signify_vcs_list = [ 'git', 'hg', 'svn' ]
+"let g:signify_vcs_list = [ 'git', 'hg', 'svn' ]
 
 """"
 " extra keymappings
