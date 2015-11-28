@@ -5,6 +5,14 @@
 " nocompatible has to be the first of all ( use the real vimpower )
 set nocompatible
 
+""""
+" Plug config
+""""
+
+""""
+" default vim settings
+"""""
+
 " dont do matchparen
 "let loaded_matchparen = 1
 
@@ -13,20 +21,6 @@ set nocompatible
 
 " set leader key
 let mapleader = ','
-
-" WHO ARE YOU ?
-let g:AuthorName="Nobody"
-let g:AuthorEmail="nobody@example.com"
-
-" DEFAULT WORKSPACE AREA
-let g:Workspace="~/devel/"
-
-" enable pathogen
-execute pathogen#infect()
-" build helptags
-execute pathogen#helptags()
-
-syntax on
 
 " set the colorsheme
 colorscheme molokai
@@ -72,6 +66,7 @@ set wrap                  " wrap long lines
 set incsearch             " incremental searching
 set hlsearch              " highlight searchresult
 set number                " show linennumbers
+set relativenumber        " show relative linennumbers
 set linespace=0           " stick together (usefull for nfo files)
 set hidden                " hide buffer even when changed
 set scrolloff=4           " keep at least 4 lines above or below the cursor
@@ -84,6 +79,9 @@ set fileformats=unix,dos
 set encoding=utf-8
 "set fileencoding=utf-8
 set fileencodings=utf-8,ucs-bom,cp1250,iso-8859-1
+
+" syntax
+syntax on
 
 " filetype
 filetype on
@@ -99,30 +97,25 @@ set expandtab     " tabs are tabs, do not replace with spaces
 " statusline stuff
 set laststatus=2
 "set statusline=%<%F%h\ %(%y\ %)[%{&ff}]\ %{\"[\".(&fenc==\"\"?&enc:&fenc).\"]\"}\ %([%R%M]\ %)%=#%n\ %l/%L,%c%V\ %P
-let g:airline_powerline_fonts=1
-let g:airline#extensions#tabline#enabled = 1
-let g:airline#extensions#tabline#tab_nr_type = 1
-let g:airline#extensions#whitespace#enabled = 0
 
 " diff settings
 set diffopt=filler,iwhite,vertical
 
-" SuperTab settings
-"let g:SuperTabDefaultCompletionType = "<c-x><c-o>"
-"let g:SuperTabContextDefaultCompletionType = "<c-x><c-o>"
+" nfo shit
+au BufReadPre *.nfo set fileencodings=cp437
+au BufReadPost *.nfo set fileencodings=utf-8,ucs-bom,cp1250
+au BufReadPre *.diz set fileencodings=cp437
+au BufReadPost *.diz set fileencodings=utf-8,ucs-bom,cp1250
 
-" php settings
-"let php_sql_query=0
-"let php_htmlInStrings =0
-let php_parent_error_close=1
-let php_parent_error_open=1
+""""
+" settings for plugins
+""""
 
-" snips author
-let g:snips_author = g:AuthorName . " <" . g:AuthorEmail . ">"
-
-" AutoClose settings
-let g:AutoCloseOn=0
-"let g:AutoClosePairs= {'(': ')', '[': ']', '"': '"', "'": "'", '<': '>'}
+" airline
+let g:airline_powerline_fonts=1
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#tab_nr_type = 1
+let g:airline#extensions#whitespace#enabled = 0
 
 " syntastic
 let g:syntastic_enable_signs=1
@@ -135,23 +128,6 @@ if executable('ag')
 elseif executable('ack-grep')
 	" ack.vim with renamed ack
 	let g:ackprg="ack-grep -H --nocolor --nogroup --column"
-endif
-
-" CtrlP
-let g:ctrlp_working_path_mode = 'ra'
-let g:ctrlp_max_files = 100000
-let g:ctrlp_custom_ignore = {
-	\ 'dir':  '\.git$\|\.hg$\|\.svn$',
-	\ 'file': '\.exe$\|\.so$\|\.dll$\|\.pyc$' }
-
-if executable('ag')
-	let s:ctrlp_fallback = 'ag %s --nocolor -l -g ""'
-elseif executable('ack-grep')
-	let s:ctrlp_fallback = 'ack-grep %s --nocolor -f'
-elseif executable('ack')
-	let s:ctrlp_fallback = 'ack %s --nocolor -f'
-else
-	let s:ctrlp_fallback = 'find %s -type f'
 endif
 
 " MatchTagAlways
@@ -167,7 +143,10 @@ let g:mta_filetypes = {
 " vim-signify
 let g:signify_vcs_list = [ 'git', 'hg', 'svn' ]
 
+""""
 " extra keymappings
+"""""
+
 " sudo save (when one forgets to sudo vim)
 cmap w!! w !sudo tee % >/dev/null
 
@@ -178,12 +157,6 @@ nnoremap <silent> <Leader>tb :TagbarToggle<CR>
 nnoremap <silent> <Leader>ut :UndotreeToggle<CR>
 nnoremap <silent> <Leader>bl :call BufferList()<CR>
 nnoremap <silent> <Leader>lt :set list!<CR>
-
-" nfo shit
-au BufReadPre *.nfo set fileencodings=cp437
-au BufReadPost *.nfo set fileencodings=utf-8,ucs-bom,cp1250
-au BufReadPre *.diz set fileencodings=cp437
-au BufReadPost *.diz set fileencodings=utf-8,ucs-bom,cp1250
 
 if version >= 702
 	autocmd BufWinLeave * call clearmatches()

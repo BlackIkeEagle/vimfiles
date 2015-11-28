@@ -11,8 +11,6 @@ authoremail=""
 # usage
 function usage() {
 	echo "use: $0 [options]"
-	echo "  -a  author name (required)"
-	echo "  -e  author email (required)"
     echo "  -g  also install gvimrc (ignore for nvim)"
 	echo "  -c  do clean installation"
     echo "  -n  install for nvim"
@@ -23,20 +21,12 @@ function usage() {
 # process options
 while getopts ":a:e:gcnh" arg; do
 	case "$arg" in
-		a) authorname="$OPTARG" ;;
-		e) authoremail="$OPTARG" ;;
 		g) gvimrc=1 ;;
 		c) clean=1 ;;
         n) nvim=1 ;;
 		h) usage ;;
 	esac
 done
-
-if [ "$authorname" = "" ] || [ "$authoremail" = "" ]; then
-	echo "author name and author email are required"
-	echo ""
-	usage
-fi
 
 if [[ $nvim -eq 1 ]]; then
     configpath="$HOME/.config/nvim"
@@ -60,9 +50,5 @@ fi
 cp -a ./vimfiles/* "$configpath/"
 # copy new vimrc
 cp -a ./vimrc "$vimrcfile"
-# set authorname and authoremail in vimrc
-sed -e "s#\(.*AuthorName=\).*#\1\"$authorname\"#" -e "s#\(.*AuthorEmail=\).*#\1\"$authoremail\"#" -i "$vimrcfile"
 # copy gvimrc when requested
 [[ $gvimrc -eq 1 ]] && [[ "$gvimrcfile" != "" ]] && cp -a ./gvimrc "$gvimrcfile"
-# remove git leftovers
-find "$configpath" -name ".git*" -delete
