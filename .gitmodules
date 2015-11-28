@@ -1,0 +1,3 @@
+[submodule "vimfiles/vim-plug"]
+	path = vimfiles/vim-plug
+	url = https://github.com/junegunn/vim-plug.git

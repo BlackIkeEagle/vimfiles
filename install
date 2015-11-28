@@ -52,3 +52,9 @@ cp -a ./vimfiles/* "$configpath/"
 cp -a ./vimrc "$vimrcfile"
 # copy gvimrc when requested
 [[ $gvimrc -eq 1 ]] && [[ "$gvimrcfile" != "" ]] && cp -a ./gvimrc "$gvimrcfile"
+
+if [[ $nvim -eq 1 ]]; then
+    nvim +PlugInstall +qall
+else
+    vim +PlugInstall +qall
+fi
