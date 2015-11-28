@@ -54,7 +54,7 @@ cp -a ./vimrc "$vimrcfile"
 [[ $gvimrc -eq 1 ]] && [[ "$gvimrcfile" != "" ]] && cp -a ./gvimrc "$gvimrcfile"
 
 if [[ $nvim -eq 1 ]]; then
-    nvim +PlugInstall +qall
+    nvim +NeoBundleInstall +qall
 else
-    vim +PlugInstall +qall
+    vim +NeoBundleInstall +qall
 fi

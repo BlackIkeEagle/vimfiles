@@ -6,19 +6,28 @@
 set nocompatible
 
 """"
-" Plug config
+" NeoBundle config
 """"
+if has('vim_starting')
+    set runtimepath+=~/.vim/bundle/neobundle.vim/
+endif
 
-call plug#begin('~/.vim/plugged')
+call neobundle#begin(expand('~/.vim/bundle/'))
+" neobundle itself
+NeoBundleFetch 'Shougo/neobundle.vim'
 
 " colors
-Plug 'tomasr/molokai'
-Plug 'BlackIkeEagle/vim-colors-solarized'
+NeoBundle 'tomasr/molokai'
+NeoBundle 'BlackIkeEagle/vim-colors-solarized' "{{{
+    let g:solarized_termcolors=256
+    let g:solarized_termtrans=1
+"}}}
 
-" filetype ?
+" filetype
 
 " plugins
-call plug#end()
+
+call neobundle#end()
 
 """"
 " default vim settings
@@ -172,3 +181,7 @@ nnoremap <silent> <Leader>lt :set list!<CR>
 if version >= 702
 	autocmd BufWinLeave * call clearmatches()
 endif
+
+" If there are uninstalled bundles found on startup,
+" this will conveniently prompt you to install them.
+NeoBundleCheck
