@@ -20,6 +20,8 @@ Plug 'PotatoesMaster/i3-vim-syntax', { 'for': 'i3' }
 Plug 'gabrielelana/vim-markdown', { 'for': 'markdown' }
 
 " plugins
+" project
+Plug 'joonty/vim-sauce'
 
 call plug#end()
 

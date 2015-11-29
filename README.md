@@ -12,6 +12,12 @@ Plugin Manager
 Plugins
 -------
 
+### Project tools
+
+* sauce
+	* http://www.vim.org/scripts/script.php?script_id=3992
+	* https://github.com/joonty/vim-sauce
+
 * Ack
 	* http://www.vim.org/scripts/script.php?script_id=2572
 	* https://github.com/mileszs/ack.vim
