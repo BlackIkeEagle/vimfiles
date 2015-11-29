@@ -38,15 +38,26 @@ Plugins
 * QFGRep
     * https://github.com/sk1418/QFGrep
 
+### General plugins
 
 * Airline
 	* https://github.com/bling/vim-airline
-* Autoclose
-	* http://www.vim.org/scripts/script.php?script_id=2009
-	* https://github.com/Townk/vim-autoclose
 * DrawIt
 	* http://www.vim.org/scripts/script.php?script_id=40
 	* https://github.com/vim-scripts/DrawIt
+* multiple-cursors
+	* https://github.com/terryma/vim-multiple-cursors
+* tabular
+	* http://www.vim.org/scripts/script.php?script_id=3464
+	* https://github.com/godlygeek/tabular
+* undotree
+	* http://www.vim.org/scripts/script.php?script_id=4177
+	* https://github.com/mbbill/undotree
+
+
+* Autoclose
+	* http://www.vim.org/scripts/script.php?script_id=2009
+	* https://github.com/Townk/vim-autoclose
 * fugitive
 	* http://www.vim.org/scripts/script.php?script_id=2975
 	* https://github.com/tpope/vim-fugitive
@@ -54,8 +65,6 @@ Plugins
 * idevtools (some handy functions)
 * MatchTagAlways
     * https://github.com/Valloric/MatchTagAlways
-* multiple-cursors
-	* https://github.com/terryma/vim-multiple-cursors
 * nerdcommenter
 	* http://www.vim.org/scripts/script.php?script_id=1218
 	* https://github.com/scrooloose/nerdcommenter
@@ -69,17 +78,11 @@ Plugins
 * syntastic
 	* http://www.vim.org/scripts/script.php?script_id=2736
 	* https://github.com/scrooloose/syntastic
-* tabular
-	* http://www.vim.org/scripts/script.php?script_id=3464
-	* https://github.com/godlygeek/tabular
 * tagbar
 	* http://www.vim.org/scripts/script.php?script_id=3465
 	* http://majutsushi.github.com/tagbar/
 * ultisnips
 	* https://github.com/SirVer/ultisnips
-* undotree
-	* http://www.vim.org/scripts/script.php?script_id=4177
-	* https://github.com/mbbill/undotree
 * vdebug
 	* http://www.vim.org/scripts/script.php?script_id=4170
 	* https://github.com/joonty/vdebug

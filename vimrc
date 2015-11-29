@@ -30,6 +30,12 @@ Plug 'mileszs/ack.vim'
 Plug 'sk1418/QFGrep'
 " buffers
 Plug 'roblillack/vim-bufferlist'
+" statusline
+Plug 'bling/vim-airline'
+" extras
+Plug 'terryma/vim-multiple-cursors'
+Plug 'godlygeek/tabular'
+Plug 'mbbill/undotree'
 
 call plug#end()
 
