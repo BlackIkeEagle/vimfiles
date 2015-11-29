@@ -105,16 +105,12 @@ Colorschemes
 Syntax/Filetype
 ---------------
 
-* extjs
-	* http://xant.us/extjs/javascript.vim
 * html
+	* https://github.com/pangloss/vim-javascript
+* javascript
 	* https://github.com/pangloss/vim-javascript
 * i3-vim-syntax
     * https://github.com/PotatoesMaster/i3-vim-syntax
-* javascript
-	* https://github.com/pangloss/vim-javascript
-* jquery
-	* http://www.vim.org/scripts/script.php?script_id=2416
 * vim-markdown
     * https://github.com/gabrielelana/vim-markdown
 * vcl (varnish configuration language)
