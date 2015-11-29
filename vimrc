@@ -70,6 +70,10 @@ nnoremap <silent> <Leader>/ :Unite -buffer-name=files grep:.<CR>
 NeoBundle 'Shougo/neoyank.vim' "{{{
 nnoremap <silent> <Leader>y :Unite -buffer-name=yank history/yank<CR>
 "}}}
+NeoBundle 'Shougo/vimfiler' "{{{
+nnoremap <silent> <Leader>nt :VimFilerExplorer<CR>
+nnoremap <silent> <Leader>nf :VimFilerBufferDir<CR>
+"}}}
 
 call neobundle#end()
 
@@ -212,8 +216,6 @@ au BufReadPost *.diz set fileencodings=utf-8,ucs-bom,cp1250
 cmap w!! w !sudo tee % >/dev/null
 
 " custom mapping
-nnoremap <silent> <Leader>nt :NERDTreeToggle<CR>
-nnoremap <silent> <Leader>nf :NERDTreeFind<CR>
 nnoremap <silent> <Leader>tb :TagbarToggle<CR>
 nnoremap <silent> <Leader>ut :UndotreeToggle<CR>
 nnoremap <silent> <Leader>bl :call BufferList()<CR>
