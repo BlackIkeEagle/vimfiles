@@ -5,6 +5,9 @@
 " nocompatible has to be the first of all ( use the real vimpower )
 set nocompatible
 
+" set leader key
+let mapleader = ','
+
 """"
 " NeoBundle config
 """"
@@ -34,18 +37,38 @@ NeoBundle 'Shougo/vimproc.vim', {
     \ },
 \ }
 NeoBundle 'Shougo/unite.vim' "{{{
-let g:unite_source_history_yank_enable=1
 let g:unite_source_rec_max_cache_files=5000
 
 if executable('ag')
     let g:unite_source_grep_command='ag'
-    let g:unite_source_grep_default_opts='--nocolor --line-numbers --nogroup -S -C4'
+    let g:unite_source_grep_default_opts='-i --vimgrep --hidden --ignore ''.hg'' --ignore ''.svn'' --ignore ''.git'' --ignore ''.bzr'''
     let g:unite_source_grep_recursive_opt=''
-elseif executable('ack')
-    let g:unite_source_grep_command='ack'
-    let g:unite_source_grep_default_opts='--no-heading --no-color -C4'
+elseif executable('ack') || executable('ack-grep')
+    if executable('ack')
+        let g:unite_source_grep_command='ack'
+    elseif executable('ack-grep')
+        let g:unite_source_grep_command='ack-grep'
+    endif
+    let g:unite_source_grep_default_opts='-i --no-heading --no-color -k -H'
     let g:unite_source_grep_recursive_opt=''
 endif
+
+let unitebundle = neobundle#get('unite.vim')
+function! unitebundle.hooks.on_source(unitebundle)
+    call unite#filters#matcher_default#use(['matcher_fuzzy'])
+    call unite#filters#sorter_default#use(['sorter_rank'])
+    call unite#custom#profile('default', 'context', {
+                \ 'no_split': 1,
+                \ 'resize': 0,
+                \ })
+endfunction
+
+nnoremap <silent> <Leader>f :Unite -buffer-name=files file_rec/async<CR>
+nnoremap <silent> <Leader>b :Unite -buffer-name=buffers buffer<CR>
+nnoremap <silent> <Leader>/ :Unite -buffer-name=files grep:.<CR>
+"}}}
+NeoBundle 'Shougo/neoyank.vim' "{{{
+nnoremap <silent> <Leader>y :Unite -buffer-name=yank history/yank<CR>
 "}}}
 
 call neobundle#end()
@@ -59,9 +82,6 @@ call neobundle#end()
 
 " big nesting with new regexpengine is slooooooow
 " set regexpengine=1
-
-" set leader key
-let mapleader = ','
 
 " set the colorsheme
 colorscheme molokai
