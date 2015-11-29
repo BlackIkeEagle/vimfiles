@@ -54,24 +54,16 @@ Plugins
 	* http://www.vim.org/scripts/script.php?script_id=4177
 	* https://github.com/mbbill/undotree
 
+### Coding
 
 * Autoclose
 	* http://www.vim.org/scripts/script.php?script_id=2009
 	* https://github.com/Townk/vim-autoclose
-* fugitive
-	* http://www.vim.org/scripts/script.php?script_id=2975
-	* https://github.com/tpope/vim-fugitive
-* idevdiff (simple diff buffer stuff)
-* idevtools (some handy functions)
 * MatchTagAlways
     * https://github.com/Valloric/MatchTagAlways
 * nerdcommenter
 	* http://www.vim.org/scripts/script.php?script_id=1218
 	* https://github.com/scrooloose/nerdcommenter
-* php_getset
-	* https://github.com/EvanDotPro/php_getset.vim
-* signify
-    * https://github.com/mhinz/vim-signify
 * supertab
 	* http://www.vim.org/scripts/script.php?script_id=1643
 	* https://github.com/ervandew/supertab
@@ -81,11 +73,21 @@ Plugins
 * tagbar
 	* http://www.vim.org/scripts/script.php?script_id=3465
 	* http://majutsushi.github.com/tagbar/
-* ultisnips
-	* https://github.com/SirVer/ultisnips
+
+* fugitive
+	* http://www.vim.org/scripts/script.php?script_id=2975
+	* https://github.com/tpope/vim-fugitive
+* signify
+    * https://github.com/mhinz/vim-signify
+
+* php_getset
+	* https://github.com/EvanDotPro/php_getset.vim
 * vdebug
 	* http://www.vim.org/scripts/script.php?script_id=4170
 	* https://github.com/joonty/vdebug
+
+* ultisnips
+	* https://github.com/SirVer/ultisnips
 * vim-snippets (contains snippets for ultisnips and snipmate)
 	* https://github.com/honza/vim-snippets
 

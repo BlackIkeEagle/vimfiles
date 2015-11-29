@@ -36,6 +36,22 @@ Plug 'bling/vim-airline'
 Plug 'terryma/vim-multiple-cursors'
 Plug 'godlygeek/tabular'
 Plug 'mbbill/undotree'
+" general coding
+Plug 'Townk/vim-autoclose'
+Plug 'Valloric/MatchTagAlways'
+Plug 'scrooloose/nerdcommenter'
+Plug 'ervandew/supertab'
+Plug 'scrooloose/syntastic'
+Plug 'majutsushi/tagbar'
+" vcs
+Plug 'tpope/vim-fugitive'
+Plug 'mhinz/vim-signify'
+" php
+Plug 'EvanDotPro/php_getset.vim'
+Plug 'joonty/vdebug'
+" snippets
+Plug 'SirVer/ultisnips'
+Plug 'honza/vim-snippets'
 
 call plug#end()
 
