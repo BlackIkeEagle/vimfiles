@@ -4,11 +4,14 @@ BlackIkeEagle vimfiles
 My personal vim configuration.
 The config should be working fine on any OS.
 
+Plugin Manager
+--------------
+
+[Plug](https://github.com/junegunn/vim-plug)
+
 Plugins
 -------
 
-* pathogen
-	* https://github.com/tpope/vim-pathogen
 * Ack
 	* http://www.vim.org/scripts/script.php?script_id=2572
 	* https://github.com/mileszs/ack.vim
