@@ -75,8 +75,6 @@ Plugins
 	* https://github.com/joonty/vdebug
 * vim-snippets (contains snippets for ultisnips and snipmate)
 	* https://github.com/honza/vim-snippets
-* vim-markdown
-    * https://github.com/gabrielelana/vim-markdown
 
 Colorschemes
 ------------
@@ -102,6 +100,8 @@ Syntax/Filetype
 	* https://github.com/pangloss/vim-javascript
 * jquery
 	* http://www.vim.org/scripts/script.php?script_id=2416
+* vim-markdown
+    * https://github.com/gabrielelana/vim-markdown
 * vcl (varnish configuration language)
 * xt (xdebug)
 	* https://github.com/xdebug/xdebug/tree/master/contrib

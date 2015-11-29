@@ -10,14 +10,17 @@ set nocompatible
 """"
 
 call plug#begin('~/.vim/plugged')
-
 " colors
 Plug 'tomasr/molokai'
 Plug 'BlackIkeEagle/vim-colors-solarized'
 
-" filetype ?
+" filetype
+Plug 'pangloss/vim-javascript', { 'for': ['html', 'javascript'] }
+Plug 'PotatoesMaster/i3-vim-syntax', { 'for': 'i3' }
+Plug 'gabrielelana/vim-markdown', { 'for': 'markdown' }
 
 " plugins
+
 call plug#end()
 
 """"
