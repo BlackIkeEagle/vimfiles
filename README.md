@@ -18,20 +18,32 @@ Plugins
 	* http://www.vim.org/scripts/script.php?script_id=3992
 	* https://github.com/joonty/vim-sauce
 
+### File navigation
+
 * Ack
 	* http://www.vim.org/scripts/script.php?script_id=2572
 	* https://github.com/mileszs/ack.vim
-* Airline
-	* https://github.com/bling/vim-airline
-* Autoclose
-	* http://www.vim.org/scripts/script.php?script_id=2009
-	* https://github.com/Townk/vim-autoclose
 * bufferlist
 	* http://www.vim.org/scripts/script.php?script_id=1325
 	* https://github.com/roblillack/vim-bufferlist
 * CtrlP
 	* http://www.vim.org/scripts/script.php?script_id=3736
 	* https://github.com/kien/ctrlp.vim
+* NERDTree
+	* http://www.vim.org/scripts/script.php?script_id=1658
+	* https://github.com/scrooloose/nerdtree
+* NERDTree ack
+	* http://www.vim.org/scripts/script.php?script_id=3878
+	* https://github.com/tyok/nerdtree-ack
+* QFGRep
+    * https://github.com/sk1418/QFGrep
+
+
+* Airline
+	* https://github.com/bling/vim-airline
+* Autoclose
+	* http://www.vim.org/scripts/script.php?script_id=2009
+	* https://github.com/Townk/vim-autoclose
 * DrawIt
 	* http://www.vim.org/scripts/script.php?script_id=40
 	* https://github.com/vim-scripts/DrawIt
@@ -47,19 +59,8 @@ Plugins
 * nerdcommenter
 	* http://www.vim.org/scripts/script.php?script_id=1218
 	* https://github.com/scrooloose/nerdcommenter
-* nerdtree
-	* http://www.vim.org/scripts/script.php?script_id=1658
-	* https://github.com/scrooloose/nerdtree
-* nerdtree-ack
-	* http://www.vim.org/scripts/script.php?script_id=3878
-	* https://github.com/tyok/nerdtree-ack
 * php_getset
 	* https://github.com/EvanDotPro/php_getset.vim
-* QFGRep
-    * https://github.com/sk1418/QFGrep
-* sauce
-	* http://www.vim.org/scripts/script.php?script_id=3992
-	* https://github.com/joonty/vim-sauce
 * signify
     * https://github.com/mhinz/vim-signify
 * supertab

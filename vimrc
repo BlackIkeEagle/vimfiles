@@ -22,6 +22,14 @@ Plug 'gabrielelana/vim-markdown', { 'for': 'markdown' }
 " plugins
 " project
 Plug 'joonty/vim-sauce'
+" file navigation
+Plug 'scrooloose/nerdtree'
+Plug 'tyok/nerdtree-ack'
+Plug 'kien/ctrlp.vim'
+Plug 'mileszs/ack.vim'
+Plug 'sk1418/QFGrep'
+" buffers
+Plug 'roblillack/vim-bufferlist'
 
 call plug#end()
 
