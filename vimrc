@@ -76,19 +76,19 @@ set background=dark
 set backup
 set undofile
 if has("win32")
-	set backupdir=$TEMP
-	set directory=$TEMP
-	set viewdir=$TEMP
-	set undodir=$TEMP
+    set backupdir=$TEMP
+    set directory=$TEMP
+    set viewdir=$TEMP
+    set undodir=$TEMP
 else
-	silent execute '!mkdir -p $HOME/.vim/tmp/backup'
-	set backupdir=$HOME/.vim/tmp/backup
-	silent execute '!mkdir -p $HOME/.vim/tmp/swap'
-	set directory=$HOME/.vim/tmp/swap
-	silent execute '!mkdir -p $HOME/.vim/tmp/views'
-	set viewdir=$HOME/.vim/tmp/views
-	silent execute '!mkdir -p $HOME/.vim/tmp/undo'
-	set undodir=$HOME/.vim/tmp/undo
+    silent execute '!mkdir -p $HOME/.vim/tmp/backup'
+    set backupdir=$HOME/.vim/tmp/backup
+    silent execute '!mkdir -p $HOME/.vim/tmp/swap'
+    set directory=$HOME/.vim/tmp/swap
+    silent execute '!mkdir -p $HOME/.vim/tmp/views'
+    set viewdir=$HOME/.vim/tmp/views
+    silent execute '!mkdir -p $HOME/.vim/tmp/undo'
+    set undodir=$HOME/.vim/tmp/undo
 endif
 
 " commandline history
@@ -163,17 +163,41 @@ let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#tab_nr_type = 1
 let g:airline#extensions#whitespace#enabled = 0
 
+" SuperTab settings
+"let g:SuperTabDefaultCompletionType = "<c-x><c-o>"
+"let g:SuperTabContextDefaultCompletionType = "<c-x><c-o>"
+
+" AutoClose settings
+let g:AutoCloseOn=0
+let g:AutoClosePairs= {'(': ')', '[': ']', '"': '"', "'": "'", '<': '>'}
 " syntastic
 let g:syntastic_enable_signs=1
 let g:syntastic_auto_loc_list=1
 
 " Ack.vim
 if executable('ag')
-	" ack.vim with the_silver_searcher
-	let g:ackprg = 'ag --nogroup --nocolor --column --smart-case'
+    " ack.vim with the_silver_searcher
+    let g:ackprg = 'ag --nogroup --nocolor --column --smart-case'
 elseif executable('ack-grep')
-	" ack.vim with renamed ack
-	let g:ackprg="ack-grep -H --nocolor --nogroup --column"
+    " ack.vim with renamed ack
+    let g:ackprg="ack-grep -H --nocolor --nogroup --column"
+endif
+
+" CtrlP
+let g:ctrlp_working_path_mode = 'ra'
+let g:ctrlp_max_files = 100000
+let g:ctrlp_custom_ignore = {
+    \ 'dir':  '\.git$\|\.hg$\|\.svn$',
+    \ 'file': '\.exe$\|\.so$\|\.dll$\|\.pyc$' }
+
+if executable('ag')
+    let s:ctrlp_fallback = 'ag %s --nocolor -l -g ""'
+elseif executable('ack-grep')
+    let s:ctrlp_fallback = 'ack-grep %s --nocolor -f'
+elseif executable('ack')
+    let s:ctrlp_fallback = 'ack %s --nocolor -f'
+else
+    let s:ctrlp_fallback = 'find %s -type f'
 endif
 
 " MatchTagAlways
@@ -205,5 +229,5 @@ nnoremap <silent> <Leader>bl :call BufferList()<CR>
 nnoremap <silent> <Leader>lt :set list!<CR>
 
 if version >= 702
-	autocmd BufWinLeave * call clearmatches()
+    autocmd BufWinLeave * call clearmatches()
 endif
