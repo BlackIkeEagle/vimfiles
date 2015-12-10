@@ -15,9 +15,14 @@ Plug 'tomasr/molokai'
 Plug 'BlackIkeEagle/vim-colors-solarized'
 
 " filetype
+Plug 'othree/html5.vim', { 'for': 'html' }
 Plug 'pangloss/vim-javascript', { 'for': ['html', 'javascript'] }
+Plug 'nono/jquery.vim', { 'for': ['html', 'javascript'] }
+Plug 'elzr/vim-json', { 'for': 'json' }
 Plug 'PotatoesMaster/i3-vim-syntax', { 'for': 'i3' }
 Plug 'gabrielelana/vim-markdown', { 'for': 'markdown' }
+Plug 'groenewege/vim-less', { 'for': 'less' }
+Plug 'pld-linux/vim-syntax-vcl'
 
 " plugins
 " project
