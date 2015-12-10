@@ -55,6 +55,7 @@ Plug 'rhysd/conflict-marker.vim'
 " php
 Plug 'EvanDotPro/php_getset.vim'
 Plug 'joonty/vdebug'
+Plug 'vim-php/vim-composer'
 " snippets
 Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'

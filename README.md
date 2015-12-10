@@ -87,6 +87,8 @@ Plugins
 * vdebug
 	* http://www.vim.org/scripts/script.php?script_id=4170
 	* https://github.com/joonty/vdebug
+* vim-composer
+  * https://github.com/vim-php/vim-composer
 
 * ultisnips
 	* https://github.com/SirVer/ultisnips
