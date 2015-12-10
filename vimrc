@@ -48,6 +48,7 @@ Plug 'scrooloose/nerdcommenter'
 Plug 'ervandew/supertab'
 Plug 'scrooloose/syntastic'
 Plug 'majutsushi/tagbar'
+Plug 'editorconfig/editorconfig-vim'
 " vcs
 Plug 'tpope/vim-fugitive'
 Plug 'mhinz/vim-signify'

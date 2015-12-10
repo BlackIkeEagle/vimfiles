@@ -95,6 +95,9 @@ Plugins
 * vim-snippets (contains snippets for ultisnips and snipmate)
 	* https://github.com/honza/vim-snippets
 
+* EditorConfig
+  * https://github.com/editorconfig/editorconfig-vim
+
 Colorschemes
 ------------
 
