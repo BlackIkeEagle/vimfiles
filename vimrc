@@ -46,6 +46,7 @@ Plug 'majutsushi/tagbar'
 " vcs
 Plug 'tpope/vim-fugitive'
 Plug 'mhinz/vim-signify'
+Plug 'rhysd/conflict-marker.vim'
 " php
 Plug 'EvanDotPro/php_getset.vim'
 Plug 'joonty/vdebug'
