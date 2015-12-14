@@ -132,6 +132,8 @@ Syntax/Filetype
   * https://github.com/pld-linux/vim-syntax-vcl
 * xt (xdebug)
 	* https://github.com/xdebug/xdebug/tree/master/contrib
+* yaml
+  * https://github.com/stephpy/vim-yaml
 
 Notes
 -----

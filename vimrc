@@ -23,6 +23,7 @@ Plug 'PotatoesMaster/i3-vim-syntax', { 'for': 'i3' }
 Plug 'gabrielelana/vim-markdown', { 'for': 'markdown' }
 Plug 'groenewege/vim-less', { 'for': 'less' }
 Plug 'pld-linux/vim-syntax-vcl'
+Plug 'stephpy/vim-yaml', { 'for': 'yaml' }
 
 " plugins
 " project
