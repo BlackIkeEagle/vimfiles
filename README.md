@@ -64,14 +64,15 @@ Plugins
 * nerdcommenter
 	* http://www.vim.org/scripts/script.php?script_id=1218
 	* https://github.com/scrooloose/nerdcommenter
+* supertab
+	* http://www.vim.org/scripts/script.php?script_id=1643
+	* https://github.com/ervandew/supertab
 * syntastic
 	* http://www.vim.org/scripts/script.php?script_id=2736
 	* https://github.com/scrooloose/syntastic
 * tagbar
 	* http://www.vim.org/scripts/script.php?script_id=3465
 	* http://majutsushi.github.com/tagbar/
-* YouCompleteMe
-  * https://github.com/Valloric/YouCompleteMe
 
 * fugitive
 	* http://www.vim.org/scripts/script.php?script_id=2975

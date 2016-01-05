@@ -46,7 +46,7 @@ Plug 'mbbill/undotree'
 Plug 'Townk/vim-autoclose'
 Plug 'Valloric/MatchTagAlways'
 Plug 'scrooloose/nerdcommenter'
-Plug 'Valloric/YouCompleteMe', { 'do': 'python2 ./install.py' }
+Plug 'ervandew/supertab'
 Plug 'scrooloose/syntastic'
 Plug 'majutsushi/tagbar'
 Plug 'editorconfig/editorconfig-vim'
@@ -172,9 +172,9 @@ let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#tab_nr_type = 1
 let g:airline#extensions#whitespace#enabled = 0
 
-" Ultisnips
-let g:UltiSnipsExpandTrigger="<c-tab>"
-let g:UltiSnipsListSnippets="<c-s-tab>"
+" SuperTab settings
+"let g:SuperTabDefaultCompletionType = "<c-x><c-o>"
+"let g:SuperTabContextDefaultCompletionType = "<c-x><c-o>"
 
 " AutoClose settings
 let g:AutoCloseOn=0
