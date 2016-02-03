@@ -136,6 +136,8 @@ Syntax/Filetype
   * https://github.com/stephpy/vim-yaml
 * php
   * https://github.com/2072/PHP-Indenting-for-VIm
+* nginx
+  * http://hg.nginx.org/nginx/file/tip/contrib/vim
 
 Notes
 -----
