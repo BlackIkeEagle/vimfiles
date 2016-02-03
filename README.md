@@ -134,6 +134,8 @@ Syntax/Filetype
 	* https://github.com/xdebug/xdebug/tree/master/contrib
 * yaml
   * https://github.com/stephpy/vim-yaml
+* php
+  * https://github.com/2072/PHP-Indenting-for-VIm
 
 Notes
 -----

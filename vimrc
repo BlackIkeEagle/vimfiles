@@ -24,6 +24,7 @@ Plug 'gabrielelana/vim-markdown', { 'for': 'markdown' }
 Plug 'groenewege/vim-less', { 'for': 'less' }
 Plug 'pld-linux/vim-syntax-vcl'
 Plug 'stephpy/vim-yaml', { 'for': 'yaml' }
+Plug '2072/PHP-Indenting-for-VIm', { 'for': 'php' }
 
 " plugins
 " project
@@ -55,7 +56,7 @@ Plug 'tpope/vim-fugitive'
 Plug 'mhinz/vim-signify'
 Plug 'rhysd/conflict-marker.vim'
 " php
-Plug 'EvanDotPro/php_getset.vim'
+Plug 'EvanDotPro/php_getset.vim', { 'for': 'php' }
 Plug 'joonty/vdebug'
 Plug 'vim-php/vim-composer'
 " snippets
