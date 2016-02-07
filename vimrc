@@ -37,6 +37,7 @@ Plug 'mileszs/ack.vim'
 Plug 'sk1418/QFGrep'
 " buffers
 Plug 'roblillack/vim-bufferlist'
+Plug 'mattboehm/vim-accordion'
 " statusline
 Plug 'bling/vim-airline'
 " extras

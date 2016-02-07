@@ -36,7 +36,9 @@ Plugins
 	* http://www.vim.org/scripts/script.php?script_id=3878
 	* https://github.com/tyok/nerdtree-ack
 * QFGRep
-    * https://github.com/sk1418/QFGrep
+  * https://github.com/sk1418/QFGrep
+* Accordion
+  * https://github.com/mattboehm/vim-accordion
 
 ### General plugins
 
