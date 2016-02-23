@@ -99,6 +99,8 @@ Plugins
 
 * EditorConfig
   * https://github.com/editorconfig/editorconfig-vim
+* Stripper
+  * https://github.com/itspriddle/vim-stripper
 
 Colorschemes
 ------------
