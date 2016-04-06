@@ -29,6 +29,7 @@ Plug '2072/PHP-Indenting-for-VIm', { 'for': 'php' }
 " plugins
 " project
 Plug 'joonty/vim-sauce'
+Plug 'ludovicchabant/vim-gutentags'
 " file navigation
 Plug 'scrooloose/nerdtree'
 Plug 'tyok/nerdtree-ack'
