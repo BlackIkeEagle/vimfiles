@@ -13,6 +13,7 @@ call plug#begin('~/.vim/plugged')
 " colors
 Plug 'tomasr/molokai'
 Plug 'BlackIkeEagle/vim-colors-solarized'
+Plug 'jpo/vim-railscasts-theme'
 
 " filetype
 Plug 'othree/html5.vim', { 'for': 'html' }
@@ -82,8 +83,8 @@ call plug#end()
 let mapleader = ','
 
 " set the colorsheme
-colorscheme molokai
 set background=dark
+colorscheme railscasts
 
 " backup rules
 set backup
