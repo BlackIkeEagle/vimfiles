@@ -45,7 +45,8 @@ Plugins
 ### General plugins
 
 * Airline
-	* https://github.com/bling/vim-airline
+	* https://github.com/vim-airline/vim-airline
+	* https://github.com/vim-airline/vim-airline-themes
 * DrawIt
 	* http://www.vim.org/scripts/script.php?script_id=40
 	* https://github.com/vim-scripts/DrawIt

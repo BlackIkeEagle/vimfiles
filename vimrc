@@ -41,7 +41,8 @@ Plug 'sk1418/QFGrep'
 Plug 'roblillack/vim-bufferlist'
 Plug 'mattboehm/vim-accordion'
 " statusline
-Plug 'bling/vim-airline'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
 " extras
 Plug 'terryma/vim-multiple-cursors'
 Plug 'godlygeek/tabular'
@@ -172,6 +173,7 @@ au BufReadPost *.diz set fileencodings=utf-8,ucs-bom,cp1250
 """"
 
 " airline
+let g:airline_theme='wombat'
 let g:airline_powerline_fonts=1
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#tab_nr_type = 1
