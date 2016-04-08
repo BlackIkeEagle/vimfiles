@@ -1,3 +1,4 @@
 tmp/*
 vimfiles/tmp/*
 vimfiles/tags/*
+tags*
