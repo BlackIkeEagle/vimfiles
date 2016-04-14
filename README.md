@@ -17,8 +17,6 @@ Plugins
 * sauce
 	* http://www.vim.org/scripts/script.php?script_id=3992
 	* https://github.com/joonty/vim-sauce
-* gutentags
-  * https://github.com/ludovicchabant/vim-gutentags
 
 ### File navigation
 
