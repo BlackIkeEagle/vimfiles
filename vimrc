@@ -204,6 +204,9 @@ else
     let s:ctrlp_fallback = 'find %s -type f'
 endif
 
+" NERDTree
+let NERDTreeCascadeOpenSingleChildDir=0
+
 " vim-signify
 let g:signify_vcs_list = [ 'git', 'hg', 'svn' ]
 
