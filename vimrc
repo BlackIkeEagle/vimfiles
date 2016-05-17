@@ -178,17 +178,6 @@ let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#tab_nr_type = 1
 let g:airline#extensions#whitespace#enabled = 0
 
-" SuperTab settings
-"let g:SuperTabDefaultCompletionType = "<c-x><c-o>"
-"let g:SuperTabContextDefaultCompletionType = "<c-x><c-o>"
-
-" AutoClose settings
-let g:AutoCloseOn=0
-let g:AutoClosePairs= {'(': ')', '[': ']', '"': '"', "'": "'", '<': '>'}
-" syntastic
-let g:syntastic_enable_signs=1
-let g:syntastic_auto_loc_list=1
-
 " Ack.vim
 if executable('ag')
     " ack.vim with the_silver_searcher
@@ -215,6 +204,21 @@ else
     let s:ctrlp_fallback = 'find %s -type f'
 endif
 
+" vim-signify
+let g:signify_vcs_list = [ 'git', 'hg', 'svn' ]
+
+" SuperTab settings
+"let g:SuperTabDefaultCompletionType = "<c-x><c-o>"
+"let g:SuperTabContextDefaultCompletionType = "<c-x><c-o>"
+
+" AutoClose settings
+let g:AutoCloseOn=0
+let g:AutoClosePairs= {'(': ')', '[': ']', '"': '"', "'": "'", '<': '>'}
+
+" syntastic
+let g:syntastic_enable_signs=1
+let g:syntastic_auto_loc_list=1
+
 " MatchTagAlways
 let g:mta_filetypes = {
     \ 'html' : 1,
@@ -224,9 +228,6 @@ let g:mta_filetypes = {
     \ 'phtml' : 1,
     \ 'twig' : 1,
     \}
-
-" vim-signify
-let g:signify_vcs_list = [ 'git', 'hg', 'svn' ]
 
 """"
 " extra keymappings
