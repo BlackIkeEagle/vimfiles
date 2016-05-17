@@ -46,6 +46,7 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'terryma/vim-multiple-cursors'
 Plug 'godlygeek/tabular'
 Plug 'mbbill/undotree'
+Plug 'tpope/vim-abolish'
 " general coding
 Plug 'Townk/vim-autoclose'
 Plug 'Valloric/MatchTagAlways'

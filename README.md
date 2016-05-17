@@ -56,6 +56,8 @@ Plugins
 * undotree
 	* http://www.vim.org/scripts/script.php?script_id=4177
 	* https://github.com/mbbill/undotree
+* vim-abolish
+  * https://github.com/tpope/vim-abolish
 
 ### Coding
 
