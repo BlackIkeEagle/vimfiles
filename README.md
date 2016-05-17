@@ -45,9 +45,6 @@ Plugins
 * Airline
 	* https://github.com/vim-airline/vim-airline
 	* https://github.com/vim-airline/vim-airline-themes
-* DrawIt
-	* http://www.vim.org/scripts/script.php?script_id=40
-	* https://github.com/vim-scripts/DrawIt
 * multiple-cursors
 	* https://github.com/terryma/vim-multiple-cursors
 * tabular
