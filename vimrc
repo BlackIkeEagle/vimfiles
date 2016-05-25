@@ -82,7 +82,7 @@ call plug#end()
 " set regexpengine=1
 
 " set leader key
-let mapleader = ','
+let mapleader = ' '
 
 " set the colorsheme
 set background=dark
