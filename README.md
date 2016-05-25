@@ -17,6 +17,9 @@ Plugins
 * sauce
 	* http://www.vim.org/scripts/script.php?script_id=3992
 	* https://github.com/joonty/vim-sauce
+* jira complete
+  * https://github.com/mnpk/vim-jira-complete
+  * *REQUIRES* python2-requests
 
 ### File navigation
 
@@ -89,6 +92,7 @@ Plugins
 * vdebug
 	* http://www.vim.org/scripts/script.php?script_id=4170
 	* https://github.com/joonty/vdebug
+	* *REQUIRES* python2
 * vim-composer
   * https://github.com/vim-php/vim-composer
 

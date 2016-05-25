@@ -1,6 +1,6 @@
 " BlackEagles vimrc for Linux && Windows
 "
-" (c) 2010 - 2015
+" (c) 2010 - 2016
 
 " nocompatible has to be the first of all ( use the real vimpower )
 set nocompatible
@@ -30,6 +30,7 @@ Plug '2072/PHP-Indenting-for-VIm', { 'for': 'php' }
 " plugins
 " project
 Plug 'joonty/vim-sauce'
+Plug 'mnpk/vim-jira-complete'
 " file navigation
 Plug 'scrooloose/nerdtree'
 Plug 'tyok/nerdtree-ack'
@@ -172,6 +173,11 @@ au BufReadPost *.diz set fileencodings=utf-8,ucs-bom,cp1250
 " settings for plugins
 """"
 
+" jira complete
+imap <silent> <unique> <leader>j <Plug>JiraComplete
+if filereadable(expand("~/.vimrc.jira"))
+    source ~/.vimrc.jira
+endif
 " airline
 let g:airline_theme='hybrid'
 let g:airline_powerline_fonts=1
