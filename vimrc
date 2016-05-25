@@ -13,7 +13,7 @@ call plug#begin('~/.vim/plugged')
 " colors
 Plug 'tomasr/molokai'
 Plug 'BlackIkeEagle/vim-colors-solarized'
-Plug 'jpo/vim-railscasts-theme'
+Plug 'kristijanhusak/vim-hybrid-material'
 
 " filetype
 Plug 'othree/html5.vim', { 'for': 'html' }
@@ -85,7 +85,7 @@ let mapleader = ','
 
 " set the colorsheme
 set background=dark
-colorscheme railscasts
+colorscheme hybrid_material
 
 " backup rules
 set backup
@@ -173,7 +173,7 @@ au BufReadPost *.diz set fileencodings=utf-8,ucs-bom,cp1250
 """"
 
 " airline
-let g:airline_theme='wombat'
+let g:airline_theme='hybrid'
 let g:airline_powerline_fonts=1
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#tab_nr_type = 1
