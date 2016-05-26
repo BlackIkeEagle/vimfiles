@@ -174,7 +174,7 @@ au BufReadPost *.diz set fileencodings=utf-8,ucs-bom,cp1250
 """"
 
 " jira complete
-imap <silent> <unique> <leader>j <Plug>JiraComplete
+imap <silent> <unique> <C-j> <Plug>JiraComplete
 if filereadable(expand("~/.vimrc.jira"))
     source ~/.vimrc.jira
 endif
