@@ -170,6 +170,21 @@ au BufReadPre *.diz set fileencodings=cp437
 au BufReadPost *.diz set fileencodings=utf-8,ucs-bom,cp1250
 
 """"
+" extra keymappings
+"""""
+
+" sudo save (when one forgets to sudo vim)
+cmap w!! w !sudo tee % >/dev/null
+
+" custom mapping
+nnoremap <silent> <Leader>nt :NERDTreeToggle<CR>
+nnoremap <silent> <Leader>nf :NERDTreeFind<CR>
+nnoremap <silent> <Leader>tb :TagbarToggle<CR>
+nnoremap <silent> <Leader>ut :UndotreeToggle<CR>
+nnoremap <silent> <Leader>bl :call BufferList()<CR>
+nnoremap <silent> <Leader>lt :set list!<CR>
+
+""""
 " settings for plugins
 """"
 
@@ -238,21 +253,6 @@ let g:mta_filetypes = {
     \ 'phtml' : 1,
     \ 'twig' : 1,
     \}
-
-""""
-" extra keymappings
-"""""
-
-" sudo save (when one forgets to sudo vim)
-cmap w!! w !sudo tee % >/dev/null
-
-" custom mapping
-nnoremap <silent> <Leader>nt :NERDTreeToggle<CR>
-nnoremap <silent> <Leader>nf :NERDTreeFind<CR>
-nnoremap <silent> <Leader>tb :TagbarToggle<CR>
-nnoremap <silent> <Leader>ut :UndotreeToggle<CR>
-nnoremap <silent> <Leader>bl :call BufferList()<CR>
-nnoremap <silent> <Leader>lt :set list!<CR>
 
 if version >= 702
     autocmd BufWinLeave * call clearmatches()
