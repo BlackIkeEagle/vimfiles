@@ -184,6 +184,9 @@ nnoremap <silent> <Leader>ut :UndotreeToggle<CR>
 nnoremap <silent> <Leader>bl :call BufferList()<CR>
 nnoremap <silent> <Leader>lt :set list!<CR>
 
+" signcolumn highlight clear (matching background)
+highlight clear SignColumn
+
 """"
 " settings for plugins
 """"
