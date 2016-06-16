@@ -105,6 +105,8 @@ Plugins
   * https://github.com/editorconfig/editorconfig-vim
 * Stripper
   * https://github.com/itspriddle/vim-stripper
+* vim-expand-region
+  * https://github.com/terryma/vim-expand-region
 
 Colorschemes
 ------------
