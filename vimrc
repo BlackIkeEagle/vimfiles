@@ -18,6 +18,7 @@ Plug 'kristijanhusak/vim-hybrid-material'
 " filetype
 Plug 'othree/html5.vim', { 'for': 'html' }
 Plug 'pangloss/vim-javascript', { 'for': ['html', 'javascript'] }
+Plug 'mxw/vim-jsx', { 'for': ['html', 'javascript'] }
 Plug 'nono/jquery.vim', { 'for': ['html', 'javascript'] }
 Plug 'elzr/vim-json', { 'for': 'json' }
 Plug 'PotatoesMaster/i3-vim-syntax', { 'for': 'i3' }
@@ -192,11 +193,15 @@ highlight clear SignColumn
 " settings for plugins
 """"
 
+" jsx syntax
+let g:jsx_ext_required = 0
+
 " jira complete
 imap <silent> <unique> <C-j> <Plug>JiraComplete
 if filereadable(expand("~/.vimrc.jira"))
     source ~/.vimrc.jira
 endif
+
 " airline
 let g:airline_theme='hybrid'
 let g:airline_powerline_fonts=1

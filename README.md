@@ -130,6 +130,8 @@ Syntax/Filetype
   * https://github.com/pangloss/vim-javascript
 * javascript
   * https://github.com/pangloss/vim-javascript
+* jsx
+  * https://github.com/mxw/vim-jsx
 * jquery
   * https://github.com/nono/jquery.vim
 * json
