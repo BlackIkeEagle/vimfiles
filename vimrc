@@ -196,6 +196,7 @@ highlight clear SignColumn
 """"
 
 " vim-session
+let g:session_directory = expand("~/.vimsession")
 let g:session_autosave = 'no' " no automatic session saving
 
 " jsx syntax
