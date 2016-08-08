@@ -20,6 +20,8 @@ Plugins
 * jira complete
   * https://github.com/mnpk/vim-jira-complete
   * *REQUIRES* python2-requests
+* vim-session
+  * https://github.com/xolox/vim-session
 
 ### File navigation
 

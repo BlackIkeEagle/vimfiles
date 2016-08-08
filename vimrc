@@ -29,8 +29,10 @@ Plug 'stephpy/vim-yaml', { 'for': 'yaml' }
 Plug '2072/PHP-Indenting-for-VIm', { 'for': 'php' }
 
 " plugins
+Plug 'xolox/vim-misc'
 " project
 Plug 'joonty/vim-sauce'
+Plug 'xolox/vim-session'
 Plug 'mnpk/vim-jira-complete'
 " file navigation
 Plug 'scrooloose/nerdtree'
@@ -192,6 +194,9 @@ highlight clear SignColumn
 """"
 " settings for plugins
 """"
+
+" vim-session
+let g:session_autosave = 'no' " no automatic session saving
 
 " jsx syntax
 let g:jsx_ext_required = 0
