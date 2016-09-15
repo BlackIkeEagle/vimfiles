@@ -80,12 +80,6 @@ call plug#end()
 " default vim settings
 """""
 
-" dont do matchparen
-"let loaded_matchparen = 1
-
-" big nesting with new regexpengine is slooooooow
-" set regexpengine=1
-
 " set leader key
 let mapleader = ' '
 
