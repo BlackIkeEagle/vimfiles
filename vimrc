@@ -142,6 +142,7 @@ set hidden                " hide buffer even when changed
 set scrolloff=4           " keep at least 4 lines above or below the cursor
 set colorcolumn=80,120    " show column 80 and 120 in different color
 set wildmode=longest,full " command completion longest common part, then all.
+set wildmenu              " enable the command completion menu
 
 " fileformat stuff
 "set fileformat=unix
