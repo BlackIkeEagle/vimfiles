@@ -90,6 +90,9 @@ call plug#end()
 let mapleader = ' '
 
 " set the colorsheme
+if (has("termguicolors"))
+    set termguicolors
+endif
 set background=dark
 colorscheme hybrid_material
 
