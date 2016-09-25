@@ -14,6 +14,7 @@ call plug#begin('~/.vim/plugged')
 Plug 'tomasr/molokai'
 Plug 'BlackIkeEagle/vim-colors-solarized'
 Plug 'kristijanhusak/vim-hybrid-material'
+Plug 'colepeters/spacemacs-theme.vim'
 
 " filetype
 Plug 'othree/html5.vim', { 'for': 'html' }
