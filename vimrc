@@ -11,8 +11,6 @@ set nocompatible
 
 call plug#begin('~/.vim/plugged')
 " colors
-Plug 'tomasr/molokai'
-Plug 'BlackIkeEagle/vim-colors-solarized'
 Plug 'kristijanhusak/vim-hybrid-material'
 Plug 'colepeters/spacemacs-theme.vim'
 
