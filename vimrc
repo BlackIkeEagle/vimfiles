@@ -12,7 +12,7 @@ set nocompatible
 call plug#begin('~/.vim/plugged')
 " colors
 Plug 'kristijanhusak/vim-hybrid-material'
-Plug 'colepeters/spacemacs-theme.vim'
+Plug 'chriskempson/base16-vim'
 
 " filetype
 Plug 'othree/html5.vim', { 'for': 'html' }
@@ -86,7 +86,7 @@ if (has("termguicolors"))
     set termguicolors
 endif
 set background=dark
-colorscheme hybrid_material
+colorscheme base16-google-dark
 
 " backup rules
 set backup
@@ -206,7 +206,7 @@ if filereadable(expand("~/.vimrc.jira"))
 endif
 
 " airline
-let g:airline_theme='hybrid'
+"let g:airline_theme='hybrid'
 let g:airline_powerline_fonts=1
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#tab_nr_type = 1
