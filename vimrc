@@ -33,6 +33,7 @@ Plug 'xolox/vim-misc'
 Plug 'joonty/vim-sauce'
 Plug 'xolox/vim-session'
 Plug 'mnpk/vim-jira-complete'
+Plug 'vimwiki/vimwiki'
 " file navigation
 Plug 'scrooloose/nerdtree'
 Plug 'tyok/nerdtree-ack'
@@ -237,6 +238,9 @@ elseif executable('ack')
 else
     let s:ctrlp_fallback = 'find %s -type f'
 endif
+
+" vimwiki
+let g:vimwiki_list = [{'path': '~/Documents/vimwiki/', 'auto_tags': 1}]
 
 " NERDTree
 let NERDTreeCascadeOpenSingleChildDir=0
