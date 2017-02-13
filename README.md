@@ -116,10 +116,8 @@ Colorschemes
 * Molokai
   * http://www.vim.org/scripts/script.php?script_id=2340
   * https://github.com/tomasr/molokai
-* Solarized
-  * http://www.vim.org/scripts/script.php?script_id=3520
-  * https://github.com/altercation/vim-colors-solarized
-  * https://github.com/BlackIkeEagle/solarized (my changes)
+* Solarized8
+  * https://github.com/lifepillar/vim-solarized8
 * hybrid material
   * https://github.com/kristijanhusak/vim-hybrid-material
 
