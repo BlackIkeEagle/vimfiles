@@ -19,6 +19,7 @@ Plug 'lifepillar/vim-solarized8'
 Plug 'othree/html5.vim', { 'for': 'html' }
 Plug 'pangloss/vim-javascript', { 'for': ['html', 'javascript'] }
 Plug 'mxw/vim-jsx', { 'for': ['html', 'javascript'] }
+Plug 'leafgarland/typescript-vim'
 Plug 'nono/jquery.vim', { 'for': ['html', 'javascript'] }
 Plug 'elzr/vim-json', { 'for': 'json' }
 Plug 'PotatoesMaster/i3-vim-syntax', { 'for': 'i3' }

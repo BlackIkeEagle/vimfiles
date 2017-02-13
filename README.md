@@ -132,6 +132,8 @@ Syntax/Filetype
   * https://github.com/pangloss/vim-javascript
 * jsx
   * https://github.com/mxw/vim-jsx
+* typescript
+  * https://github.com/leafgarland/typescript-vim
 * jquery
   * https://github.com/nono/jquery.vim
 * json
