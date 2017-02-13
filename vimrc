@@ -89,7 +89,7 @@ if (has("termguicolors"))
     set termguicolors
 endif
 set background=dark
-colorscheme base16-google-dark
+colorscheme solarized8_dark
 
 " backup rules
 set backup
