@@ -14,6 +14,7 @@ call plug#begin('~/.vim/plugged')
 Plug 'kristijanhusak/vim-hybrid-material'
 Plug 'chriskempson/base16-vim'
 Plug 'lifepillar/vim-solarized8'
+Plug 'morhetz/gruvbox'
 
 " filetype
 Plug 'othree/html5.vim', { 'for': 'html' }
@@ -89,7 +90,7 @@ if (has("termguicolors"))
     set termguicolors
 endif
 set background=dark
-colorscheme solarized8_dark
+colorscheme gruvbox
 
 " backup rules
 set backup

@@ -120,6 +120,8 @@ Colorschemes
   * https://github.com/lifepillar/vim-solarized8
 * hybrid material
   * https://github.com/kristijanhusak/vim-hybrid-material
+* gruvbox
+  * https://github.com/morhetz/gruvbox
 
 Syntax/Filetype
 ---------------
