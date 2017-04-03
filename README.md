@@ -113,13 +113,8 @@ Plugins
 Colorschemes
 ------------
 
-* Molokai
-  * http://www.vim.org/scripts/script.php?script_id=2340
-  * https://github.com/tomasr/molokai
-* Solarized8
-  * https://github.com/lifepillar/vim-solarized8
-* hybrid material
-  * https://github.com/kristijanhusak/vim-hybrid-material
+* base16
+  * https://github.com/chriskempson/base16-vim
 * gruvbox
   * https://github.com/morhetz/gruvbox
 

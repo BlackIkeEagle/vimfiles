@@ -11,9 +11,7 @@ set nocompatible
 
 call plug#begin('~/.vim/plugged')
 " colors
-Plug 'kristijanhusak/vim-hybrid-material'
 Plug 'chriskempson/base16-vim'
-Plug 'lifepillar/vim-solarized8'
 Plug 'morhetz/gruvbox'
 
 " filetype
