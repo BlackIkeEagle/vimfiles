@@ -1,6 +1,6 @@
 " BlackEagles vimrc for Linux && Windows
 "
-" (c) 2010 - 2016
+" (c) 2010 - 2017
 
 " nocompatible has to be the first of all ( use the real vimpower )
 set nocompatible
@@ -88,7 +88,7 @@ if (has("termguicolors"))
     set termguicolors
 endif
 set background=dark
-colorscheme gruvbox
+colorscheme base16-google-dark
 
 " backup rules
 set backup
