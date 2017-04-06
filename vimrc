@@ -13,6 +13,7 @@ call plug#begin('~/.vim/plugged')
 " colors
 Plug 'chriskempson/base16-vim'
 Plug 'morhetz/gruvbox'
+Plug 'sonph/onehalf', {'rtp': 'vim' }
 
 " filetype
 Plug 'othree/html5.vim', { 'for': 'html' }
@@ -88,7 +89,7 @@ if (has("termguicolors"))
     set termguicolors
 endif
 set background=dark
-colorscheme base16-google-dark
+colorscheme onehalfdark
 
 " backup rules
 set backup
@@ -208,7 +209,7 @@ if filereadable(expand("~/.vimrc.jira"))
 endif
 
 " airline
-"let g:airline_theme='hybrid'
+let g:airline_theme='onehalfdark'
 let g:airline_powerline_fonts=1
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#tab_nr_type = 1

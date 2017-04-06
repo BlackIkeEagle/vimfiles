@@ -117,6 +117,8 @@ Colorschemes
   * https://github.com/chriskempson/base16-vim
 * gruvbox
   * https://github.com/morhetz/gruvbox
+* onehalf
+  * https://github.com/sonph/onehalf
 
 Syntax/Filetype
 ---------------
