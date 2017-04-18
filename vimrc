@@ -28,6 +28,7 @@ Plug 'groenewege/vim-less', { 'for': 'less' }
 Plug 'pld-linux/vim-syntax-vcl'
 Plug 'stephpy/vim-yaml', { 'for': 'yaml' }
 Plug '2072/PHP-Indenting-for-VIm', { 'for': 'php' }
+Plug 'chr4/nginx.vim', { 'for': 'nginx' }
 
 " plugins
 Plug 'xolox/vim-misc'

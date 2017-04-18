@@ -152,7 +152,7 @@ Syntax/Filetype
 * php
   * https://github.com/2072/PHP-Indenting-for-VIm
 * nginx
-  * http://hg.nginx.org/nginx/file/tip/contrib/vim
+  * https://github.com/chr4/nginx.vim
 
 Notes
 -----
