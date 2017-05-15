@@ -9,7 +9,12 @@ set nocompatible
 " Plug config
 """"
 
-call plug#begin('~/.vim/plugged')
+
+if (has("nvim"))
+    call plug#begin('~/.local/share/nvim/plugged')
+else
+    call plug#begin('~/.vim/plugged')
+endif
 " colors
 Plug 'chriskempson/base16-vim'
 Plug 'morhetz/gruvbox'
