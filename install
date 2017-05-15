@@ -43,6 +43,7 @@ if [[ $clean -ne 0 ]]; then
     [[ "$configpath" != "" ]] && rm -rf "$configpath"
     [[ "$vimrcfile" != "" ]] && rm -f "$vimrcfile"
     [[ "$gvimrcfile" != "" ]] && rm -f "$gvimrcfile"
+    [[ $nvim -eq 1 ]] && rm -rf "$HOME/.local/share/nvim"
 fi
 
 # put the vimfiles in place
