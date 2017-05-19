@@ -69,6 +69,7 @@ Plug 'majutsushi/tagbar'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'itspriddle/vim-stripper'
 Plug 'terryma/vim-expand-region'
+Plug 'matze/vim-move'
 " vcs
 Plug 'tpope/vim-fugitive'
 Plug 'mhinz/vim-signify'

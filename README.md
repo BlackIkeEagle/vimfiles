@@ -109,6 +109,8 @@ Plugins
   * https://github.com/itspriddle/vim-stripper
 * vim-expand-region
   * https://github.com/terryma/vim-expand-region
+* vim-move
+  * https://github.com/matze/vim-move
 
 Colorschemes
 ------------
