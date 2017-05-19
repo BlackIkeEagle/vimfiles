@@ -32,7 +32,7 @@ Plug 'gabrielelana/vim-markdown', { 'for': 'markdown' }
 Plug 'groenewege/vim-less', { 'for': 'less' }
 Plug 'pld-linux/vim-syntax-vcl'
 Plug 'stephpy/vim-yaml', { 'for': 'yaml' }
-Plug '2072/PHP-Indenting-for-VIm', { 'for': 'php' }
+Plug 'StanAngeloff/php.vim', { 'for': 'php' }
 Plug 'chr4/nginx.vim', { 'for': 'nginx' }
 
 " plugins

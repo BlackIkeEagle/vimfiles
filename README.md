@@ -150,7 +150,7 @@ Syntax/Filetype
 * yaml
   * https://github.com/stephpy/vim-yaml
 * php
-  * https://github.com/2072/PHP-Indenting-for-VIm
+  * https://github.com/StanAngeloff/php.vim
 * nginx
   * https://github.com/chr4/nginx.vim
 
