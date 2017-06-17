@@ -134,7 +134,7 @@ Syntax/Filetype
 * jsx
   * https://github.com/mxw/vim-jsx
 * typescript
-  * https://github.com/leafgarland/typescript-vim
+  * https://github.com/HerringtonDarkholme/yats.vim
 * jquery
   * https://github.com/nono/jquery.vim
 * json
@@ -153,8 +153,11 @@ Syntax/Filetype
   * https://github.com/stephpy/vim-yaml
 * php
   * https://github.com/StanAngeloff/php.vim
+  * https://github.com/shawncplus/phpcomplete.vim
 * nginx
   * https://github.com/chr4/nginx.vim
+* css
+  * https://github.com/hail2u/vim-css3-syntax
 
 Notes
 -----

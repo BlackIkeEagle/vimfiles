@@ -23,16 +23,18 @@ Plug 'sonph/onehalf', {'rtp': 'vim' }
 " filetype
 Plug 'othree/html5.vim', { 'for': 'html' }
 Plug 'pangloss/vim-javascript', { 'for': ['html', 'javascript'] }
-Plug 'mxw/vim-jsx', { 'for': ['html', 'javascript'] }
-Plug 'leafgarland/typescript-vim'
+Plug 'mxw/vim-jsx', { 'for': ['html', 'javascript'] } " jsx, react
+Plug 'HerringtonDarkholme/yats.vim' " typescript
 Plug 'nono/jquery.vim', { 'for': ['html', 'javascript'] }
 Plug 'elzr/vim-json', { 'for': 'json' }
 Plug 'PotatoesMaster/i3-vim-syntax', { 'for': 'i3' }
 Plug 'gabrielelana/vim-markdown', { 'for': 'markdown' }
 Plug 'groenewege/vim-less', { 'for': 'less' }
-Plug 'pld-linux/vim-syntax-vcl'
+Plug 'hail2u/vim-css3-syntax', { 'for': 'css' }
+Plug 'pld-linux/vim-syntax-vcl' " varnish
 Plug 'stephpy/vim-yaml', { 'for': 'yaml' }
 Plug 'StanAngeloff/php.vim', { 'for': 'php' }
+Plug 'shawncplus/phpcomplete.vim', { 'for': 'php' }
 Plug 'chr4/nginx.vim', { 'for': 'nginx' }
 
 " plugins
@@ -76,7 +78,7 @@ Plug 'mhinz/vim-signify'
 Plug 'rhysd/conflict-marker.vim'
 " php
 Plug 'EvanDotPro/php_getset.vim', { 'for': 'php' }
-Plug 'joonty/vdebug'
+Plug 'joonty/vdebug' ", { 'branch': 'v2-integration' }
 Plug 'vim-php/vim-composer'
 " snippets
 Plug 'SirVer/ultisnips'
@@ -90,13 +92,6 @@ call plug#end()
 
 " set leader key
 let mapleader = ' '
-
-" set the colorsheme
-if (has("termguicolors"))
-    set termguicolors
-endif
-set background=dark
-colorscheme onehalfdark
 
 " backup rules
 set backup
@@ -197,6 +192,13 @@ nnoremap <silent> <Leader>lt :set list!<CR>
 
 " signcolumn highlight clear (matching background)
 highlight clear SignColumn
+
+" set the colorsheme
+if (has("termguicolors"))
+    set termguicolors
+endif
+set background=dark
+colorscheme onehalfdark
 
 """"
 " settings for plugins
