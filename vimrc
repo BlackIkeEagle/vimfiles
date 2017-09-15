@@ -78,7 +78,7 @@ Plug 'mhinz/vim-signify'
 Plug 'rhysd/conflict-marker.vim'
 " php
 Plug 'EvanDotPro/php_getset.vim', { 'for': 'php' }
-Plug 'joonty/vdebug' ", { 'branch': 'v2-integration' }
+Plug 'joonty/vdebug' , { 'branch': 'v2-integration' }
 Plug 'vim-php/vim-composer'
 " snippets
 Plug 'SirVer/ultisnips'
