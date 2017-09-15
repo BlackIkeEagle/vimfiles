@@ -46,6 +46,8 @@ if [[ $clean -ne 0 ]]; then
     [[ $nvim -eq 1 ]] && rm -rf "$HOME/.local/share/nvim"
 fi
 
+cd "$(dirname "$(readlink -f "$0")")"
+
 # put the vimfiles in place
 [[ ! -d "$configpath" ]] && mkdir "$configpath"
 cp -a ./vimfiles/* "$configpath/"
