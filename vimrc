@@ -36,6 +36,9 @@ Plug 'stephpy/vim-yaml', { 'for': 'yaml' }
 Plug 'StanAngeloff/php.vim', { 'for': 'php' }
 Plug 'shawncplus/phpcomplete.vim', { 'for': 'php' }
 Plug 'chr4/nginx.vim', { 'for': 'nginx' }
+
+" syntaxrange
+Plug 'vim-scripts/ingo-library'
 Plug 'vim-scripts/SyntaxRange' " change syntax for specific range
 
 " plugins
