@@ -71,9 +71,6 @@ Plugins
 * nerdcommenter
   * http://www.vim.org/scripts/script.php?script_id=1218
   * https://github.com/scrooloose/nerdcommenter
-* supertab
-  * http://www.vim.org/scripts/script.php?script_id=1643
-  * https://github.com/ervandew/supertab
 * ale
   * https://github.com/w0rp/ale
 * tagbar

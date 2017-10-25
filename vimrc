@@ -69,7 +69,6 @@ Plug 'tpope/vim-abolish'
 Plug 'Townk/vim-autoclose'
 Plug 'Valloric/MatchTagAlways'
 Plug 'scrooloose/nerdcommenter'
-Plug 'ervandew/supertab'
 Plug 'w0rp/ale' " automated syntax checking
 Plug 'majutsushi/tagbar'
 Plug 'editorconfig/editorconfig-vim'
@@ -262,10 +261,6 @@ let NERDTreeCascadeOpenSingleChildDir=0
 
 " vim-signify
 let g:signify_vcs_list = [ 'git', 'hg', 'svn' ]
-
-" SuperTab settings
-"let g:SuperTabDefaultCompletionType = "<c-x><c-o>"
-"let g:SuperTabContextDefaultCompletionType = "<c-x><c-o>"
 
 " AutoClose settings
 let g:AutoCloseOn=0
