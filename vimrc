@@ -75,6 +75,13 @@ Plug 'editorconfig/editorconfig-vim'
 Plug 'itspriddle/vim-stripper'
 Plug 'terryma/vim-expand-region'
 Plug 'matze/vim-move'
+if has('nvim')
+  Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+else
+  Plug 'Shougo/deoplete.nvim'
+  Plug 'roxma/nvim-yarp'
+  Plug 'roxma/vim-hug-neovim-rpc'
+endif
 " vcs
 Plug 'tpope/vim-fugitive'
 Plug 'mhinz/vim-signify'
@@ -206,6 +213,9 @@ colorscheme onehalfdark
 """"
 " settings for plugins
 """"
+
+" Use deoplete.
+let g:deoplete#enable_at_startup = 1
 
 " vim-session
 let g:session_directory = expand("~/.vimsession")

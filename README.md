@@ -76,6 +76,8 @@ Plugins
 * tagbar
   * http://www.vim.org/scripts/script.php?script_id=3465
   * http://majutsushi.github.com/tagbar/
+* deoplete
+  * https://github.com/Shougo/deoplete.nvim
 
 * fugitive
   * http://www.vim.org/scripts/script.php?script_id=2975
