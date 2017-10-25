@@ -5,7 +5,7 @@
 set guioptions=aiA "dont show toolbar
 
 " vim size stuff
-set lines=60 columns=100
+set lines=55 columns=200
 
 if has("gui_gtk2") || has("gui_gtk3") || has("gui_qt")
 	set guifont=Hack\ 10,DejaVu\ Sans\ Mono\ 10
