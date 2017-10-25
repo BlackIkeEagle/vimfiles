@@ -74,9 +74,8 @@ Plugins
 * supertab
   * http://www.vim.org/scripts/script.php?script_id=1643
   * https://github.com/ervandew/supertab
-* syntastic
-  * http://www.vim.org/scripts/script.php?script_id=2736
-  * https://github.com/scrooloose/syntastic
+* ale
+  * https://github.com/w0rp/ale
 * tagbar
   * http://www.vim.org/scripts/script.php?script_id=3465
   * http://majutsushi.github.com/tagbar/

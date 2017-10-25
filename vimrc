@@ -70,7 +70,7 @@ Plug 'Townk/vim-autoclose'
 Plug 'Valloric/MatchTagAlways'
 Plug 'scrooloose/nerdcommenter'
 Plug 'ervandew/supertab'
-Plug 'scrooloose/syntastic'
+Plug 'w0rp/ale' " automated syntax checking
 Plug 'majutsushi/tagbar'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'itspriddle/vim-stripper'
@@ -270,10 +270,6 @@ let g:signify_vcs_list = [ 'git', 'hg', 'svn' ]
 " AutoClose settings
 let g:AutoCloseOn=0
 let g:AutoClosePairs= {'(': ')', '[': ']', '"': '"', "'": "'", '<': '>'}
-
-" syntastic
-let g:syntastic_enable_signs=1
-let g:syntastic_auto_loc_list=1
 
 " MatchTagAlways
 let g:mta_filetypes = {
