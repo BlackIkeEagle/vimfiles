@@ -28,22 +28,16 @@ Plugins
 * Ack
   * http://www.vim.org/scripts/script.php?script_id=2572
   * https://github.com/mileszs/ack.vim
-* bufferlist
-  * http://www.vim.org/scripts/script.php?script_id=1325
-  * https://github.com/roblillack/vim-bufferlist
-* CtrlP
-  * http://www.vim.org/scripts/script.php?script_id=3736
-  * https://github.com/kien/ctrlp.vim
 * NERDTree
   * http://www.vim.org/scripts/script.php?script_id=1658
   * https://github.com/scrooloose/nerdtree
 * NERDTree ack
   * http://www.vim.org/scripts/script.php?script_id=3878
   * https://github.com/tyok/nerdtree-ack
-* QFGRep
-  * https://github.com/sk1418/QFGrep
 * Accordion
   * https://github.com/mattboehm/vim-accordion
+* fzf
+  * https://github.com/junegunn/fzf.vim
 
 ### General plugins
 

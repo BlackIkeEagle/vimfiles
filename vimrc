@@ -51,11 +51,9 @@ Plug 'vimwiki/vimwiki'
 " file navigation
 Plug 'scrooloose/nerdtree'
 Plug 'tyok/nerdtree-ack'
-Plug 'kien/ctrlp.vim'
 Plug 'mileszs/ack.vim'
-Plug 'sk1418/QFGrep'
+Plug 'junegunn/fzf.vim'
 " buffers
-Plug 'roblillack/vim-bufferlist'
 Plug 'mattboehm/vim-accordion'
 " statusline
 Plug 'vim-airline/vim-airline'
@@ -191,7 +189,9 @@ nnoremap <silent> <Leader>nt :NERDTreeToggle<CR>
 nnoremap <silent> <Leader>nf :NERDTreeFind<CR>
 nnoremap <silent> <Leader>tb :TagbarToggle<CR>
 nnoremap <silent> <Leader>ut :UndotreeToggle<CR>
-nnoremap <silent> <Leader>bl :call BufferList()<CR>
+nnoremap <silent> <Leader>bl :Buffers<CR>
+nnoremap <silent> <Leader>tl :Tags<CR>
+nnoremap <silent> <Leader>fl :Files<CR>
 nnoremap <silent> <Leader>lt :set list!<CR>
 
 " signcolumn highlight clear (matching background)
@@ -231,27 +231,10 @@ let g:airline#extensions#whitespace#enabled = 0
 " Ack.vim
 if executable('ag')
     " ack.vim with the_silver_searcher
-    let g:ackprg = 'ag --nogroup --nocolor --column --smart-case'
+    let g:ackprg = 'ag --vimgrep'
 elseif executable('ack-grep')
     " ack.vim with renamed ack
     let g:ackprg="ack-grep -H --nocolor --nogroup --column"
-endif
-
-" CtrlP
-let g:ctrlp_working_path_mode = 'ra'
-let g:ctrlp_max_files = 100000
-let g:ctrlp_custom_ignore = {
-    \ 'dir':  '\.git$\|\.hg$\|\.svn$',
-    \ 'file': '\.exe$\|\.so$\|\.dll$\|\.pyc$' }
-
-if executable('ag')
-    let s:ctrlp_fallback = 'ag %s --nocolor -l -g ""'
-elseif executable('ack-grep')
-    let s:ctrlp_fallback = 'ack-grep %s --nocolor -f'
-elseif executable('ack')
-    let s:ctrlp_fallback = 'ack %s --nocolor -f'
-else
-    let s:ctrlp_fallback = 'find %s -type f'
 endif
 
 " vimwiki
