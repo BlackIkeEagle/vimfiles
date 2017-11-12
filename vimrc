@@ -43,26 +43,32 @@ Plug 'vim-scripts/SyntaxRange' " change syntax for specific range
 
 " plugins
 Plug 'xolox/vim-misc'
+
 " project
 Plug 'joonty/vim-sauce'
 Plug 'xolox/vim-session'
 Plug 'mnpk/vim-jira-complete'
 Plug 'vimwiki/vimwiki'
+
 " file navigation
 Plug 'scrooloose/nerdtree'
 Plug 'tyok/nerdtree-ack'
 Plug 'mileszs/ack.vim'
 Plug 'junegunn/fzf.vim'
+
 " buffers
 Plug 'mattboehm/vim-accordion'
+
 " statusline
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
+
 " extras
 Plug 'terryma/vim-multiple-cursors'
 Plug 'godlygeek/tabular'
 Plug 'mbbill/undotree'
 Plug 'tpope/vim-abolish'
+
 " general coding
 Plug 'Townk/vim-autoclose'
 Plug 'Valloric/MatchTagAlways'
@@ -74,14 +80,17 @@ Plug 'editorconfig/editorconfig-vim'
 Plug 'itspriddle/vim-stripper'
 Plug 'terryma/vim-expand-region'
 Plug 'matze/vim-move'
+
 " vcs
 Plug 'tpope/vim-fugitive'
 Plug 'mhinz/vim-signify'
 Plug 'rhysd/conflict-marker.vim'
+
 " php
 Plug 'EvanDotPro/php_getset.vim', { 'for': 'php' }
 Plug 'joonty/vdebug' , { 'branch': 'v2-integration' }
 Plug 'vim-php/vim-composer'
+
 " snippets
 Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
