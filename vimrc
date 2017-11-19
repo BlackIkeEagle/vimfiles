@@ -212,7 +212,11 @@ if (has("termguicolors"))
     set termguicolors
 endif
 set background=dark
-colorscheme nova
+try
+    colorscheme nova
+catch /^Vim\%((\a\+)\)\=:E185/
+    " deal with it
+endtry
 
 """"
 " settings for plugins
