@@ -17,9 +17,6 @@ else
 endif
 " colors
 Plug 'chriskempson/base16-vim'
-Plug 'morhetz/gruvbox'
-Plug 'sonph/onehalf', {'rtp': 'vim' }
-Plug 'trevordmiller/nova-vim'
 
 " filetype
 Plug 'othree/html5.vim', { 'for': 'html' }
@@ -213,7 +210,7 @@ if (has("termguicolors"))
 endif
 set background=dark
 try
-    colorscheme nova
+    colorscheme base16-circus
 catch /^Vim\%((\a\+)\)\=:E185/
     " deal with it
 endtry

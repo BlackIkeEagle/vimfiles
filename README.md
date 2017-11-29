@@ -110,13 +110,6 @@ Colorschemes
 
 * base16
   * https://github.com/chriskempson/base16-vim
-* gruvbox
-  * https://github.com/morhetz/gruvbox
-* onehalf
-  * https://github.com/sonph/onehalf
-* nova
-  * https://github.com/trevordmiller/nova-vim
-  * https://trevordmiller.com/projects/nova
 
 Syntax/Filetype
 ---------------
