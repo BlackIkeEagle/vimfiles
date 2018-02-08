@@ -275,6 +275,9 @@ let g:mta_filetypes = {
     \ 'twig' : 1,
     \}
 
+" Ale settings
+let g:ale_open_list = 1 " show list when errors are found
+
 if version >= 702
     autocmd BufWinLeave * call clearmatches()
 endif
