@@ -277,6 +277,7 @@ let g:mta_filetypes = {
 
 " Ale settings
 let g:ale_open_list = 1 " show list when errors are found
+let g:ale_lint_on_text_changed = 'normal'
 
 if version >= 702
     autocmd BufWinLeave * call clearmatches()
