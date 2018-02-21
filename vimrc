@@ -279,6 +279,11 @@ let g:mta_filetypes = {
 let g:ale_open_list = 1 " show list when errors are found
 let g:ale_lint_on_text_changed = 'normal'
 
+" vdebug settings
+let g:vdebug_options = {
+    \'path_maps': {'/phpapp': getcwd()}
+\}
+
 if version >= 702
     autocmd BufWinLeave * call clearmatches()
 endif
