@@ -52,6 +52,9 @@ Plug 'vimwiki/vimwiki'
 Plug 'scrooloose/nerdtree'
 Plug 'tyok/nerdtree-ack'
 Plug 'mileszs/ack.vim'
+if (has("nvim"))
+    Plug 'junegunn/fzf'
+endif
 Plug 'junegunn/fzf.vim'
 
 " buffers
