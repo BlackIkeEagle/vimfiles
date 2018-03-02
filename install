@@ -61,3 +61,10 @@ if [[ $nvim -eq 1 ]]; then
 else
     vim +PlugInstall +qall
 fi
+if [[ $clean -eq 0 ]]; then
+    if [[ $nvim -eq 1 ]]; then
+        nvim +PlugUpdate +qall
+    else
+        vim +PlugUpdate +qall
+    fi
+fi
