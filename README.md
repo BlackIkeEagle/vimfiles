@@ -57,9 +57,6 @@ Plugins
 
 ### Coding
 
-* Autoclose
-  * http://www.vim.org/scripts/script.php?script_id=2009
-  * https://github.com/Townk/vim-autoclose
 * MatchTagAlways
   * https://github.com/Valloric/MatchTagAlways
 * nerdcommenter

@@ -71,7 +71,6 @@ Plug 'mbbill/undotree'
 Plug 'tpope/vim-abolish'
 
 " general coding
-Plug 'Townk/vim-autoclose'
 Plug 'Valloric/MatchTagAlways'
 Plug 'scrooloose/nerdcommenter'
 Plug 'ervandew/supertab'
@@ -263,10 +262,6 @@ let g:signify_vcs_list = [ 'git', 'hg', 'svn' ]
 " SuperTab settings
 "let g:SuperTabDefaultCompletionType = "<c-x><c-o>"
 "let g:SuperTabContextDefaultCompletionType = "<c-x><c-o>"
-
-" AutoClose settings
-let g:AutoCloseOn=0
-let g:AutoClosePairs= {'(': ')', '[': ']', '"': '"', "'": "'", '<': '>'}
 
 " MatchTagAlways
 let g:mta_filetypes = {
