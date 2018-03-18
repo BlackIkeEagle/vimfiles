@@ -46,7 +46,13 @@ if [[ $clean -ne 0 ]]; then
     [[ $nvim -eq 1 ]] && rm -rf "$HOME/.local/share/nvim"
 fi
 
-cd "$(dirname "$(readlink -f "$0")")"
+uname=$(uname)
+
+if [[ "$uname" == "Linux" ]]; then
+    cd "$(dirname "$(readlink -f "$0")")"
+else
+    cd "$(cd "$(dirname "$0")"; pwd -P)"
+fi
 
 # put the vimfiles in place
 [[ ! -d "$configpath" ]] && mkdir "$configpath"
