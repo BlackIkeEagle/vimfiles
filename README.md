@@ -17,9 +17,6 @@ Plugins
 * sauce
   * http://www.vim.org/scripts/script.php?script_id=3992
   * https://github.com/joonty/vim-sauce
-* jira complete
-  * https://github.com/mnpk/vim-jira-complete
-  * *REQUIRES* python2-requests
 * vim-session
   * https://github.com/xolox/vim-session
 

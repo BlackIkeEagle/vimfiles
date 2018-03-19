@@ -45,7 +45,6 @@ Plug 'xolox/vim-misc'
 " project
 Plug 'joonty/vim-sauce'
 Plug 'xolox/vim-session'
-Plug 'mnpk/vim-jira-complete'
 Plug 'vimwiki/vimwiki'
 
 " file navigation
@@ -227,12 +226,6 @@ let g:session_autosave = 'no' " no automatic session saving
 
 " jsx syntax
 let g:jsx_ext_required = 0
-
-" jira complete
-imap <silent> <unique> <C-j> <Plug>JiraComplete
-if filereadable(expand("~/.vimrc.jira"))
-    source ~/.vimrc.jira
-endif
 
 " airline
 "let g:airline_theme='onehalfdark'
