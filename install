@@ -55,7 +55,7 @@ else
 fi
 
 # put the vimfiles in place
-[[ ! -d "$configpath" ]] && mkdir "$configpath"
+[[ ! -d "$configpath" ]] && mkdir -p "$configpath"
 cp -a ./vimfiles/* "$configpath/"
 # copy new vimrc
 cp -a ./vimrc "$vimrcfile"
