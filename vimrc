@@ -112,14 +112,25 @@ if has("win32")
     set viewdir=$TEMP
     set undodir=$TEMP
 else
-    silent execute '!mkdir -p $HOME/.vim/tmp/backup'
-    set backupdir=$HOME/.vim/tmp/backup
-    silent execute '!mkdir -p $HOME/.vim/tmp/swap'
-    set directory=$HOME/.vim/tmp/swap
-    silent execute '!mkdir -p $HOME/.vim/tmp/views'
-    set viewdir=$HOME/.vim/tmp/views
-    silent execute '!mkdir -p $HOME/.vim/tmp/undo'
-    set undodir=$HOME/.vim/tmp/undo
+    if (has("nvim"))
+        silent execute '!mkdir -p $HOME/.local/share/nvim/tmp/backup'
+        set backupdir=$HOME/.local/share/nvim/tmp/backup
+        silent execute '!mkdir -p $HOME/.local/share/nvim/tmp/swap'
+        set directory=$HOME/.local/share/nvim/tmp/swap
+        silent execute '!mkdir -p $HOME/.local/share/nvim/tmp/views'
+        set viewdir=$HOME/.local/share/nvim/tmp/views
+        silent execute '!mkdir -p $HOME/.local/share/nvim/tmp/undo'
+        set undodir=$HOME/.local/share/nvim/tmp/undo
+    else
+        silent execute '!mkdir -p $HOME/.vim/tmp/backup'
+        set backupdir=$HOME/.vim/tmp/backup
+        silent execute '!mkdir -p $HOME/.vim/tmp/swap'
+        set directory=$HOME/.vim/tmp/swap
+        silent execute '!mkdir -p $HOME/.vim/tmp/views'
+        set viewdir=$HOME/.vim/tmp/views
+        silent execute '!mkdir -p $HOME/.vim/tmp/undo'
+        set undodir=$HOME/.vim/tmp/undo
+    endif
 endif
 
 " commandline history
