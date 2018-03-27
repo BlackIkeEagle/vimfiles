@@ -214,15 +214,17 @@ nnoremap <silent> <Leader>lt :set list!<CR>
 highlight clear SignColumn
 
 " set the colorsheme
+set background=dark
 if (has("termguicolors"))
     set termguicolors
+    try
+        colorscheme base16-circus
+    catch /^Vim\%((\a\+)\)\=:E185/
+        " deal with it
+    endtry
+else
+    colorscheme delek
 endif
-set background=dark
-try
-    colorscheme base16-circus
-catch /^Vim\%((\a\+)\)\=:E185/
-    " deal with it
-endtry
 
 """"
 " settings for plugins
