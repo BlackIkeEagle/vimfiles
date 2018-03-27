@@ -51,10 +51,7 @@ Plug 'vimwiki/vimwiki'
 Plug 'scrooloose/nerdtree'
 Plug 'tyok/nerdtree-ack'
 Plug 'mileszs/ack.vim'
-if (has("nvim"))
-    Plug 'junegunn/fzf'
-endif
-Plug 'junegunn/fzf.vim'
+Plug 'Shougo/denite.nvim'
 
 " buffers
 Plug 'mattboehm/vim-accordion'
@@ -208,9 +205,9 @@ nnoremap <silent> <Leader>nt :NERDTreeToggle<CR>
 nnoremap <silent> <Leader>nf :NERDTreeFind<CR>
 nnoremap <silent> <Leader>tb :TagbarToggle<CR>
 nnoremap <silent> <Leader>ut :UndotreeToggle<CR>
-nnoremap <silent> <Leader>bl :Buffers<CR>
+nnoremap <silent> <Leader>bl :Denite buffer<CR>
 nnoremap <silent> <Leader>tl :Tags<CR>
-nnoremap <silent> <Leader>fl :Files<CR>
+nnoremap <silent> <Leader>fl :Denite file_rec<CR>
 nnoremap <silent> <Leader>lt :set list!<CR>
 
 " signcolumn highlight clear (matching background)

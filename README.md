@@ -33,8 +33,8 @@ Plugins
   * https://github.com/tyok/nerdtree-ack
 * Accordion
   * https://github.com/mattboehm/vim-accordion
-* fzf
-  * https://github.com/junegunn/fzf.vim
+* Denite
+  * https://github.com/Shougo/denite.nvim
 
 ### General plugins
 
