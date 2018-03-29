@@ -64,12 +64,14 @@ cp -a ./vimrc "$vimrcfile"
 
 if [[ $nvim -eq 1 ]]; then
     nvim +PlugInstall +qall
+    nvim +UpdateRemotePlugins +qall
 else
     vim +PlugInstall +qall
 fi
 if [[ $clean -eq 0 ]]; then
     if [[ $nvim -eq 1 ]]; then
         nvim +PlugUpdate +qall
+        nvim +UpdateRemotePlugins +qall
     else
         vim +PlugUpdate +qall
     fi
