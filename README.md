@@ -17,6 +17,8 @@ Plugins
 * sauce
   * http://www.vim.org/scripts/script.php?script_id=3992
   * https://github.com/joonty/vim-sauce
+* vimwiki
+  * https://github.com/vimwiki/vimwiki
 
 ### File navigation
 
