@@ -39,12 +39,8 @@ Plug 'chr4/nginx.vim', { 'for': 'nginx' }
 Plug 'vim-scripts/ingo-library'
 Plug 'vim-scripts/SyntaxRange' " change syntax for specific range
 
-" plugins
-Plug 'xolox/vim-misc'
-
 " project
 Plug 'joonty/vim-sauce'
-Plug 'xolox/vim-session'
 Plug 'vimwiki/vimwiki'
 
 " file navigation

@@ -17,8 +17,6 @@ Plugins
 * sauce
   * http://www.vim.org/scripts/script.php?script_id=3992
   * https://github.com/joonty/vim-sauce
-* vim-session
-  * https://github.com/xolox/vim-session
 
 ### File navigation
 
