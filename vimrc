@@ -251,7 +251,13 @@ elseif executable('ack-grep')
 endif
 
 " vimwiki
-let g:vimwiki_list = [{'path': '~/Documents/vimwiki/', 'auto_tags': 1}]
+let g:vimwiki_list = [
+    \{
+        \'path': '~/Documents/vimwiki/',
+        \'auto_tags': 1,
+    \}
+\]
+        "\'syntax': 'markdown',
 
 " NERDTree
 let NERDTreeCascadeOpenSingleChildDir=0
