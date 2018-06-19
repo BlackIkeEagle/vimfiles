@@ -52,7 +52,6 @@ Plug 'Shougo/denite.nvim'
 Plug 'mattboehm/vim-accordion'
 
 " extras
-Plug 'terryma/vim-multiple-cursors'
 Plug 'godlygeek/tabular'
 Plug 'mbbill/undotree'
 Plug 'tpope/vim-abolish'

@@ -35,8 +35,6 @@ Plugins
 
 ### General plugins
 
-* multiple-cursors
-  * https://github.com/terryma/vim-multiple-cursors
 * tabular
   * http://www.vim.org/scripts/script.php?script_id=3464
   * https://github.com/godlygeek/tabular
