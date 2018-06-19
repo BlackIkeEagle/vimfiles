@@ -68,8 +68,6 @@ Plugins
 * conflict marker
   * https://github.com/rhysd/conflict-marker.vim
 
-* php_getset
-  * https://github.com/EvanDotPro/php_getset.vim
 * vdebug
   * http://www.vim.org/scripts/script.php?script_id=4170
   * https://github.com/joonty/vdebug
