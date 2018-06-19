@@ -52,10 +52,6 @@ Plug 'Shougo/denite.nvim'
 " buffers
 Plug 'mattboehm/vim-accordion'
 
-" statusline
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
-
 " extras
 Plug 'terryma/vim-multiple-cursors'
 Plug 'godlygeek/tabular'
@@ -179,7 +175,7 @@ set expandtab     " tabs are tabs, do not replace with spaces
 
 " statusline stuff
 set laststatus=2
-"set statusline=%<%F%h\ %(%y\ %)[%{&ff}]\ %{\"[\".(&fenc==\"\"?&enc:&fenc).\"]\"}\ %([%R%M]\ %)%=#%n\ %l/%L,%c%V\ %P
+set statusline=%<%F%h\ %([%R%M]\ %)\ %=%(%y\ %)[%{&ff}]\ %{\"[\".(&fenc==\"\"?&enc:&fenc).\"]\"}\ #%n\ %12(%l/%L%)\ %5.P
 
 " diff settings
 set diffopt=filler,iwhite,vertical
@@ -233,13 +229,6 @@ let g:session_autosave = 'no' " no automatic session saving
 
 " jsx syntax
 let g:jsx_ext_required = 0
-
-" airline
-"let g:airline_theme='onehalfdark'
-let g:airline_powerline_fonts=1
-let g:airline#extensions#tabline#enabled = 1
-let g:airline#extensions#tabline#tab_nr_type = 1
-let g:airline#extensions#whitespace#enabled = 0
 
 " Ack.vim
 if executable('ag')

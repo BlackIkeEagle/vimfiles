@@ -38,9 +38,6 @@ Plugins
 
 ### General plugins
 
-* Airline
-  * https://github.com/vim-airline/vim-airline
-  * https://github.com/vim-airline/vim-airline-themes
 * multiple-cursors
   * https://github.com/terryma/vim-multiple-cursors
 * tabular
