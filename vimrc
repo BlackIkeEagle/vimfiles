@@ -40,7 +40,6 @@ Plug 'vim-scripts/ingo-library'
 Plug 'vim-scripts/SyntaxRange' " change syntax for specific range
 
 " project
-Plug 'joonty/vim-sauce'
 Plug 'vimwiki/vimwiki'
 
 " file navigation
