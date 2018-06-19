@@ -17,6 +17,7 @@ else
 endif
 " colors
 Plug 'chriskempson/base16-vim'
+Plug 'drewtempelmeyer/palenight.vim'
 
 " filetype
 Plug 'othree/html5.vim', { 'for': 'html' }
@@ -211,7 +212,7 @@ set background=dark
 if (has("termguicolors"))
     set termguicolors
     try
-        colorscheme base16-circus
+        colorscheme palenight
     catch /^Vim\%((\a\+)\)\=:E185/
         " deal with it
     endtry
