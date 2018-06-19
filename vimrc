@@ -222,10 +222,6 @@ endif
 " settings for plugins
 """"
 
-" vim-session
-let g:session_directory = expand("~/.vimsession")
-let g:session_autosave = 'no' " no automatic session saving
-
 " jsx syntax
 let g:jsx_ext_required = 0
 
