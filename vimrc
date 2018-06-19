@@ -24,7 +24,6 @@ Plug 'othree/html5.vim', { 'for': 'html' }
 Plug 'pangloss/vim-javascript', { 'for': ['html', 'javascript'] }
 Plug 'mxw/vim-jsx', { 'for': ['html', 'javascript'] } " jsx, react
 Plug 'HerringtonDarkholme/yats.vim' " typescript
-Plug 'nono/jquery.vim', { 'for': ['html', 'javascript'] }
 Plug 'elzr/vim-json', { 'for': 'json' }
 Plug 'PotatoesMaster/i3-vim-syntax', { 'for': 'i3' }
 Plug 'gabrielelana/vim-markdown', { 'for': 'markdown' }

@@ -117,8 +117,6 @@ Syntax/Filetype
   * https://github.com/mxw/vim-jsx
 * typescript
   * https://github.com/HerringtonDarkholme/yats.vim
-* jquery
-  * https://github.com/nono/jquery.vim
 * json
   * https://github.com/elzr/vim-json
 * i3-vim-syntax
