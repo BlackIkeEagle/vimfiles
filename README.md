@@ -78,7 +78,7 @@ Plugins
 * vdebug
   * http://www.vim.org/scripts/script.php?script_id=4170
   * https://github.com/joonty/vdebug
-  * *REQUIRES* python2
+  * *REQUIRES* python3
 * vim-composer
   * https://github.com/vim-php/vim-composer
 
