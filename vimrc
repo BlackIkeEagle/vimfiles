@@ -20,20 +20,7 @@ Plug 'chriskempson/base16-vim'
 Plug 'drewtempelmeyer/palenight.vim'
 
 " filetype
-Plug 'othree/html5.vim', { 'for': 'html' }
-Plug 'pangloss/vim-javascript', { 'for': ['html', 'javascript'] }
-Plug 'mxw/vim-jsx', { 'for': ['html', 'javascript'] } " jsx, react
-Plug 'HerringtonDarkholme/yats.vim' " typescript
-Plug 'elzr/vim-json', { 'for': 'json' }
-Plug 'PotatoesMaster/i3-vim-syntax', { 'for': 'i3' }
-Plug 'gabrielelana/vim-markdown', { 'for': 'markdown' }
-Plug 'groenewege/vim-less', { 'for': 'less' }
-Plug 'hail2u/vim-css3-syntax', { 'for': 'css' }
-Plug 'pld-linux/vim-syntax-vcl' " varnish
-Plug 'stephpy/vim-yaml', { 'for': 'yaml' }
-Plug 'StanAngeloff/php.vim', { 'for': 'php' }
-Plug 'shawncplus/phpcomplete.vim', { 'for': 'php' }
-Plug 'chr4/nginx.vim', { 'for': 'nginx' }
+Plug 'sheerun/vim-polyglot'
 
 " syntaxrange
 Plug 'vim-scripts/ingo-library'

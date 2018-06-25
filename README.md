@@ -100,37 +100,8 @@ Colorschemes
 Syntax/Filetype
 ---------------
 
-* html5
-  * https://github.com/othree/html5.vim
-* html
-  * https://github.com/pangloss/vim-javascript
-* javascript
-  * https://github.com/pangloss/vim-javascript
-* jsx
-  * https://github.com/mxw/vim-jsx
-* typescript
-  * https://github.com/HerringtonDarkholme/yats.vim
-* json
-  * https://github.com/elzr/vim-json
-* i3-vim-syntax
-  * https://github.com/PotatoesMaster/i3-vim-syntax
-* vim-markdown
-  * https://github.com/gabrielelana/vim-markdown
-* less
-  * https://github.com/groenewege/vim-less
-* vcl (varnish configuration language)
-  * https://github.com/pld-linux/vim-syntax-vcl
-* xt (xdebug)
-  * https://github.com/xdebug/xdebug/tree/master/contrib
-* yaml
-  * https://github.com/stephpy/vim-yaml
-* php
-  * https://github.com/StanAngeloff/php.vim
-  * https://github.com/shawncplus/phpcomplete.vim
-* nginx
-  * https://github.com/chr4/nginx.vim
-* css
-  * https://github.com/hail2u/vim-css3-syntax
+* vim-polyglot (all popular languages are bundled in there)
+  * https://github.com/sheerun/vim-polyglot
 
 Notes
 -----
