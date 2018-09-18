@@ -145,6 +145,8 @@ set fileencodings=utf-8,ucs-bom,cp1250,iso-8859-1
 
 " syntax
 syntax on
+syntax sync minlines=300
+set synmaxcol=300
 
 " filetype
 filetype on
