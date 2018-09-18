@@ -17,7 +17,6 @@ else
 endif
 " colors
 Plug 'chriskempson/base16-vim'
-Plug 'drewtempelmeyer/palenight.vim'
 
 " filetype
 Plug 'sheerun/vim-polyglot'
@@ -197,7 +196,7 @@ set background=dark
 if (has("termguicolors"))
     set termguicolors
     try
-        colorscheme palenight
+        colorscheme base16-circus
     catch /^Vim\%((\a\+)\)\=:E185/
         " deal with it
     endtry

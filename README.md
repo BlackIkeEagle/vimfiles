@@ -94,8 +94,6 @@ Colorschemes
 
 * base16
   * https://github.com/chriskempson/base16-vim
-* palenight
-  * https://github.com/drewtempelmeyer/palenight.vim
 
 Syntax/Filetype
 ---------------
