@@ -160,7 +160,7 @@ set expandtab     " tabs are tabs, do not replace with spaces
 
 " statusline stuff
 set laststatus=2
-set statusline=%<%F%h\ %([%R%M]\ %)\ %=%(%y\ %)[%{&ff}]\ %{\"[\".(&fenc==\"\"?&enc:&fenc).\"]\"}\ #%n\ %10(%l/%L%)\ %4.P
+set statusline=%<%F%h\ %([%R%M]\ %)\ %=%(%y\ %)[%{&ff}]\ %{\"[\".(&fenc==\"\"?&enc:&fenc).\"]\"}\ #%n\ %10(%l/%L%)\ %4(%c%)\ %4.P
 
 " diff settings
 set diffopt=filler,iwhite,vertical
