@@ -16,7 +16,7 @@ else
     call plug#begin('~/.vim/plugged')
 endif
 " colors
-Plug 'chriskempson/base16-vim'
+Plug 'rakr/vim-one'
 
 " filetype
 Plug 'sheerun/vim-polyglot'
@@ -196,7 +196,7 @@ set background=dark
 if (has("termguicolors"))
     set termguicolors
     try
-        colorscheme base16-circus
+        colorscheme one
     catch /^Vim\%((\a\+)\)\=:E185/
         " deal with it
     endtry
