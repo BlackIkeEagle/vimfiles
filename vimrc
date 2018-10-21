@@ -119,7 +119,7 @@ set nocursorline   " dont change bg color line on cursorpostion
 set secure
 
 " some interface options
-set ruler                 " show cursorposition
+"set ruler                 " show cursorposition
 set showcmd               " display incomplete commands
 "set nowrap                " dont wrap long lines
 set wrap                  " wrap long lines
