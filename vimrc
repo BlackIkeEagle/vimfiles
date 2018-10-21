@@ -21,13 +21,6 @@ Plug 'rakr/vim-one'
 " filetype
 Plug 'sheerun/vim-polyglot'
 
-" syntaxrange
-Plug 'vim-scripts/ingo-library'
-Plug 'vim-scripts/SyntaxRange' " change syntax for specific range
-
-" project
-Plug 'vimwiki/vimwiki'
-
 " file navigation
 Plug 'scrooloose/nerdtree'
 Plug 'tyok/nerdtree-ack'
@@ -43,28 +36,14 @@ Plug 'mbbill/undotree'
 Plug 'tpope/vim-abolish'
 
 " general coding
-Plug 'Valloric/MatchTagAlways'
 Plug 'scrooloose/nerdcommenter'
 Plug 'ervandew/supertab'
 Plug 'w0rp/ale' " automated syntax checking
-Plug 'majutsushi/tagbar'
-Plug 'editorconfig/editorconfig-vim'
-Plug 'itspriddle/vim-stripper'
-Plug 'terryma/vim-expand-region'
-Plug 'matze/vim-move'
 
 " vcs
 Plug 'tpope/vim-fugitive'
 Plug 'mhinz/vim-signify'
 Plug 'rhysd/conflict-marker.vim'
-
-" php
-Plug 'joonty/vdebug'
-Plug 'vim-php/vim-composer'
-
-" snippets
-Plug 'SirVer/ultisnips'
-Plug 'honza/vim-snippets'
 
 call plug#end()
 
@@ -220,15 +199,6 @@ elseif executable('ack-grep')
     let g:ackprg="ack-grep -H --nocolor --nogroup --column"
 endif
 
-" vimwiki
-let g:vimwiki_list = [
-    \{
-        \'path': '~/Documents/vimwiki/',
-        \'auto_tags': 1,
-    \}
-\]
-        "\'syntax': 'markdown',
-
 " NERDTree
 let NERDTreeCascadeOpenSingleChildDir=0
 
@@ -239,27 +209,12 @@ let g:signify_vcs_list = [ 'git', 'hg', 'svn' ]
 "let g:SuperTabDefaultCompletionType = "<c-x><c-o>"
 "let g:SuperTabContextDefaultCompletionType = "<c-x><c-o>"
 
-" MatchTagAlways
-let g:mta_filetypes = {
-    \ 'html' : 1,
-    \ 'xhtml' : 1,
-    \ 'xml' : 1,
-    \ 'jinja' : 1,
-    \ 'phtml' : 1,
-    \ 'twig' : 1,
-    \}
-
 " Ale settings
 let g:ale_open_list = 1 " show list when errors are found
 let g:ale_lint_on_text_changed = 'normal'
 let g:ale_linters = {
 \   'javascript': ['eslint'],
 \   'python': ['pycodestyle'],
-\}
-
-" vdebug settings
-let g:vdebug_options = {
-    \'path_maps': {'/phpapp': getcwd()}
 \}
 
 if version >= 702
