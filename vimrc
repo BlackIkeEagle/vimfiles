@@ -32,6 +32,11 @@ Plug 'vimwiki/vimwiki'
 Plug 'scrooloose/nerdtree'
 Plug 'tyok/nerdtree-ack'
 Plug 'mileszs/ack.vim'
+" denite extras
+if (! has("nvim"))
+    Plug 'roxma/nvim-yarp'
+    Plug 'roxma/vim-hug-neovim-rpc'
+endif
 Plug 'Shougo/denite.nvim'
 
 " buffers
