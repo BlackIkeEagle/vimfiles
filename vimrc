@@ -254,10 +254,6 @@ let g:mta_filetypes = {
 " Ale settings
 let g:ale_open_list = 1 " show list when errors are found
 let g:ale_lint_on_text_changed = 'normal'
-let g:ale_linters = {
-\   'javascript': ['eslint'],
-\   'python': ['pycodestyle'],
-\}
 
 " vdebug settings
 let g:vdebug_options = {
