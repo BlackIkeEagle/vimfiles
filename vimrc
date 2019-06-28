@@ -197,7 +197,7 @@ nnoremap <silent> <Leader>lt :set list!<CR>
 highlight clear SignColumn
 
 " set the colorsheme
-set background=light
+set background=dark
 if (has("termguicolors"))
     set termguicolors
     try
