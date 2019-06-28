@@ -25,9 +25,6 @@ Plug 'sheerun/vim-polyglot'
 Plug 'vim-scripts/ingo-library'
 Plug 'vim-scripts/SyntaxRange' " change syntax for specific range
 
-" project
-Plug 'vimwiki/vimwiki'
-
 " file navigation
 Plug 'scrooloose/nerdtree'
 Plug 'tyok/nerdtree-ack'

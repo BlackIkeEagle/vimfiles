@@ -12,11 +12,6 @@ Plugin Manager
 Plugins
 -------
 
-### Project tools
-
-* vimwiki
-  * https://github.com/vimwiki/vimwiki
-
 ### File navigation
 
 * Ack
