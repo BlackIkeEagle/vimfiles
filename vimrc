@@ -222,15 +222,6 @@ elseif executable('ack-grep')
     let g:ackprg="ack-grep -H --nocolor --nogroup --column"
 endif
 
-" vimwiki
-let g:vimwiki_list = [
-    \{
-        \'path': '~/Documents/vimwiki/',
-        \'auto_tags': 1,
-    \}
-\]
-        "\'syntax': 'markdown',
-
 " NERDTree
 let NERDTreeCascadeOpenSingleChildDir=0
 
