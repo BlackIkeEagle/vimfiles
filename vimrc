@@ -29,14 +29,10 @@ Plug 'vim-scripts/SyntaxRange' " change syntax for specific range
 Plug 'scrooloose/nerdtree'
 Plug 'tyok/nerdtree-ack'
 Plug 'mileszs/ack.vim'
-" denite extras
-if (! has("nvim"))
-    Plug 'roxma/nvim-yarp'
-    Plug 'roxma/vim-hug-neovim-rpc'
-endif
-Plug 'Shougo/denite.nvim'
+Plug 'kien/ctrlp.vim'
 
 " buffers
+Plug 'jeetsukumaran/vim-buffergator'
 Plug 'mattboehm/vim-accordion'
 
 " extras
@@ -63,6 +59,7 @@ Plug 'rhysd/conflict-marker.vim'
 " php
 Plug 'joonty/vdebug'
 Plug 'vim-php/vim-composer'
+"Plug 'phpactor/phpactor', {'for': 'php', 'do': 'composer install'}
 
 " snippets
 Plug 'SirVer/ultisnips'
@@ -185,9 +182,8 @@ nnoremap <silent> <Leader>nt :NERDTreeToggle<CR>
 nnoremap <silent> <Leader>nf :NERDTreeFind<CR>
 nnoremap <silent> <Leader>tb :TagbarToggle<CR>
 nnoremap <silent> <Leader>ut :UndotreeToggle<CR>
-nnoremap <silent> <Leader>bl :Denite buffer<CR>
+nnoremap <silent> <Leader>bl :BuffergatorToggle<CR>
 nnoremap <silent> <Leader>tl :Tags<CR>
-nnoremap <silent> <Leader>fl :Denite file_rec<CR>
 nnoremap <silent> <Leader>lt :set list!<CR>
 
 " signcolumn highlight clear (matching background)
@@ -225,10 +221,18 @@ endif
 " NERDTree
 let NERDTreeCascadeOpenSingleChildDir=0
 
+" Buffergator
+let g:buffergator_viewport_split_policy = "B"
+
 " vim-signify
 let g:signify_vcs_list = [ 'git', 'hg', 'svn' ]
 
 " SuperTab settings
+let g:SuperTabDefaultCompletionType = 'context'
+autocmd FileType *
+    \ if &omnifunc != '' |
+    \   call SuperTabChain(&omnifunc, "<c-p>") |
+    \ endif
 "let g:SuperTabDefaultCompletionType = "<c-x><c-o>"
 "let g:SuperTabContextDefaultCompletionType = "<c-x><c-o>"
 

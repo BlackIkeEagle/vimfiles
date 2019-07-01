@@ -25,8 +25,10 @@ Plugins
   * https://github.com/tyok/nerdtree-ack
 * Accordion
   * https://github.com/mattboehm/vim-accordion
-* Denite
-  * https://github.com/Shougo/denite.nvim
+* CtrlP
+  * https://github.com/kien/ctrlp.vim
+* Buffergator
+  * https://github.com/jeetsukumaran/vim-buffergator
 
 ### General plugins
 
