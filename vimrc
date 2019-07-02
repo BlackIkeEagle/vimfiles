@@ -9,7 +9,6 @@ set nocompatible
 " Plug config
 """"
 
-
 if (has("nvim"))
     call plug#begin('~/.local/share/nvim/plugged')
 else
@@ -50,6 +49,15 @@ Plug 'editorconfig/editorconfig-vim'
 Plug 'itspriddle/vim-stripper'
 Plug 'terryma/vim-expand-region'
 Plug 'matze/vim-move'
+
+" Deoplete completion framework
+if has('nvim')
+  Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+else
+  Plug 'Shougo/deoplete.nvim'
+  Plug 'roxma/nvim-yarp'
+  Plug 'roxma/vim-hug-neovim-rpc'
+endif
 
 " vcs
 Plug 'tpope/vim-fugitive'
@@ -228,13 +236,11 @@ let g:buffergator_viewport_split_policy = "B"
 " vim-signify
 let g:signify_vcs_list = [ 'git', 'hg', 'svn' ]
 
+" Deoplete
+let g:deoplete#enable_at_startup = 1
+
 " SuperTab settings
-let g:SuperTabDefaultCompletionType = 'context'
-autocmd FileType *
-    \ if &omnifunc != '' |
-    \   call SuperTabChain(&omnifunc, "<c-p>") |
-    \ endif
-"let g:SuperTabDefaultCompletionType = "<c-x><c-o>"
+let g:SuperTabDefaultCompletionType = "<c-n>"
 "let g:SuperTabContextDefaultCompletionType = "<c-x><c-o>"
 
 " MatchTagAlways
