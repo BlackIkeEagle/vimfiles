@@ -72,7 +72,10 @@ Plug 'vim-php/vim-composer'
 "Plug 'kristijanhusak/deoplete-phpactor'
 
 " python
-Plug 'deoplete-plugins/deoplete-jedi' " python support for deoplete
+Plug 'deoplete-plugins/deoplete-jedi'
+
+" go
+Plug 'deoplete-plugins/deoplete-go', { 'do': 'make'}
 
 " snippets
 Plug 'SirVer/ultisnips'
