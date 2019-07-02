@@ -64,6 +64,7 @@ Plug 'vim-php/vim-composer'
 " snippets
 Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
+Plug 'phenomenes/ansible-snippets'
 
 call plug#end()
 

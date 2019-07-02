@@ -76,6 +76,8 @@ Plugins
   * https://github.com/SirVer/ultisnips
 * vim-snippets (contains snippets for ultisnips and snipmate)
   * https://github.com/honza/vim-snippets
+* ansible-snippets
+  * https://github.com/phenomenes/ansible-snippets
 
 * EditorConfig
   * https://github.com/editorconfig/editorconfig-vim
