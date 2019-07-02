@@ -9,7 +9,6 @@ set nocompatible
 " Plug config
 """"
 
-
 if (has("nvim"))
     call plug#begin('~/.local/share/nvim/plugged')
 else
