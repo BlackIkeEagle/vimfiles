@@ -58,6 +58,7 @@ else
   Plug 'roxma/nvim-yarp'
   Plug 'roxma/vim-hug-neovim-rpc'
 endif
+Plug 'deoplete-plugins/deoplete-jedi' " python support for deoplete
 
 " vcs
 Plug 'tpope/vim-fugitive'
