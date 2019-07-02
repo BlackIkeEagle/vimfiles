@@ -256,6 +256,9 @@ let g:vdebug_options = {
     \'path_maps': {'/phpapp': getcwd()}
 \}
 
+" Ultisnips
+let g:UltiSnipsExpandTrigger="<c-k>"
+
 if version >= 702
     autocmd BufWinLeave * call clearmatches()
 endif
