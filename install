@@ -5,9 +5,6 @@ gvimrc=0
 clean=0
 nvim=0
 
-authorname=""
-authoremail=""
-
 # usage
 function usage() {
 	echo "use: $0 [options]"
