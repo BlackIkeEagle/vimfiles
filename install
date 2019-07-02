@@ -32,6 +32,10 @@ done
 
 if [[ $developer -eq 1 ]]; then
 	startvimrc="vimrc-developer"
+
+    if which go > /dev/null 2>&1; then
+        go get -u github.com/stamblerre/gocode
+    fi
 fi
 
 if [[ $nvim -eq 1 ]]; then

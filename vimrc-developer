@@ -75,7 +75,9 @@ Plug 'vim-php/vim-composer'
 Plug 'deoplete-plugins/deoplete-jedi'
 
 " go
-Plug 'deoplete-plugins/deoplete-go', { 'do': 'make'}
+if executable('go')
+    Plug 'deoplete-plugins/deoplete-go', { 'do': 'make'}
+endif
 
 " snippets
 Plug 'SirVer/ultisnips'
