@@ -172,9 +172,9 @@ nnoremap <silent> <Leader>lt :set list!<CR>
 " signcolumn highlight clear (matching background)
 highlight clear SignColumn
 
-" set the colorsheme
+" set the colorscheme
 set background=dark
-if (has("termguicolors"))
+if (has("termguicolors") && &t_Co >= 256)
     set termguicolors
     try
         colorscheme one
@@ -182,6 +182,7 @@ if (has("termguicolors"))
         " deal with it
     endtry
 else
+    set t_Co=256
     colorscheme delek
 endif
 
