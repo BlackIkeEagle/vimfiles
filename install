@@ -1,13 +1,17 @@
 #!/usr/bin/env bash
 
 # defaults
+developer=0
 gvimrc=0
 clean=0
 nvim=0
 
+startvimrc="vimrc"
+
 # usage
 function usage() {
 	echo "use: $0 [options]"
+	echo "  -d  install development config (else simpler config)"
     echo "  -g  also install gvimrc (ignore for nvim)"
 	echo "  -c  do clean installation"
     echo "  -n  install for nvim"
@@ -16,14 +20,19 @@ function usage() {
 }
 
 # process options
-while getopts ":a:e:gcnh" arg; do
+while getopts ":dgcnh" arg; do
 	case "$arg" in
+		d) developer=1 ;;
 		g) gvimrc=1 ;;
 		c) clean=1 ;;
         n) nvim=1 ;;
 		h) usage ;;
 	esac
 done
+
+if [[ $developer -eq 1 ]]; then
+	startvimrc="vimrc-developer"
+fi
 
 if [[ $nvim -eq 1 ]]; then
     configpath="$HOME/.config/nvim"
@@ -55,7 +64,7 @@ fi
 [[ ! -d "$configpath" ]] && mkdir -p "$configpath"
 cp -a ./vimfiles/* "$configpath/"
 # copy new vimrc
-cp -a ./vimrc "$vimrcfile"
+cp -a ./$startvimrc "$vimrcfile"
 # copy gvimrc when requested
 [[ $gvimrc -eq 1 ]] && [[ "$gvimrcfile" != "" ]] && cp -a ./gvimrc "$gvimrcfile"
 

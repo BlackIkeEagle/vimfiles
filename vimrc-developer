@@ -9,7 +9,6 @@ set nocompatible
 " Plug config
 """"
 
-
 if (has("nvim"))
     call plug#begin('~/.local/share/nvim/plugged')
 else
@@ -46,6 +45,39 @@ Plug 'rhysd/conflict-marker.vim'
 Plug 'scrooloose/nerdcommenter'
 Plug 'ervandew/supertab'
 Plug 'w0rp/ale' " automated syntax checking
+Plug 'Valloric/MatchTagAlways'
+Plug 'majutsushi/tagbar'
+Plug 'editorconfig/editorconfig-vim'
+Plug 'itspriddle/vim-stripper'
+Plug 'terryma/vim-expand-region'
+Plug 'matze/vim-move'
+
+" syntaxrange
+Plug 'vim-scripts/ingo-library'
+Plug 'vim-scripts/SyntaxRange' " change syntax for specific range
+
+" Deoplete completion framework
+if has('nvim')
+  Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+else
+  Plug 'Shougo/deoplete.nvim'
+  Plug 'roxma/nvim-yarp'
+  Plug 'roxma/vim-hug-neovim-rpc'
+endif
+
+" php
+Plug 'joonty/vdebug'
+Plug 'vim-php/vim-composer'
+"Plug 'phpactor/phpactor', {'for': 'php', 'do': 'composer install'}
+"Plug 'kristijanhusak/deoplete-phpactor'
+
+" python
+Plug 'deoplete-plugins/deoplete-jedi' " python support for deoplete
+
+" snippets
+Plug 'SirVer/ultisnips'
+Plug 'honza/vim-snippets'
+Plug 'phenomenes/ansible-snippets'
 
 
 call plug#end()
@@ -215,8 +247,29 @@ let g:ale_open_list = 1 " show list when errors are found
 let g:ale_lint_on_text_changed = 'normal'
 
 " SuperTab settings
-"let g:SuperTabDefaultCompletionType = "<c-x><c-o>"
+let g:SuperTabDefaultCompletionType = "<c-n>"
 "let g:SuperTabContextDefaultCompletionType = "<c-x><c-o>"
+
+" Deoplete
+let g:deoplete#enable_at_startup = 1
+
+" MatchTagAlways
+let g:mta_filetypes = {
+    \ 'html' : 1,
+    \ 'xhtml' : 1,
+    \ 'xml' : 1,
+    \ 'jinja' : 1,
+    \ 'phtml' : 1,
+    \ 'twig' : 1,
+    \}
+
+" vdebug settings
+let g:vdebug_options = {
+    \'path_maps': {'/phpapp': getcwd()}
+\}
+
+" Ultisnips
+let g:UltiSnipsExpandTrigger="<c-k>"
 
 if version >= 702
     autocmd BufWinLeave * call clearmatches()
