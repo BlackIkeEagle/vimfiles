@@ -65,14 +65,16 @@ else
   Plug 'roxma/vim-hug-neovim-rpc'
 endif
 
-" php
-Plug 'joonty/vdebug'
-Plug 'vim-php/vim-composer'
-"Plug 'phpactor/phpactor', {'for': 'php', 'do': 'composer install'}
-"Plug 'kristijanhusak/deoplete-phpactor'
-
 " python
 Plug 'deoplete-plugins/deoplete-jedi'
+
+" php
+if executable('/usr/bin/php')
+    Plug 'joonty/vdebug'
+    Plug 'vim-php/vim-composer'
+    Plug 'phpactor/phpactor', {'for': 'php', 'do': 'composer install'}
+    Plug 'kristijanhusak/deoplete-phpactor'
+endif
 
 " go
 if executable('go')
@@ -268,6 +270,9 @@ let g:mta_filetypes = {
     \ 'phtml' : 1,
     \ 'twig' : 1,
     \}
+
+" Phpactor
+let g:phpactorPhpBin = "/usr/bin/php"
 
 " vdebug settings
 let g:vdebug_options = {
