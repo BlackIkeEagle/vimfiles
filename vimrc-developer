@@ -71,10 +71,13 @@ Plug 'pearofducks/ansible-vim'
 Plug 'phenomenes/ansible-snippets'
 
 " nginx
-Plug 'chr4/nginx.vim', { 'for': 'nginx' }
+Plug 'chr4/nginx.vim'
+
+" varnish
+Plug 'fgsch/vim-varnish'
 
 " python
-Plug 'deoplete-plugins/deoplete-jedi'
+Plug 'deoplete-plugins/deoplete-jedi', {'for': 'python'}
 
 " php
 if executable('/usr/bin/php')
@@ -86,7 +89,7 @@ endif
 
 " go
 if executable('go')
-    Plug 'deoplete-plugins/deoplete-go', { 'do': 'make'}
+    Plug 'deoplete-plugins/deoplete-go', {'for': 'go', 'do': 'make'}
 endif
 
 " html

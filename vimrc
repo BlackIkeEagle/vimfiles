@@ -50,7 +50,10 @@ Plug 'pearofducks/ansible-vim'
 Plug 'othree/html5.vim', { 'for': 'html' }
 
 " nginx
-Plug 'chr4/nginx.vim', { 'for': 'nginx' }
+Plug 'chr4/nginx.vim'
+
+" varnish
+Plug 'fgsch/vim-varnish'
 
 call plug#end()
 
