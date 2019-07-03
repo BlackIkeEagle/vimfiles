@@ -18,9 +18,6 @@ endif
 " colors
 Plug 'rakr/vim-one'
 
-" filetype
-Plug 'sheerun/vim-polyglot'
-
 " file navigation
 Plug 'scrooloose/nerdtree'
 Plug 'tyok/nerdtree-ack'
@@ -46,6 +43,14 @@ Plug 'scrooloose/nerdcommenter'
 Plug 'ervandew/supertab'
 Plug 'w0rp/ale' " automated syntax checking
 
+" ansible
+Plug 'pearofducks/ansible-vim'
+
+" html
+Plug 'othree/html5.vim', { 'for': 'html' }
+
+" nginx
+Plug 'chr4/nginx.vim', { 'for': 'nginx' }
 
 call plug#end()
 
@@ -188,9 +193,6 @@ endif
 """"
 " settings for plugins
 """"
-
-" jsx syntax
-let g:jsx_ext_required = 0
 
 " Ack.vim
 if executable('ag')
