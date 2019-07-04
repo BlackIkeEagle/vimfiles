@@ -46,6 +46,9 @@ Plug 'w0rp/ale' " automated syntax checking
 " ansible
 Plug 'pearofducks/ansible-vim'
 
+" yaml
+Plug 'stephpy/vim-yaml'
+
 " html
 Plug 'othree/html5.vim', { 'for': 'html' }
 

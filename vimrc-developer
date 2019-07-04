@@ -70,6 +70,12 @@ Plug 'honza/vim-snippets'
 Plug 'pearofducks/ansible-vim'
 Plug 'phenomenes/ansible-snippets'
 
+" yaml
+Plug 'stephpy/vim-yaml'
+
+" html
+Plug 'othree/html5.vim', { 'for': 'html' }
+
 " nginx
 Plug 'chr4/nginx.vim'
 
@@ -91,9 +97,6 @@ endif
 if executable('go')
     Plug 'deoplete-plugins/deoplete-go', {'for': 'go', 'do': 'make'}
 endif
-
-" html
-Plug 'othree/html5.vim', { 'for': 'html' }
 
 " javascript
 Plug 'pangloss/vim-javascript', { 'for': ['html', 'javascript'] }
