@@ -87,7 +87,7 @@ Plug 'deoplete-plugins/deoplete-jedi', {'for': 'python'}
 
 " php
 if executable('/usr/bin/php')
-    Plug 'joonty/vdebug'
+    Plug 'vim-vdebug/vdebug'
     Plug 'vim-php/vim-composer'
     Plug 'phpactor/phpactor', {'for': 'php', 'do': 'composer install'}
     Plug 'kristijanhusak/deoplete-phpactor'
