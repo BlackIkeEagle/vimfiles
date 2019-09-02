@@ -168,7 +168,9 @@ set colorcolumn=80,120    " show column 80 and 120 in different color
 set wildmode=longest,full " command completion longest common part, then all.
 set wildmenu              " enable the command completion menu
 set ttyfast               " send more data for redrawing
-set pyxversion=3          " use python3 first
+if (!has("nvim"))
+    set pyxversion=3      " use python3 first
+endif
 
 " fileformat stuff
 "set fileformat=unix
