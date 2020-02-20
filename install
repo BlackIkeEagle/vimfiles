@@ -27,13 +27,14 @@ while getopts ":dgcnh" arg; do
 		c) clean=1 ;;
         n) nvim=1 ;;
 		h) usage ;;
+        *) usage ;;
 	esac
 done
 
 if [[ $developer -eq 1 ]]; then
 	startvimrc="vimrc-developer"
 
-    if which go > /dev/null 2>&1; then
+    if command -v go > /dev/null 2>&1; then
         go get -u github.com/stamblerre/gocode
     fi
 fi
@@ -59,9 +60,9 @@ fi
 uname=$(uname)
 
 if [[ "$uname" == "Linux" ]]; then
-    cd "$(dirname "$(readlink -f "$0")")"
+    cd "$(dirname "$(readlink -f "$0")")" || exit 1
 else
-    cd "$(cd "$(dirname "$0")"; pwd -P)"
+    cd "$(cd "$(dirname "$0")"; pwd -P)" || exit 1
 fi
 
 # put the vimfiles in place
