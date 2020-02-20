@@ -1,6 +1,6 @@
 " BlackEagles vimrc for Linux && *BSD
 "
-" (c) 2010 - 2019
+" (c) 2010 - 2020
 
 " nocompatible has to be the first of all ( use the real vimpower )
 set nocompatible
@@ -48,6 +48,7 @@ Plug 'editorconfig/editorconfig-vim'
 Plug 'itspriddle/vim-stripper'
 Plug 'terryma/vim-expand-region'
 Plug 'matze/vim-move'
+Plug 'jiangmiao/auto-pairs' " really cool autopairing
 
 " syntaxrange
 Plug 'vim-scripts/ingo-library'
@@ -271,8 +272,8 @@ let g:ale_lint_on_text_changed = 'normal'
 let g:SuperTabDefaultCompletionType = "<c-n>"
 "let g:SuperTabContextDefaultCompletionType = "<c-x><c-o>"
 
-" Deoplete
-let g:deoplete#enable_at_startup = 1
+" AutoPairs
+let g:AutoPairsFlyMode = 1
 
 " MatchTagAlways
 let g:mta_filetypes = {
@@ -283,6 +284,9 @@ let g:mta_filetypes = {
     \ 'phtml' : 1,
     \ 'twig' : 1,
     \}
+
+" Deoplete
+let g:deoplete#enable_at_startup = 1
 
 " Phpactor
 let g:phpactorPhpBin = "/usr/bin/php"

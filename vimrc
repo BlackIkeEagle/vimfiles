@@ -1,6 +1,6 @@
 " BlackEagles vimrc for Linux && *BSD
 "
-" (c) 2010 - 2019
+" (c) 2010 - 2020
 
 " nocompatible has to be the first of all ( use the real vimpower )
 set nocompatible

@@ -1,6 +1,6 @@
 " BlackEagles gvimrc for Linux && *BSD
 "
-" (c) 2010 - 2019
+" (c) 2010 - 2020
 
 set guioptions=aiA "dont show toolbar
 
