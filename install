@@ -10,29 +10,29 @@ startvimrc="vimrc"
 
 # usage
 function usage() {
-	echo "use: $0 [options]"
-	echo "  -d  install development config (else simpler config)"
+    echo "use: $0 [options]"
+    echo "  -d  install development config (else simpler config)"
     echo "  -g  also install gvimrc (ignore for nvim)"
-	echo "  -c  do clean installation"
+    echo "  -c  do clean installation"
     echo "  -n  install for nvim"
-	echo "  -h  show this usage"
-	exit 0
+    echo "  -h  show this usage"
+    exit 0
 }
 
 # process options
 while getopts ":dgcnh" arg; do
-	case "$arg" in
-		d) developer=1 ;;
-		g) gvimrc=1 ;;
-		c) clean=1 ;;
+    case "$arg" in
+        d) developer=1 ;;
+        g) gvimrc=1 ;;
+        c) clean=1 ;;
         n) nvim=1 ;;
-		h) usage ;;
+        h) usage ;;
         *) usage ;;
-	esac
+    esac
 done
 
 if [[ $developer -eq 1 ]]; then
-	startvimrc="vimrc-developer"
+    startvimrc="vimrc-developer"
 
     if command -v go > /dev/null 2>&1; then
         go get -u github.com/stamblerre/gocode
