@@ -56,9 +56,9 @@ Plug 'vim-scripts/SyntaxRange' " change syntax for specific range
 
 " Deoplete completion framework
 if has('nvim')
-    Plug 'Shougo/deoplete.nvim', { 'tag': '5.2', 'do': ':UpdateRemotePlugins' }
+    Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 else
-    Plug 'Shougo/deoplete.nvim', { 'tag': '5.2' }
+    Plug 'Shougo/deoplete.nvim'
     Plug 'roxma/nvim-yarp'
     Plug 'roxma/vim-hug-neovim-rpc'
 endif
