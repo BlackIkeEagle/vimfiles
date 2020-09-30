@@ -48,6 +48,7 @@ Plug 'editorconfig/editorconfig-vim'
 Plug 'itspriddle/vim-stripper'
 Plug 'terryma/vim-expand-region'
 Plug 'matze/vim-move'
+Plug 'AndrewRadev/splitjoin.vim'
 
 " syntaxrange
 Plug 'vim-scripts/ingo-library'
