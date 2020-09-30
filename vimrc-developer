@@ -16,7 +16,7 @@ else
 endif
 
 " colors
-Plug 'rakr/vim-one'
+Plug 'NLKNguyen/papercolor-theme'
 
 " file navigation
 Plug 'scrooloose/nerdtree'
@@ -231,11 +231,11 @@ nnoremap <silent> <Leader>lt :set list!<CR>
 highlight clear SignColumn
 
 " set the colorscheme
-set background=dark
+set background=light
 if (has("termguicolors") && &t_Co >= 256)
     set termguicolors
     try
-        colorscheme one
+        colorscheme PaperColor
     catch /^Vim\%((\a\+)\)\=:E185/
         " deal with it
     endtry
