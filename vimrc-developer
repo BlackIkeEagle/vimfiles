@@ -295,8 +295,15 @@ let g:deoplete#enable_at_startup = 1
 let g:phpactorPhpBin = "/usr/bin/php"
 
 " vdebug settings
+if (has("nvim"))
+    let g:vdebug_logfile = '~/vdebug.nvim.log'
+else
+    let g:vdebug_logfile = '~/vdebug.vim.log'
+endif
 let g:vdebug_options = {
-    \'path_maps': {'/phpapp': getcwd()}
+    \'path_maps': {'/phpapp': getcwd()},
+    \'debug_file': g:vdebug_logfile,
+    \'debug_file_level': 2
 \}
 
 " Ultisnips
