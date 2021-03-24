@@ -216,6 +216,15 @@ nnoremap <silent> <Leader>lt :set list!<CR>
 " signcolumn highlight clear (matching background)
 highlight clear SignColumn
 
+" papercolor options
+let g:PaperColor_Theme_Options = {
+\  'theme': {
+\    'default': {
+\      'transparent_background': 1
+\    }
+\  }
+\}
+
 " set the colorscheme
 set background=light
 if (has("termguicolors") && &t_Co >= 256)
