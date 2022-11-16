@@ -76,6 +76,22 @@ cp -a ./$startvimrc "$vimrcfile"
 if [[ $nvim -eq 1 ]]; then
     nvim +PlugInstall +qall
     nvim +UpdateRemotePlugins +qall
+    ####
+    # Treesitter
+    ####
+    nvim +'TSUpdate bash' +qall
+    nvim +'TSUpdate dockerfile' +qall
+    if command -v go > /dev/null 2>&1; then
+        nvim +'TSUpdate go' +qall
+        nvim +'TSUpdate gomod' +qall
+    fi
+    nvim +'TSUpdate perl' +qall
+    if [[ -e '/usr/bin/php' ]]; then
+        nvim +'TSUpdate php' +qall
+        nvim +'TSUpdate phpdoc' +qall
+    fi
+    nvim +'TSUpdate python' +qall
+    nvim +'TSUpdate yaml' +qall
 else
     vim +PlugInstall +qall
 fi
